@@ -20,14 +20,14 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void setWeapon() 
     {
-        // TODO Auto-generated method stub
+    
 
     }
 
     @Override
     public Object getWeapon() 
     {
-        // TODO Auto-generated method stub
+        
         return null;
     }
 
