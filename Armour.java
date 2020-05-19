@@ -1,52 +1,36 @@
 import java.util.*;
 
-public class Armour extends Inventory 
+public class Armour implements Inventory 
 {
 
-    public Armour(GameCharacter next) 
-    {
-        super(next);
+    @Override
+    public void setName(String name) {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
-    public void getName() 
-    {
-        
+    public String getName() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
-    public void setWeapon() 
-    {
-    
-    }
-
-    @Override
-    public void setArmour() 
-    {
-        
-    }
-
-    @Override
-    public void setName(String name) 
-    {
-    
-    }
-
-    @Override
-    public int getCost() 
-    {
+    public int getCost() {
+        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int getMinEffect() 
-    {
+    public int getMinEffect() {
+        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public int getMaxEffect() 
-    {
+    public int getMaxEffect() {
+        // TODO Auto-generated method stub
         return 0;
     }
+
 }

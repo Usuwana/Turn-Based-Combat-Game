@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PlayerCharacter extends GameCharacter
+public class PlayerCharacter implements GameCharacter
 {
     String name;
 
@@ -40,12 +40,6 @@ public class PlayerCharacter extends GameCharacter
     public int getCurrHealth() 
     {
         return 30;
-    }
-
-    @Override
-    public void setArmour() 
-    {
-
     }
 
     @Override

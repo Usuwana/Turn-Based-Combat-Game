@@ -1,12 +1,8 @@
 import java.util.*;
 
-public abstract class Inventory extends CharacterModify
+public interface Inventory 
 {
-    public Inventory(GameCharacter next) 
-    {
-        super(next);
-    }
-
+    
     public abstract void setName(String name);
     public abstract String getName();
     public abstract int getCost();

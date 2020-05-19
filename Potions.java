@@ -1,17 +1,18 @@
 import java.util.*;
 
-public class Potions extends Inventory 
+public class Potions implements Inventory 
 {
-
-    public Potions(GameCharacter next) 
-    {
-        super(next);
-    }
 
     @Override
     public void setName(String name) 
     {
     
+    }
+
+    @Override
+    public String getName() 
+    {
+        return null;
     }
 
     @Override
@@ -31,5 +32,7 @@ public class Potions extends Inventory
     {
         return 0;
     }
+
+    
     
 }

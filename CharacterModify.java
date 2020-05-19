@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class CharacterModify extends GameCharacter 
+public abstract class CharacterModify implements GameCharacter 
 {
     protected GameCharacter next;
 

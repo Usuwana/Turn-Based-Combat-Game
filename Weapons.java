@@ -1,17 +1,18 @@
 import java.util.*;
 
-public class Weapons extends Inventory 
+public class Weapons implements Inventory 
 {
-
-    public Weapons(GameCharacter next) 
-    {
-        super(next);
-    }
 
     @Override
     public void setName(String name) 
     {
-    
+        
+    }
+
+    @Override
+    public String getName() 
+    {
+        return null;
     }
 
     @Override
@@ -31,5 +32,6 @@ public class Weapons extends Inventory
     {
         return 0;
     }
+
     
 }
