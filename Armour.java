@@ -1,7 +1,30 @@
 import java.util.*;
 
-public class Armour implements Inventory 
+public class Armour extends Inventory 
 {
+
+    public Armour(GameCharacter next) 
+    {
+        super(next);
+    }
+
+    @Override
+    public void getName() 
+    {
+        
+    }
+
+    @Override
+    public void setWeapon() 
+    {
+    
+    }
+
+    @Override
+    public void setArmour() 
+    {
+        
+    }
 
     @Override
     public void setName(String name) 
@@ -26,5 +49,4 @@ public class Armour implements Inventory
     {
         return 0;
     }
-    
 }

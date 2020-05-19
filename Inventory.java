@@ -1,9 +1,15 @@
 import java.util.*;
 
-public interface Inventory 
+public abstract class Inventory extends CharacterModify
 {
-    public void setName(String name);
-    public int getCost();
-    public int getMinEffect();
-    public int getMaxEffect();
+    public Inventory(GameCharacter next) 
+    {
+        super(next);
+    }
+
+    public abstract void setName(String name);
+    public abstract String getName();
+    public abstract int getCost();
+    public abstract int getMinEffect();
+    public abstract int getMaxEffect();
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PlayerCharacter implements GameCharacter
+public class PlayerCharacter extends GameCharacter
 {
     String name;
 
@@ -25,9 +25,8 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public Object getWeapon() 
+    public Weapons getWeapon() 
     {
-        
         return null;
     }
 
@@ -50,7 +49,7 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public Object getArmour() 
+    public Armour getArmour() 
     {
         return null;
     }

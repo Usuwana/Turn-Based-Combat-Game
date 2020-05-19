@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class CharacterModify implements GameCharacter 
+public abstract class CharacterModify extends GameCharacter 
 {
     protected GameCharacter next;
 
@@ -17,7 +17,7 @@ public abstract class CharacterModify implements GameCharacter
 
 
     @Override
-    public Object getWeapon() 
+    public Weapons getWeapon() 
     {
         return next.getWeapon();
     }
@@ -35,7 +35,7 @@ public abstract class CharacterModify implements GameCharacter
     }
 
     @Override
-    public Object getArmour() 
+    public Armour getArmour() 
     {
         return next.getArmour();
     }

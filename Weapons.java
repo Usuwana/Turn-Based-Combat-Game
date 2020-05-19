@@ -1,7 +1,12 @@
 import java.util.*;
 
-public class Weapons implements Inventory 
+public class Weapons extends Inventory 
 {
+
+    public Weapons(GameCharacter next) 
+    {
+        super(next);
+    }
 
     @Override
     public void setName(String name) 
