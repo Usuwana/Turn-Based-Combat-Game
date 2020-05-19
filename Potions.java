@@ -3,14 +3,10 @@ import java.util.*;
 public class Potions implements Inventory 
 {
 
-    @Override
-    public void setName(String name) 
-    {
-    
-    }
+
 
     @Override
-    public String getName() 
+    public String getName(String line) 
     {
         return null;
     }

@@ -11,7 +11,7 @@ public class Mainrun
 
         while(finished==0)
         {
-            System.out.println("1. Got to Shop\n");
+            System.out.println("1. Go to Shop\n");
             System.out.println("2. Choose Character Name\n");
             System.out.println("3. Choose Weapon\n");
             System.out.println("4. Choose Armour\n");
@@ -25,7 +25,25 @@ public class Mainrun
             switch(choice)
             {
                 case 1:
-                
+                    int item;
+                    System.out.println("1. Show all weapons\n");
+                    System.out.println("2. Show all armour\n");
+                    System.out.println("3. Show all portions\n");
+                    System.out.println("4. Back to main menu\n");
+
+                    Scanner sc2 = new Scanner(System.in);
+                    System.out.println("Pick an option from the menu\n");
+                    item = sc2.nextInt();
+
+                    switch(item)
+                    {
+                        case 1:
+                        break;
+                        case 2:
+                        break;
+                        case 3:
+                        break;
+                    }
                 break;
 
                 case 2:
