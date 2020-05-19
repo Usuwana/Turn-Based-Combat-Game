@@ -2,9 +2,6 @@ import java.util.*;
 
 public class Armour implements Inventory 
 {
-
-   
-
     @Override
     public String getName(String line) 
     {
@@ -25,7 +22,7 @@ public class Armour implements Inventory
 
     @Override
     public int getMaxEffect() 
-    {
+    {           
         return 0;
     }
 

@@ -70,7 +70,24 @@ public class Mainrun
                 break;
 
                 case 5:
-                    character.getName();
+                   System.out.print("Character name: "); 
+                   character.getName();
+                   double enemyChoice = Math.random();
+                   if (enemyChoice < 0.5)
+                   {
+                       Enemies enemy = new Slime();
+                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
+                   }
+                   else if(enemyChoice < 0.3)
+                   {
+                       Enemies enemy = new Goblin();
+                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
+                   }
+                   else if(enemyChoice < 0.2)
+                   {
+                       Enemies enemy = new Ogre();
+                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
+                   }
                 break;
 
                 case 6:
