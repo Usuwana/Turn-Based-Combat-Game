@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Dragon implements Enemies 
 {
+    private String name = "Dragon";
 
     @Override
     public String getName() 
     {
-        // TODO Auto-generated method stub
-        return null;
+        return name;
     }
 
     @Override
@@ -23,34 +23,36 @@ public class Dragon implements Enemies
     }
 
     @Override
-    public int getMinAttDamage() 
+    public int getDamage() 
     {
-        return 15;
+        int minimum = 15;
+        int maximum = 30;
+        int difference = maximum - minimum;
+        int effect = (int) (Math.random() * (difference + 1) + minimum);
+        int damage = effect;
+        double probability = Math.random();
+        if (probability < 0.35)
+        {
+            if (probability < 0.25)
+            {
+                damage = effect*2;
+            }
+            else if(probability < 0.1)
+            {
+                int health = getCurrHealth() + 10;
+            }
+        }
+        return damage;
     }
 
     @Override
-    public int getMaxAttDamage() 
+    public int getDefence() 
     {
-        return 30;
-    }
-
-    @Override
-    public int getMinDefDamage() 
-    {
-        return 15;
-    }
-
-    @Override
-    public int getMaxDefDamage() 
-    {
-        return 20;
-    }
-
-    @Override
-    public void getSpecialAbilities() 
-    {
-        // TODO Auto-generated method stub
-
+        int minimum = 15;
+        int maximum = 20;
+        int difference = maximum - minimum;
+        int damage = (int) (Math.random() * (difference + 1) + minimum);
+        return damage;
     }
 
     @Override

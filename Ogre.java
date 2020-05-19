@@ -1,13 +1,14 @@
 import java.util.*;
+import java.math.*;
 
 public class Ogre implements Enemies 
 {
+    private String name = "Ogre";
 
     @Override
     public String getName() 
     {
-        // TODO Auto-generated method stub
-        return null;
+        return name;
     }
 
     @Override
@@ -23,34 +24,29 @@ public class Ogre implements Enemies
     }
 
     @Override
-    public int getMinAttDamage() 
+    public int getDamage() 
     {
-        return 5;
+        int minimum = 5;
+        int maximum = 10;
+        int difference = maximum - minimum;
+        int effect = (int) (Math.random() * (difference + 1) + minimum);
+        int damage = effect;
+        double probability = Math.random();
+        if (probability < 0.2)
+        {
+            damage = effect + effect;
+        }
+        return damage;
     }
 
     @Override
-    public int getMaxAttDamage() 
+    public int getDefence() 
     {
-        return 10;
-    }
-
-    @Override
-    public int getMinDefDamage() 
-    {
-        return 6;
-    }
-
-    @Override
-    public int getMaxDefDamage() 
-    {
-        return 12;
-    }
-
-    @Override
-    public void getSpecialAbilities() 
-    {
-        // TODO Auto-generated method stub
-
+        int minimum = 6;
+        int maximum = 12;
+        int difference = maximum - minimum;
+        int damage = (int) (Math.random() * (difference + 1) + minimum);
+        return damage;
     }
 
     @Override

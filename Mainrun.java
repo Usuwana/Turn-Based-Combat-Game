@@ -10,6 +10,12 @@ public class Mainrun
         GameCharacter character = new PlayerCharacter();
         Shop theShop = new Shop();
 
+        /*for (int i=0; i<100;i++)
+        {
+            Dragon newSlime = new Dragon();
+            System.out.println(newSlime.getDamage());
+        }*/
+
         while(finished==0)
         {
             System.out.println("1. Go to Shop\n");

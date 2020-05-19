@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Slime implements Enemies 
 {
+    private String name = "Slime";
 
     @Override
     public String getName() 
     {
-        // TODO Auto-generated method stub
-        return null;
+        return name;
     }
 
     @Override
@@ -23,34 +23,29 @@ public class Slime implements Enemies
     }
 
     @Override
-    public int getMinAttDamage() 
+    public int getDamage() 
     {
-        return 3;
+        int minimum = 3;
+        int maximum = 5;
+        int difference = maximum - minimum;
+        int effect = (int) (Math.random() * (difference + 1) + minimum);
+        int damage = effect;
+        double probability = Math.random();
+        if (probability < 0.2)
+        {
+            damage = 0;
+        }
+        return damage;
     }
 
     @Override
-    public int getMaxAttDamage() 
+    public int getDefence() 
     {
-        return 5;
-    }
-
-    @Override
-    public int getMinDefDamage() 
-    {
-        return 0;
-    }
-
-    @Override
-    public int getMaxDefDamage() 
-    {
-        return 2;
-    }
-
-    @Override
-    public void getSpecialAbilities() 
-    {
-        // TODO Auto-generated method stub
-
+        int minimum = 0;
+        int maximum = 2;
+        int difference = maximum - minimum;
+        int damage = (int) (Math.random() * (difference + 1) + minimum);
+        return damage;
     }
 
     @Override

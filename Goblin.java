@@ -2,12 +2,12 @@ import java.util.*;
 
 public class Goblin implements Enemies 
 {
+    private String name = "Goblin";
 
     @Override
     public String getName() 
     {
-        // TODO Auto-generated method stub
-        return null;
+        return name;
     }
 
     @Override
@@ -23,34 +23,29 @@ public class Goblin implements Enemies
     }
 
     @Override
-    public int getMinAttDamage() 
+    public int getDamage() 
     {
-        return 3;
+        int minimum = 3;
+        int maximum = 8;
+        int difference = maximum - minimum;
+        int effect = (int) (Math.random() * (difference + 1) + minimum);
+        int damage = effect;
+        double probability = Math.random();
+        if (probability < 0.5)
+        {
+            damage = effect*3;
+        }
+        return damage;
     }
 
     @Override
-    public int getMaxAttDamage() 
+    public int getDefence() 
     {
-        return 8;
-    }
-
-    @Override
-    public int getMinDefDamage() 
-    {
-        return 4;
-    }
-
-    @Override
-    public int getMaxDefDamage() 
-    {
-        return 8;
-    }
-
-    @Override
-    public void getSpecialAbilities() 
-    {
-        // TODO Auto-generated method stub
-
+        int minimum = 4;
+        int maximum = 8;
+        int difference = maximum - minimum;
+        int damage = (int) (Math.random() * (difference + 1) + minimum);
+        return damage;
     }
 
     @Override
