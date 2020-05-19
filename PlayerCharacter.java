@@ -25,7 +25,7 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public Weapons getWeapon() 
+    public Inventory getWeapon() 
     {
         return null;
     }
@@ -43,7 +43,7 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public Armour getArmour() 
+    public Inventory getArmour() 
     {
         return null;
     }

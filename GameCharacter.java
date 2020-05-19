@@ -7,8 +7,8 @@ public interface GameCharacter
     public void setWeapon();
     public int getMaxHealth();
     public int getCurrHealth();
-    public Weapons getWeapon();
-    public Armour getArmour();
+    public Inventory getWeapon();
+    public Inventory getArmour();
     public int getGold();
 
 }

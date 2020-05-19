@@ -8,6 +8,7 @@ public class Mainrun
         int finished = 0;
         String name;
         GameCharacter character = new PlayerCharacter();
+        Shop theShop = new Shop();
 
         while(finished==0)
         {
@@ -25,7 +26,7 @@ public class Mainrun
             switch(choice)
             {
                 case 1:
-                    int item;
+                   /*int item;
                     System.out.println("1. Show all weapons\n");
                     System.out.println("2. Show all armour\n");
                     System.out.println("3. Show all portions\n");
@@ -43,7 +44,10 @@ public class Mainrun
                         break;
                         case 3:
                         break;
-                    }
+                    }*/
+                    System.out.println("These are the available items: \n");
+                    theShop.showShopContents();
+                    
                 break;
 
                 case 2:
