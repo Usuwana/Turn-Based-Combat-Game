@@ -33,7 +33,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void getName() 
     {
-        System.out.println(this.name +"\n");
+        System.out.println(this.name);
     }
 
     @Override
