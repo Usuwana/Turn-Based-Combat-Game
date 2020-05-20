@@ -2,7 +2,8 @@ import java.util.*;
 
 public class PlayerCharacter implements GameCharacter
 {
-    String name;
+    private String name;
+    private List<Inventory> items;
 
     @Override
     public void setName(String name) 
@@ -20,14 +21,13 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void setWeapon() 
     {
-    
-
+        
     }
 
     @Override
-    public Inventory getWeapon() 
+    public void setArmour() 
     {
-        return null;
+        
     }
 
     @Override
@@ -49,9 +49,30 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
+    public Inventory getWeapon() 
+    {
+        Inventory weapon = new Weapons();
+        //weapon.setItem
+        return null;
+    }
+
+
+    @Override
     public int getGold() 
     {
         return 100;
+    }
+
+    @Override
+    public void setInventory() 
+    {
+    
+    }
+
+    @Override
+    public List<Inventory> getInventory() 
+    {
+        return null;
     }
     
 }

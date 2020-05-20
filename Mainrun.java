@@ -51,8 +51,13 @@ public class Mainrun
                         case 3:
                         break;
                     }*/
+                    int item;
+
                     System.out.println("These are the available items: \n");
                     theShop.showShopContents();
+                    Scanner sc2 = new Scanner(System.in);
+                    System.out.println("Pick an item you would like to buy\n");
+                    item = sc2.nextInt();
                     
                 break;
 
