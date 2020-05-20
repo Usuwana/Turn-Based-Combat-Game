@@ -25,7 +25,7 @@ public class Mainrun
             System.out.print("Current weapons in inventory: ");
             character.getCurrentWeapons();
             System.out.println("");
-            
+
             System.out.println("\n1. Go to Shop\n");
             System.out.println("2. Choose Character Name\n");
             System.out.println("3. Choose Weapon\n");
@@ -47,6 +47,37 @@ public class Mainrun
                     Scanner sc2 = new Scanner(System.in);
                     System.out.println("Pick an item you would like to buy\n");
                     item = sc2.nextInt();
+
+                    switch(item)
+                    {
+                        case 1:
+                            character.setWeapon("Short Sword");
+                        break;
+                        case 2:
+                            character.setWeapon("Great Axe");
+                        break;
+                        case 3:
+                            character.setWeapon("Magic Staff");
+                        break;
+                        case 4:
+                            character.setArmour("Leather Armour");
+                        break;
+                        case 5:
+                            character.setArmour("Chain Mail");
+                        break;
+                        case 6:
+                            character.setArmour("Dragon Skin");
+                        break;
+                        case 7:
+                            character.setPotion("Potion of Healing");
+                        break;
+                        case 8:
+                            character.setPotion("Potion of Greater Healing");
+                        break;
+                        case 9:
+                            character.setPotion("Explosive Potion");
+                        break;
+                    }
                     
                 break;
 
