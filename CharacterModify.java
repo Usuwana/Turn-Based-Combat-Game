@@ -17,7 +17,7 @@ public abstract class CharacterModify implements GameCharacter
 
 
     @Override
-    public Inventory getWeapon(String name) 
+    public String getWeapon(String name) 
     {
         return next.getWeapon(name);
     }
@@ -35,7 +35,7 @@ public abstract class CharacterModify implements GameCharacter
     }
 
     @Override
-    public Inventory getArmour(String name) 
+    public String getArmour(String name) 
     {
         return next.getArmour(name);
     }

@@ -70,37 +70,60 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public Inventory getArmour(String name) 
+    public String getArmour(String name) 
     {
-        return null;
+        String item = null;
+        for (int i=0; i<armoury.size();i++)
+        {
+            if (name.equals(armoury.get(i).getName()))
+            {
+                System.out.println(armoury.get(i).getName() + "with cost " + armoury.get(i).getCost());
+                System.out.println("The potions minimum effect is " + armoury.get(i).getMinEffect());
+                System.out.println("The potions maximum effect is " + armoury.get(i).getMaxEffect());
+                item = armoury.get(i).getName();
+            }
+            else
+            {
+                throw new IllegalArgumentException("Player does not own such armour");
+            }
+        }
+        return item;
     }
 
     @Override
-    public Inventory getWeapon(String name) 
+    public String getWeapon(String name) 
     {
-        Inventory weapon = new Weapons();
-        //weapon.setItem
-        return null;
+        String item = null;
+        for (int i=0; i<weapons.size();i++)
+        {
+            if (name.equals(weapons.get(i).getName()))
+            {
+                System.out.println(weapons.get(i).getName() + "with cost " + weapons.get(i).getCost());
+                System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
+                System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
+                item = weapons.get(i).getName();
+            
+            }
+            else
+            {
+                throw new IllegalArgumentException("Player does not own such weapon");
+            }
+        }
+        return item;
     }
 
     @Override
-    public Inventory getPotion(String name) 
+    public String getPotion(String name) 
     {
+        String item = null;
         for (int i=0; i<potions.size();i++)
         {
-            if (name.equals(potions.get(i)))
+            if (name.equals(potions.get(i).getName()))
             {
-                System.out.println(potion.getName() + "with cost " + potion.getCost());
-                System.out.println("The potions minimum effect is " + potion.getMinEffect());
-                System.out.println("The potions maximum effect is " + potion.getMaxEffect());
-                /*if (potion.getHealing() == true)
-                {
-                    System.out.println("It is a healing potion");
-                }
-                else
-                {
-                    System.out.println("It is a damaging potion");
-                }*/
+                System.out.println(potions.get(i).getName() + "with cost " + potions.get(i).getCost());
+                System.out.println("The potions minimum effect is " + potions.get(i).getMinEffect());
+                System.out.println("The potions maximum effect is " + potions.get(i).getMaxEffect());
+                item = potions.get(i).getName();
             }
             else
             {
@@ -108,7 +131,7 @@ public class PlayerCharacter implements GameCharacter
             }
         }
         
-        return null;
+        return item;
     }
 
 
@@ -117,5 +140,39 @@ public class PlayerCharacter implements GameCharacter
     {
         return 100;
     }
+
+    @Override
+    public void getCurrentWeapons()
+    {
+        for (int i = 0; i < weapons.size(); i++)
+        {
+            System.out.println("Weapons currently in character's inventory: \n");
+            System.out.println(weapons.get(i).getName() + "costing " + weapons.get(i).getCost() + " with minimum damage of " + weapons.get(i).getMinEffect() + " and maximum damage of " + weapons.get(i).getMaxEffect() + ". ");
+            
+        }
+    }
+
+    @Override
+    public void getCurrentArmoury()
+    {
+        for (int i = 0; i < armoury.size(); i++)
+        {
+            System.out.println("Armour currently in character's inventory: \n");
+            System.out.println(armoury.get(i).getName() + "costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");
+            
+        }
+    }
+
+    @Override
+    public void getCurrentPotions()
+    {
+        for (int i = 0; i < potions.size(); i++)
+        {
+            System.out.println("Potions currently in character's inventory: \n");
+            System.out.println(potions.get(i).getName() + "costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");
+            
+        }
+    }
+
 
 }
