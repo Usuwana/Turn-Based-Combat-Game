@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Armour extends Inventory 
 {
-
+    private final char symbol = 'A';
     private String name;
     private int minDefence;
     private int maxDefence;
@@ -41,6 +41,12 @@ public class Armour extends Inventory
             throw new IllegalArgumentException("Invalid Armour name. Armour not available in game");
         }
         
+    }
+
+    @Override
+    public char getSymbol() 
+    {
+        return symbol;
     }
 
     @Override

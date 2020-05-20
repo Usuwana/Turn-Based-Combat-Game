@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Potions extends Inventory 
 {
+    private final char symbol = 'P';
     private String name;
     private int minEffect;
     private int maxEffect;
@@ -43,6 +44,12 @@ public class Potions extends Inventory
     }
 
     @Override
+    public char getSymbol() 
+    {
+        return symbol;
+    }
+
+    @Override
     public String getName() 
     {
         return name;
@@ -64,6 +71,11 @@ public class Potions extends Inventory
     public int getMaxEffect() 
     {
         return maxEffect;
+    }
+
+    public boolean getHealing() 
+    {
+        return healing;
     }
     
 }

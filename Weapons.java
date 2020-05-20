@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Weapons extends Inventory 
 {
+    private final char symbol = 'W';
     private String name;
     private int minDamage;
     private int maxDamage;
@@ -46,6 +47,13 @@ public class Weapons extends Inventory
             throw new IllegalArgumentException("Invalid weapon name. Weapon not available in game");
         }
     }
+
+    @Override
+    public char getSymbol() 
+    {
+        return symbol;
+    }
+    
     @Override
     public String getName()
     {
