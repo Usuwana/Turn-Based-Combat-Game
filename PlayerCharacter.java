@@ -10,10 +10,15 @@ import java.util.*;
 public class PlayerCharacter implements GameCharacter
 {
     private String name;
+    private String currentWeapon;
+    private String currentArmour;
     //private List<Inventory> items;
     private List<Weapons> weapons;
     private List<Armour> armoury;
     private List<Potions> potions;
+    /*private List<Inventory> weapons;
+    private List<Inventory> armoury;
+    private List<Inventory> potions;*/
     private Inventory weapon;
     private Inventory armour;
     private Inventory potion;
@@ -25,9 +30,12 @@ public class PlayerCharacter implements GameCharacter
         weapons = new ArrayList<Weapons>();
         armoury = new ArrayList<Armour>();
         potions = new ArrayList<Potions>();
-        weapon = new Weapons();
-        armour = new Armour();
-        potion = new Potions();
+        /*weapons = new ArrayList<>();
+        armoury = new ArrayList<>();
+        potions = new ArrayList<>();*/
+        //weapon = new Weapons();
+        //armour = new Armour();
+        //potion = new Potions();
     }
 
     @Override
@@ -44,24 +52,47 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
-    public void setWeapon(String name) 
+    public void addWeapon(String name) 
     {
+        weapon = new Weapons();
         weapon.setItem(name);
-        weapons.add((Weapons)weapon);
+        weapons.add((Weapons)weapon);        
     }
 
     @Override
-    public void setArmour(String name) 
+    public void addArmour(String name) 
     {
+        armour = new Armour();
         armour.setItem(name);
         armoury.add((Armour)armour);
     }
 
     @Override
-    public void setPotion(String name) 
+    public void addPotion(String name) 
     {
+        potion = new Potions();
         potion.setItem(name);
         potions.add((Potions)potion);
+    }
+
+    public void setWeapon(String name) 
+    {
+        //weapon.setItem(name);
+        //weapons.add((Weapons)weapon);
+    }
+
+    @Override
+    public void setArmour(String name) 
+    {
+        //armour.setItem(name);
+        //armoury.add((Armour)armour);
+    }
+
+    @Override
+    public void setPotion(String name) 
+    {
+        //potion.setItem(name);
+        //potions.add((Potions)potion);
     }
 
     @Override
@@ -154,7 +185,7 @@ public class PlayerCharacter implements GameCharacter
         for (int i = 0; i < weapons.size(); i++)
         {
             //System.out.println("Weapons currently in character's inventory: \n");
-            System.out.println(weapons.get(i).getName() + "costing " + weapons.get(i).getCost() + " with minimum damage of " + weapons.get(i).getMinEffect() + " and maximum damage of " + weapons.get(i).getMaxEffect() + ". ");
+            System.out.println(weapons.get(i).getName() + " costing " + weapons.get(i).getCost() + " with minimum damage of " + weapons.get(i).getMinEffect() + " and maximum damage of " + weapons.get(i).getMaxEffect() + ". ");
             
         }
     }
@@ -165,7 +196,7 @@ public class PlayerCharacter implements GameCharacter
         for (int i = 0; i < armoury.size(); i++)
         {
             //System.out.println("Armour currently in character's inventory: \n");
-            System.out.println(armoury.get(i).getName() + "costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");
+            System.out.println(armoury.get(i).getName() + " costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");
             
         }
     }
@@ -176,7 +207,7 @@ public class PlayerCharacter implements GameCharacter
         for (int i = 0; i < potions.size(); i++)
         {
             ///System.out.println("Potions currently in character's inventory: \n");
-            System.out.println(potions.get(i).getName() + "costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");
+            System.out.println(potions.get(i).getName() + " costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");
             
         }
     }

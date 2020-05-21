@@ -48,6 +48,12 @@ public class Weapons extends Inventory
         }
     }
 
+    /*@Override
+    public void getItem()
+    {
+        System.out.println(name + " with minimum damage " + minDamage + " and maximum damage " + maxDamage + " costing " + cost);
+    }*/
+
     @Override
     public char getSymbol() 
     {

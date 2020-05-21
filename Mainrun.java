@@ -14,23 +14,26 @@ public class Mainrun
 
 
         while(finished==0)
-        {
+        {   System.out.println("----------------------------------");
             System.out.print("Character name: ");
             character.getName();
             character.getCurrHealth();
             System.out.println("\nCurrent gold: " + character.getGold());
-            //System.out.println("Current armoury in inventory: ");
-            //character.getCurrentArmoury();
-            //System.out.print("Current potions in inventory: ");
-            //character.getCurrentPotions();
-            //System.out.println("");
-            //System.out.print("Current weapons in inventory: ");
-            //character.getCurrentWeapons();
-            System.out.println("Current weapon in hand: ");
+            System.out.println("");
+            System.out.println("CURRENT ARMOURY IN INVENTORY: ");
+            character.getCurrentArmoury();
+            System.out.println("");
+            System.out.println("CURRENT POTIONS IN INVENTORY: ");
+            character.getCurrentPotions();
+            System.out.println("");
+            System.out.println("CURRENT WEAPONS IN INVENTORY: ");
+            character.getCurrentWeapons();
+            System.out.println("----------------------------------");
+            /*System.out.println("\nCurrent weapon in hand: ");
             character.getWeapon(currentWeapon);
             System.out.println("Current protective armour: ");
             character.getArmour(currentArmour);
-            System.out.println("");
+            System.out.println("");*/
 
             System.out.println("\n1. Go to Shop\n");
             System.out.println("2. Choose Character Name\n");
@@ -38,10 +41,11 @@ public class Mainrun
             System.out.println("4. Choose Armour\n");
             System.out.println("5. Start Battle\n");
             System.out.println("6. Exit\n");
-
+            System.out.println("----------------------------------");
             Scanner sc = new Scanner(System.in);
             System.out.println("Pick an option from the menu\n");
             choice = sc.nextInt();
+            System.out.println("----------------------------------");
 
             switch(choice)
             {
@@ -49,40 +53,43 @@ public class Mainrun
                     int item;
 
                     System.out.println("These are the available items: \n");
+                    System.out.println("----------------------------------");
                     theShop.showShopContents();
+                    System.out.println("----------------------------------");
                     Scanner sc2 = new Scanner(System.in);
                     System.out.println("Pick an item you would like to buy\n");
                     System.out.println("Type 10 to go back to main menu\n");
                     item = sc2.nextInt();
+                    System.out.println("----------------------------------");
 
                     switch(item)
                     {
                         case 1:
-                            character.setWeapon("Short Sword");
+                            character.addWeapon("Short Sword");
                         break;
                         case 2:
-                            character.setWeapon("Great Axe");
+                            character.addWeapon("Great Axe");
                         break;
                         case 3:
-                            character.setWeapon("Magic Staff");
+                            character.addWeapon("Magic Staff");
                         break;
                         case 4:
-                            character.setArmour("Leather Armour");
+                            character.addArmour("Leather Armour");
                         break;
                         case 5:
-                            character.setArmour("Chain Mail");
+                            character.addArmour("Chain Mail");
                         break;
                         case 6:
-                            character.setArmour("Dragon Skin");
+                            character.addArmour("Dragon Skin");
                         break;
                         case 7:
-                            character.setPotion("Potion of Healing");
+                            character.addPotion("Potion of Healing");
                         break;
                         case 8:
-                            character.setPotion("Potion of Greater Healing");
+                            character.addPotion("Potion of Greater Healing");
                         break;
                         case 9:
-                            character.setPotion("Explosive Potion");
+                            character.addPotion("Explosive Potion");
                         break;
                         case 10:
                         break;
@@ -145,6 +152,8 @@ public class Mainrun
                 break;
 
                 case 6:
+                   System.out.println("Goodbye!");
+                   System.out.println("----------------------------------");
                     finished = 1;
                 break;
             }
