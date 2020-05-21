@@ -49,11 +49,11 @@ public class Shop
     {
         String thisToken = null;
         StringTokenizer strTok;
-        int i=1;
+        //int i=1;
 
         strTok = new StringTokenizer(item, ",");
-        System.out.println(i + ". ");
-        i++;
+        //System.out.println(i + ". ");
+        //i++;
         while (strTok.hasMoreTokens())
         {
             thisToken = strTok.nextToken();

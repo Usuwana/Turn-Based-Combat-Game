@@ -7,6 +7,8 @@ public class Mainrun
         int choice;
         int finished = 0;
         String name;
+        String currentWeapon = null;
+        String currentArmour = null;
         GameCharacter character = new PlayerCharacter();
         Shop theShop = new Shop();
 
@@ -16,14 +18,18 @@ public class Mainrun
             System.out.print("Character name: ");
             character.getName();
             character.getCurrHealth();
-            System.out.println("Current gold: " + character.getGold());
-            System.out.println("Current armour in inventory: ");
-            character.getCurrentArmoury();
-            System.out.print("Current potions in inventory: ");
-            character.getCurrentPotions();
-            System.out.println("");
-            System.out.print("Current weapons in inventory: ");
-            character.getCurrentWeapons();
+            System.out.println("\nCurrent gold: " + character.getGold());
+            //System.out.println("Current armoury in inventory: ");
+            //character.getCurrentArmoury();
+            //System.out.print("Current potions in inventory: ");
+            //character.getCurrentPotions();
+            //System.out.println("");
+            //System.out.print("Current weapons in inventory: ");
+            //character.getCurrentWeapons();
+            System.out.println("Current weapon in hand: ");
+            character.getWeapon(currentWeapon);
+            System.out.println("Current protective armour: ");
+            character.getArmour(currentArmour);
             System.out.println("");
 
             System.out.println("\n1. Go to Shop\n");
@@ -46,6 +52,7 @@ public class Mainrun
                     theShop.showShopContents();
                     Scanner sc2 = new Scanner(System.in);
                     System.out.println("Pick an item you would like to buy\n");
+                    System.out.println("Type 10 to go back to main menu\n");
                     item = sc2.nextInt();
 
                     switch(item)
@@ -77,6 +84,8 @@ public class Mainrun
                         case 9:
                             character.setPotion("Explosive Potion");
                         break;
+                        case 10:
+                        break;
                     }
                     
                 break;
@@ -89,25 +98,26 @@ public class Mainrun
                 break;
 
                 case 3:
-                     int item2;
-                    System.out.println("1. Show all weapons\n");
+                    //int item2;
+                    /*System.out.println("1. Show all weapons\n");
                     System.out.println("2. Show all armour\n");
                     System.out.println("3. Show all portions\n");
-                    System.out.println("4. Back to main menu\n");
-
+                    System.out.println("4. Back to main menu\n");*/
+                    System.out.print("Current weapons in inventory: ");
+                    character.getCurrentWeapons();
                     Scanner sc3 = new Scanner(System.in);
-                    System.out.println("Pick an option from the menu\n");
-                    item2 = sc3.nextInt();
+                    System.out.println("Type a weapon to use from the current available weapons\n");
+                    currentWeapon = sc3.next();
 
-                    switch(item2)
+                    if (currentWeapon == character.getWeapon(currentWeapon));
                     {
-                        case 1:
-                        break;
-                        case 2:
-                        break;
-                        case 3:
-                        break;
+
                     }
+                    /*else if (currentWeapon != character.getWeapon(currentWeapon))
+                    {
+                        throw new IllegalArgumentException("Invalid weapon choice");
+                    }*/
+
                 break;
 
                 case 4:

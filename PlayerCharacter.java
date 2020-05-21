@@ -1,3 +1,10 @@
+/****************************************************************************
+ * Author: Tatenda Usuwana Mapuranga
+ *  Purpose: 
+ *  Project: 
+ *  Date Last modified:
+******************************************************************************/
+
 import java.util.*;
 
 public class PlayerCharacter implements GameCharacter
