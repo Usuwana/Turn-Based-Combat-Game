@@ -14,9 +14,9 @@ public class PlayerCharacter implements GameCharacter
     private String currentArmour;
     private String currentPotion;
     //private List<Inventory> items;
-    /*private List<Weapons> weapons;
-    private List<Armour> armoury;
-    private List<Potions> potions;*/
+    //private List<Weapons> weapons;
+    //private List<Armour> armoury;
+    //private List<Potions> potions;
     private List<Inventory> weapons;
     private List<Inventory> armoury;
     private List<Inventory> potions;
@@ -140,10 +140,10 @@ public class PlayerCharacter implements GameCharacter
                 item = weapons.get(i).getName();
             
             }
-            else
+            /*else if (!(name.equals(weapons.get(i).getName())))
             {
                 throw new IllegalArgumentException("Player does not own such weapon");
-            }
+            }*/
         }
         return item;
     }

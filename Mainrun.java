@@ -118,12 +118,12 @@ public class Mainrun
                     System.out.println("Type the name of a weapon to use from the current available weapons\n");
                     currentWeapon = sc3.next();
                     System.out.println("----------------------------------");
-
+                    //String weapon = character.getWeapon(currentWeapon);
                     if (character.getWeapon(currentWeapon).equals(currentWeapon))
                     {
                         character.setWeapon(currentWeapon);
                     }
-                    else
+                    else if(!(character.getWeapon(currentWeapon).equals(currentWeapon)))
                     {
                         throw new IllegalArgumentException("Invalid weapon choice");
                     }
