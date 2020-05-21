@@ -14,7 +14,9 @@ public class Mainrun
 
 
         while(finished==0)
-        {   System.out.println("----------------------------------");
+        {   
+            
+            System.out.println("----------------------------------");
             System.out.print("Character name: ");
             character.getName();
             character.getCurrHealth();
@@ -29,11 +31,14 @@ public class Mainrun
             System.out.println("CURRENT WEAPONS IN INVENTORY: ");
             character.getCurrentWeapons();
             System.out.println("----------------------------------");
-            /*System.out.println("\nCurrent weapon in hand: ");
-            character.getWeapon(currentWeapon);
-            System.out.println("Current protective armour: ");
-            character.getArmour(currentArmour);
-            System.out.println("");*/
+            System.out.println("\nCURRENT WEAPON IN HAND: ");
+            character.getcurWeapon();
+            System.out.println("\nCURRENT PROTECTIVE ARMOUR IN HAND: ");
+            character.getcurArmour();
+            System.out.println("\nCURRENT PORTION IN HAND: ");
+            character.getcurPotion();
+            System.out.println("");
+            System.out.println("----------------------------------");
 
             System.out.println("\n1. Go to Shop\n");
             System.out.println("2. Choose Character Name\n");
@@ -105,25 +110,23 @@ public class Mainrun
                 break;
 
                 case 3:
-                    //int item2;
-                    /*System.out.println("1. Show all weapons\n");
-                    System.out.println("2. Show all armour\n");
-                    System.out.println("3. Show all portions\n");
-                    System.out.println("4. Back to main menu\n");*/
-                    System.out.print("Current weapons in inventory: ");
+                    
+                    System.out.println("CURRENT WEAPONS IN INVENTORY: ");
                     character.getCurrentWeapons();
+                    System.out.println("----------------------------------");
                     Scanner sc3 = new Scanner(System.in);
-                    System.out.println("Type a weapon to use from the current available weapons\n");
+                    System.out.println("Type the name of a weapon to use from the current available weapons\n");
                     currentWeapon = sc3.next();
+                    System.out.println("----------------------------------");
 
-                    if (currentWeapon == character.getWeapon(currentWeapon));
+                    if (character.getWeapon(currentWeapon).equals(currentWeapon))
                     {
-
+                        character.setWeapon(currentWeapon);
                     }
-                    /*else if (currentWeapon != character.getWeapon(currentWeapon))
+                    else
                     {
                         throw new IllegalArgumentException("Invalid weapon choice");
-                    }*/
+                    }
 
                 break;
 

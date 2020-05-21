@@ -12,13 +12,14 @@ public class PlayerCharacter implements GameCharacter
     private String name;
     private String currentWeapon;
     private String currentArmour;
+    private String currentPotion;
     //private List<Inventory> items;
-    private List<Weapons> weapons;
+    /*private List<Weapons> weapons;
     private List<Armour> armoury;
-    private List<Potions> potions;
-    /*private List<Inventory> weapons;
+    private List<Potions> potions;*/
+    private List<Inventory> weapons;
     private List<Inventory> armoury;
-    private List<Inventory> potions;*/
+    private List<Inventory> potions;
     private Inventory weapon;
     private Inventory armour;
     private Inventory potion;
@@ -27,12 +28,12 @@ public class PlayerCharacter implements GameCharacter
     public PlayerCharacter()
     {
         //items = new ArrayList<>();
-        weapons = new ArrayList<Weapons>();
+        /*weapons = new ArrayList<Weapons>();
         armoury = new ArrayList<Armour>();
-        potions = new ArrayList<Potions>();
-        /*weapons = new ArrayList<>();
+        potions = new ArrayList<Potions>();*/
+        weapons = new ArrayList<>();
         armoury = new ArrayList<>();
-        potions = new ArrayList<>();*/
+        potions = new ArrayList<>();
         //weapon = new Weapons();
         //armour = new Armour();
         //potion = new Potions();
@@ -75,24 +76,21 @@ public class PlayerCharacter implements GameCharacter
         potions.add((Potions)potion);
     }
 
-    public void setWeapon(String name) 
+    public void setWeapon(String current) 
     {
-        //weapon.setItem(name);
-        //weapons.add((Weapons)weapon);
+        currentWeapon = current;
     }
 
     @Override
-    public void setArmour(String name) 
+    public void setArmour(String current) 
     {
-        //armour.setItem(name);
-        //armoury.add((Armour)armour);
+        currentArmour = current;
     }
 
     @Override
-    public void setPotion(String name) 
+    public void setPotion(String current) 
     {
-        //potion.setItem(name);
-        //potions.add((Potions)potion);
+        currentPotion = current;
     }
 
     @Override
@@ -212,5 +210,22 @@ public class PlayerCharacter implements GameCharacter
         }
     }
 
+    @Override
+    public String getcurWeapon()
+    {
+        return currentWeapon;
+    }
+
+    @Override
+    public String getcurArmour()
+    {
+        return currentArmour;
+    }
+
+    @Override
+    public String getcurPotion()
+    {
+        return currentPotion;
+    }
 
 }

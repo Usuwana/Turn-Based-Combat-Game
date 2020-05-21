@@ -15,6 +15,9 @@ public interface GameCharacter
     public String getWeapon(String name);
     public String getArmour(String name);
     public String getPotion(String name);
+    public String getcurWeapon();
+    public String getcurArmour();
+    public String getcurPotion();
     public void getCurrentWeapons();
     public void getCurrentArmoury();
     public void getCurrentPotions();
