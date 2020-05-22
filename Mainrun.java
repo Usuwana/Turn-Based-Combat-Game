@@ -7,7 +7,7 @@ public class Mainrun
         int choice;
         int finished = 0;
         String name;
-        //int gold;
+        int gold = 0;
         String currentWeapon;
         String currentArmour;
         GameCharacter character = new PlayerCharacter();
@@ -22,6 +22,7 @@ public class Mainrun
             character.getName();
             character.getCurrHealth();
             System.out.println("\nCurrent gold: " + character.getGold());
+            gold = character.getGold();
             System.out.println("");
             System.out.println("CURRENT ARMOURY IN INVENTORY: ");
             character.getCurrentArmoury();
@@ -56,87 +57,204 @@ public class Mainrun
             switch(choice)
             {
                 case 1:
-                    int item;
-
-                    System.out.println("These are the available items: \n");
-                    System.out.println("----------------------------------");
-                    theShop.showShopContents();
+                    
+                    int shopChoice;
+                    System.out.println("1. Buy items");
+                    System.out.println("2. Select items");
                     System.out.println("----------------------------------");
                     Scanner sc2 = new Scanner(System.in);
-                    System.out.println("Pick an item you would like to buy\n");
-                    System.out.println("Type 10 to go back to main menu\n");
-                    item = sc2.nextInt();
+                    System.out.println("Select a numerical choice\n");
+                    shopChoice = sc2.nextInt();
                     System.out.println("----------------------------------");
 
-                    switch(item)
+                    switch(shopChoice)
                     {
                         case 1:
-                            character.addWeapon("Short Sword");
-                            Inventory sword = new Weapons();
-                            sword.setItem("Short Sword");
-                            character.setGold(character.getGold() - sword.getCost());
+                            int item;
+                            System.out.println("These are the available items: \n");
+                            System.out.println("----------------------------------");
+                            theShop.showShopContents();
+                            System.out.println("----------------------------------");
+                            Scanner sc3 = new Scanner(System.in);
+                            System.out.println("Pick an item you would like to buy\n");
+                            System.out.println("Type 10 to go back to main menu\n");
+                            item = sc3.nextInt();
+                            System.out.println("----------------------------------");
 
-                        break;
+                            switch(item)
+                            {
+                                case 1:
+                                    Inventory sword = new Weapons();
+                                    sword.setItem("Short Sword");
+                                    if (gold >= sword.getCost())
+                                    {
+                                        character.addWeapon("Short Sword");
+                                        //Inventory sword = new Weapons();
+                                        //sword.setItem("Short Sword");
+                                        character.setGold(character.getGold() - sword.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        sword = null;
+                                    }
+                                    
+
+                                break;
+                                case 2:
+                                    Inventory axe = new Weapons();
+                                    axe.setItem("Great Axe");
+                                    if (gold >= axe.getCost())
+                                    {
+                                        character.addWeapon("Great Axe");
+                                        //Inventory axe = new Weapons();
+                                        //axe.setItem("Great Axe");
+                                        character.setGold(character.getGold()-axe.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        axe = null;
+                                    }
+
+                                break;
+                                case 3:
+                                    Inventory staff = new Weapons();
+                                    staff.setItem("Magic Staff");
+                                    if (gold >= staff.getCost())
+                                    {
+                                        character.addWeapon("Magic Staff");
+                                        //Inventory staff = new Weapons();
+                                        //staff.setItem("Magic Staff");
+                                        character.setGold(character.getGold()-staff.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        staff = null;
+                                    }
+                                    
+                                break;
+
+                                case 4:
+                                    Inventory leather = new Armour();
+                                    leather.setItem("Leather Armour");
+                                    if (gold >= leather.getCost())
+                                    {
+                                        character.addArmour("Leather Armour");
+                                        //Inventory leather = new Armour();
+                                        //leather.setItem("Leather Armour");
+                                        character.setGold(character.getGold()-leather.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        leather = null;
+                                    }
+
+                                break;
+
+                                case 5:
+                                    Inventory mail = new Armour();
+                                    mail.setItem("Chain Mail");
+                                    if (gold >= mail.getCost())
+                                    {
+                                        character.addArmour("Chain Mail");
+                                        //Inventory mail = new Armour();
+                                        //mail.setItem("Chain Mail");
+                                        character.setGold(character.getGold()-mail.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        mail = null;
+                                    }
+
+                                break;
+
+                                case 6:
+                                    Inventory skin = new Armour();
+                                    skin.setItem("Dragon Skin");
+                                    if (gold >= skin.getCost())
+                                    {
+                                        character.addArmour("Dragon Skin");
+                                        //Inventory skin = new Armour();
+                                        //skin.setItem("Dragon Skin");
+                                        character.setGold(character.getGold()-skin.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        skin = null;
+                                    }
+
+
+                                break;
+
+                                case 7:
+                                    Inventory healing = new Potions();
+                                    healing.setItem("Potion of Healing");
+                                    if (gold >= healing.getCost())
+                                    {
+                                        character.addPotion("Potion of Healing");
+                                        //Inventory healing = new Potions();
+                                        //healing.setItem("Potion of Healing");
+                                        character.setGold(character.getGold()-healing.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        healing = null;
+                                    }
+
+
+                                break;
+
+                                case 8:
+                                    Inventory greaterHealing = new Potions();
+                                    greaterHealing.setItem("Potion of Greater Healing");
+                                    if (gold >= greaterHealing.getCost())
+                                    {
+                                        character.addPotion("Potion of Greater Healing");
+                                        //Inventory greaterHealing = new Potions();
+                                        //greaterHealing.setItem("Potion of Greater Healing");
+                                        character.setGold(character.getGold()-greaterHealing.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        greaterHealing = null;
+                                    }
+
+
+                                break;
+
+                                case 9:
+                                    Inventory explosive = new Potions();
+                                    explosive.setItem("Explosive Potion");
+                                    if (gold >= explosive.getCost())
+                                    {
+                                        character.addPotion("Explosive Potion");
+                                        //Inventory explosive = new Potions();
+                                        //explosive.setItem("Explosive Potion");
+                                        character.setGold(character.getGold()-explosive.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        explosive = null;
+                                    }
+                                break;
+
+                                case 10:
+                                break;
+                            }
+                            break;
                         case 2:
-                            character.addWeapon("Great Axe");
-                            Inventory axe = new Weapons();
-                            axe.setItem("Great Axe");
-                            character.setGold(character.getGold()-axe.getCost());
-
-                        break;
-                        case 3:
-                            character.addWeapon("Magic Staff");
-                            Inventory staff = new Weapons();
-                            staff.setItem("Magic Staff");
-                            character.setGold(character.getGold()-staff.getCost());
-                            
-                        break;
-
-                        case 4:
-                            character.addArmour("Leather Armour");
-                            Inventory leather = new Armour();
-                            leather.setItem("Leather Armour");
-                            character.setGold(character.getGold()-leather.getCost());
-                        break;
-
-                        case 5:
-                            character.addArmour("Chain Mail");
-                            Inventory mail = new Armour();
-                            mail.setItem("Chain Mail");
-                            character.setGold(character.getGold()-mail.getCost());
-
-                        break;
-                        case 6:
-                            character.addArmour("Dragon Skin");
-                            Inventory skin = new Armour();
-                            skin.setItem("Dragon Skin");
-                            character.setGold(character.getGold()-skin.getCost());
-                        break;
-
-                        case 7:
-                            character.addPotion("Potion of Healing");
-                            Inventory healing = new Potions();
-                            healing.setItem("Potion of Healing");
-                            character.setGold(character.getGold()-healing.getCost());
-                        break;
-
-                        case 8:
-                            character.addPotion("Potion of Greater Healing");
-                            Inventory greaterHealing = new Potions();
-                            greaterHealing.setItem("Potion of Greater Healing");
-                            character.setGold(character.getGold()-greaterHealing.getCost());
-                        break;
-
-                        case 9:
-                            character.addPotion("Explosive Potion");
-                            Inventory explosive = new Potions();
-                            explosive.setItem("Explosive Potion");
-                            character.setGold(character.getGold()-explosive.getCost());
-                        break;
-
-                        case 10:
                         break;
                     }
+
+                    
                     
                 break;
 
@@ -152,9 +270,9 @@ public class Mainrun
                     System.out.println("CURRENT WEAPONS IN INVENTORY: ");
                     character.getCurrentWeapons();
                     System.out.println("----------------------------------");
-                    Scanner sc3 = new Scanner(System.in);
+                    Scanner sc4 = new Scanner(System.in);
                     System.out.println("Type the name of a weapon to use from the current available weapons\n");
-                    currentWeapon = sc3.nextLine();
+                    currentWeapon = sc4.nextLine();
                     System.out.println("----------------------------------");
                     //String weapon = character.getWeapon(currentWeapon);
                     System.out.println(currentWeapon + " has been selected.");
@@ -183,9 +301,9 @@ public class Mainrun
                     System.out.println("CURRENT ARMOUR IN INVENTORY: ");
                     character.getCurrentArmoury();
                     System.out.println("----------------------------------");
-                    Scanner sc4 = new Scanner(System.in);
+                    Scanner sc5 = new Scanner(System.in);
                     System.out.println("Type the name of a weapon to use from the current available weapons\n");
-                    currentArmour = sc4.nextLine();
+                    currentArmour = sc5.nextLine();
                     System.out.println("----------------------------------");
                     
                     System.out.println(currentArmour + " has been selected.");
