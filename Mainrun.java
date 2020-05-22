@@ -292,7 +292,7 @@ public class Mainrun
                             {
                                 System.out.println("No such inventory");
                             }
-
+                            //System.out.println(character.getArmour(sellItem));
                         break;
                     }
 
