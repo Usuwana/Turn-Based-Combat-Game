@@ -10,6 +10,7 @@ public interface GameCharacter
     public void setWeapon(String name);
     public void setArmour(String name);
     public void setPotion(String name);
+    public void setGold(int gold);
     public int getMaxHealth();
     public int getCurrHealth();
     public String getWeapon(String name);

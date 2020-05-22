@@ -14,37 +14,40 @@ public class Weapons extends Inventory
     @Override
     public void setItem(String name) 
     {
-        if ((name.equals("Short Sword"))) 
+        try
         {
-            this.name = name;
-            minDamage = 5;
-            maxDamage = 9;
-            cost = 10;
-            damageType = "Slashing";
-            weaponType = "Sword";
+            if ((name.equals("Short Sword"))) 
+            {
+                this.name = name;
+                minDamage = 5;
+                maxDamage = 9;
+                cost = 10;
+                damageType = "Slashing";
+                weaponType = "Sword";
 
+            }
+            else if ((name.equals("Great Axe")))
+            {
+                this.name = name;
+                minDamage = 8;
+                maxDamage = 15;
+                cost = 15;
+                damageType = "Slashing";
+                weaponType = "Axe";
+            }
+            else if ((name.equals("Magic Staff")))
+            {
+                this.name = name;
+                minDamage = 1;
+                maxDamage = 40;
+                cost = 20;
+                damageType = "Bludgeoning";
+                weaponType = "Staff";
+            }
         }
-        else if ((name.equals("Great Axe")))
+        catch (IllegalArgumentException e)
         {
-            this.name = name;
-            minDamage = 8;
-            maxDamage = 15;
-            cost = 15;
-            damageType = "Slashing";
-            weaponType = "Axe";
-        }
-        else if ((name.equals("Magic Staff")))
-        {
-            this.name = name;
-            minDamage = 1;
-            maxDamage = 40;
-            cost = 20;
-            damageType = "Bludgeoning";
-            weaponType = "Staff";
-        }
-        else
-        {
-            throw new IllegalArgumentException("Invalid weapon name. Weapon not available in game");
+            System.out.println("Invalid weapon name. Weapon not available in game");
         }
     }
 

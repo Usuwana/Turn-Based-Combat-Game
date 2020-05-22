@@ -12,34 +12,37 @@ public class Potions extends Inventory
     @Override
     public void setItem(String name) 
     {
-        if ((name.equals("Potion of Healing")))
+        try
         {
-            this.name = name;
-            minEffect = 5;
-            maxEffect = 10;
-            cost = 12;
-            healing = true;
-        }
-        else if ((name.equals("Potion of Greater Healing")))
-        {
-            this.name = name;
-            minEffect = 15;
-            maxEffect = 20;
-            cost = 20;
-            healing = true;
+            if ((name.equals("Potion of Healing")))
+            {
+                this.name = name;
+                minEffect = 5;
+                maxEffect = 10;
+                cost = 12;
+                healing = true;
+            }
+            else if ((name.equals("Potion of Greater Healing")))
+            {
+                this.name = name;
+                minEffect = 15;
+                maxEffect = 20;
+                cost = 20;
+                healing = true;
 
+            }
+            else if ((name.equals("Explosive Potion")))
+            {
+                this.name = name;
+                minEffect = 20;
+                maxEffect = 20;
+                cost = 20;
+                healing = false;
+            }
         }
-        else if ((name.equals("Explosive Potion")))
+        catch (IllegalArgumentException e)
         {
-            this.name = name;
-            minEffect = 20;
-            maxEffect = 20;
-            cost = 20;
-            healing = false;
-        }
-        else
-        {
-            throw new IllegalArgumentException("Invalid Potion name. Potion not available in game");
+            System.out.println("Invalid Potion name. Potion not available in game");
         }
     }
 

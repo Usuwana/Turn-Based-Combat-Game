@@ -10,6 +10,7 @@ import java.util.*;
 public class PlayerCharacter implements GameCharacter
 {
     private String name;
+    private int gold = 100;
     private String currentWeapon;
     private String currentArmour;
     private String currentPotion;
@@ -94,6 +95,12 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
+    public void setGold(int gold)
+    {
+        this.gold = gold;
+    }
+
+    @Override
     public int getMaxHealth() 
     {
         return 30;
@@ -109,6 +116,7 @@ public class PlayerCharacter implements GameCharacter
     public String getArmour(String name) 
     {
         String item = null;
+        //int cost = 0;
         for (int i=0; i<armoury.size();i++)
         {
             try
@@ -119,6 +127,7 @@ public class PlayerCharacter implements GameCharacter
                 //System.out.println("The potions minimum effect is " + armoury.get(i).getMinEffect());
                 //System.out.println("The potions maximum effect is " + armoury.get(i).getMaxEffect());
                 item = armoury.get(i).getName();
+                //cost = armoury.get(i).getCost();
                 } 
             }
             catch (NullPointerException e)
@@ -138,6 +147,7 @@ public class PlayerCharacter implements GameCharacter
     public String getWeapon(String name) 
     {
         String item = null;
+        //int cost;
         for (int i=0; i<weapons.size();i++)
         {
             try
@@ -148,6 +158,7 @@ public class PlayerCharacter implements GameCharacter
                     //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
                     //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
                     item = weapons.get(i).getName();
+                    //cost = weapons.get(i).getCost();
                     //System.out.println(weapons.size());
                 }
             }
@@ -182,6 +193,7 @@ public class PlayerCharacter implements GameCharacter
     public String getPotion(String name) 
     {
         String item = null;
+        //int cost;
         for (int i=0; i<potions.size();i++)
         {
             if (name.equals(potions.get(i).getName()))
@@ -190,6 +202,7 @@ public class PlayerCharacter implements GameCharacter
                 System.out.println("The potions minimum effect is " + potions.get(i).getMinEffect());
                 System.out.println("The potions maximum effect is " + potions.get(i).getMaxEffect());
                 item = potions.get(i).getName();
+                //cost = potions.get(i).getCost();
             }
             else
             {
@@ -204,7 +217,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public int getGold() 
     {
-        return 100;
+        return gold;
     }
 
     @Override

@@ -12,33 +12,36 @@ public class Armour extends Inventory
     @Override
     public void setItem(String name) 
     {
-        if ((name.equals("Leather Armour")))
+        try
         {
-            this.name = name;
-            minDefence = 5;
-            maxDefence = 15;
-            cost = 10;
-            material = "Leather";
+            if ((name.equals("Leather Armour")))
+            {
+                this.name = name;
+                minDefence = 5;
+                maxDefence = 15;
+                cost = 10;
+                material = "Leather";
+            }
+            else if ((name.equals("Chain Mail")))
+            {
+                this.name = name;
+                minDefence = 10;
+                maxDefence = 18;
+                cost = 50;
+                material = "Chain";
+            }
+            else if ((name.equals("Dragon Skin")))
+            {
+                this.name = name;
+                minDefence = 20;
+                maxDefence = 30;
+                cost = 80;
+                material = "Dragon Scale";
+            }
         }
-        else if ((name.equals("Chain Mail")))
+        catch (IllegalArgumentException e)
         {
-            this.name = name;
-            minDefence = 10;
-            maxDefence = 18;
-            cost = 50;
-            material = "Chain";
-        }
-        else if ((name.equals("Dragon Skin")))
-        {
-            this.name = name;
-            minDefence = 20;
-            maxDefence = 30;
-            cost = 80;
-            material = "Dragon Scale";
-        }
-        else
-        {
-            throw new IllegalArgumentException("Invalid Armour name. Armour not available in game");
+            System.out.println("Invalid Armour name. Armour not available in game");
         }
         
     }

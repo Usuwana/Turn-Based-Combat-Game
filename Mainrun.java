@@ -7,6 +7,7 @@ public class Mainrun
         int choice;
         int finished = 0;
         String name;
+        //int gold;
         String currentWeapon;
         String currentArmour;
         GameCharacter character = new PlayerCharacter();
@@ -71,31 +72,68 @@ public class Mainrun
                     {
                         case 1:
                             character.addWeapon("Short Sword");
+                            Inventory sword = new Weapons();
+                            sword.setItem("Short Sword");
+                            character.setGold(character.getGold() - sword.getCost());
+
                         break;
                         case 2:
                             character.addWeapon("Great Axe");
+                            Inventory axe = new Weapons();
+                            axe.setItem("Great Axe");
+                            character.setGold(character.getGold()-axe.getCost());
+
                         break;
                         case 3:
                             character.addWeapon("Magic Staff");
+                            Inventory staff = new Weapons();
+                            staff.setItem("Magic Staff");
+                            character.setGold(character.getGold()-staff.getCost());
+                            
                         break;
+
                         case 4:
                             character.addArmour("Leather Armour");
+                            Inventory leather = new Armour();
+                            leather.setItem("Leather Armour");
+                            character.setGold(character.getGold()-leather.getCost());
                         break;
+
                         case 5:
                             character.addArmour("Chain Mail");
+                            Inventory mail = new Armour();
+                            mail.setItem("Chain Mail");
+                            character.setGold(character.getGold()-mail.getCost());
+
                         break;
                         case 6:
                             character.addArmour("Dragon Skin");
+                            Inventory skin = new Armour();
+                            skin.setItem("Dragon Skin");
+                            character.setGold(character.getGold()-skin.getCost());
                         break;
+
                         case 7:
                             character.addPotion("Potion of Healing");
+                            Inventory healing = new Potions();
+                            healing.setItem("Potion of Healing");
+                            character.setGold(character.getGold()-healing.getCost());
                         break;
+
                         case 8:
                             character.addPotion("Potion of Greater Healing");
+                            Inventory greaterHealing = new Potions();
+                            greaterHealing.setItem("Potion of Greater Healing");
+                            character.setGold(character.getGold()-greaterHealing.getCost());
                         break;
+
                         case 9:
                             character.addPotion("Explosive Potion");
+                            Inventory explosive = new Potions();
+                            explosive.setItem("Explosive Potion");
+                            character.setGold(character.getGold()-explosive.getCost());
                         break;
+
                         case 10:
                         break;
                     }
