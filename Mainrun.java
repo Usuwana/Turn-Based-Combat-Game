@@ -60,12 +60,12 @@ public class Mainrun
                     
                     int shopChoice;
                     System.out.println("1. Buy items");
-                    System.out.println("2. Select items");
+                    System.out.println("2. Sell items");
                     System.out.println("----------------------------------");
                     Scanner sc2 = new Scanner(System.in);
                     System.out.println("Select a numerical choice\n");
                     shopChoice = sc2.nextInt();
-                    System.out.println("----------------------------------");
+                    
 
                     switch(shopChoice)
                     {
@@ -251,6 +251,9 @@ public class Mainrun
                             }
                             break;
                         case 2:
+                            character.getCurrentArmoury();
+                            character.getCurrentPotions();
+                            character.getCurrentWeapons();
                         break;
                     }
 
