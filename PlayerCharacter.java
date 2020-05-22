@@ -172,20 +172,7 @@ public class PlayerCharacter implements GameCharacter
             }
             
         }
-        /*Iterator<Inventory> it = weapons.iterator();
-        int i=0;
-        while (it.hasNext())
-        {
-            if (name.equals(weapons.get(i).getName()))
-            {
-                System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
-                System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
-                System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
-                item = weapons.get(i).getName();
-            
-            } 
-            i++;
-        }*/
+
         return item;
     }
 
@@ -196,17 +183,24 @@ public class PlayerCharacter implements GameCharacter
         //int cost;
         for (int i=0; i<potions.size();i++)
         {
-            if (name.equals(potions.get(i).getName()))
+            try
             {
-                System.out.println(potions.get(i).getName() + "with cost " + potions.get(i).getCost());
-                System.out.println("The potions minimum effect is " + potions.get(i).getMinEffect());
-                System.out.println("The potions maximum effect is " + potions.get(i).getMaxEffect());
-                item = potions.get(i).getName();
-                //cost = potions.get(i).getCost();
+                if (name.equals(potions.get(i).getName()))
+                {
+                    //System.out.println(potions.get(i).getName() + "with cost " + potions.get(i).getCost());
+                    //System.out.println("The potions minimum effect is " + potions.get(i).getMinEffect());
+                    //System.out.println("The potions maximum effect is " + potions.get(i).getMaxEffect());
+                    item = potions.get(i).getName();
+                    //cost = potions.get(i).getCost();
+                }
             }
-            else
+            catch (NullPointerException e)
             {
-                throw new IllegalArgumentException("Player does not own such potion");
+                System.out.println("Potion not in inventory");
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Potion not in inventory");
             }
         }
         
@@ -269,6 +263,97 @@ public class PlayerCharacter implements GameCharacter
     public String getcurPotion()
     {
         return currentPotion;
+    }
+
+    @Override
+    public void removeWeapon(String name)
+    {
+        //String item = null;
+        //int cost;
+        for (int i=0; i<weapons.size();i++)
+        {
+            try
+            {
+                if (name.equals(weapons.get(i).getName()))
+                {
+                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
+                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
+                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
+                    //item = weapons.get(i).getName();
+                    weapons.remove(i);
+                    //cost = weapons.get(i).getCost();
+                    //System.out.println(weapons.size());
+                }
+            }
+            catch (NullPointerException e)
+            {
+                System.out.println("Weapon not in inventory");
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Weapon not in inventory");
+            }
+            
+        }
+    }
+
+    @Override
+    public void removeArmour(String name)
+    {
+        for (int i=0; i<armoury.size();i++)
+        {
+            try
+            {
+                if (name.equals(armoury.get(i).getName()))
+                {
+                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
+                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
+                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
+                    //item = weapons.get(i).getName();
+                    armoury.remove(i);
+                    //cost = weapons.get(i).getCost();
+                    //System.out.println(weapons.size());
+                }
+            }
+            catch (NullPointerException e)
+            {
+                System.out.println("Armour not in inventory");
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Armour not in inventory");
+            }
+        }
+    }
+
+    @Override
+    public void removePotions(String name)
+    {
+        for (int i=0; i<potions.size();i++)
+        {
+            try
+            {
+                if (name.equals(potions.get(i).getName()))
+                {
+                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
+                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
+                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
+                    //item = weapons.get(i).getName();
+                    potions.remove(i);
+                    //cost = weapons.get(i).getCost();
+                    //System.out.println(weapons.size());
+                }
+            }
+            catch (NullPointerException e)
+            {
+                System.out.println("Potion not in inventory");
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Potion not in inventory");
+            }
+        }
+
     }
 
 }

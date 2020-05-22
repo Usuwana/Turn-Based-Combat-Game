@@ -251,9 +251,48 @@ public class Mainrun
                             }
                             break;
                         case 2:
+                            String sellItem;
+                            Inventory weapon = new Weapons();
+                            Inventory armour = new Armour();
+                            Inventory potion = new Potions();
                             character.getCurrentArmoury();
                             character.getCurrentPotions();
                             character.getCurrentWeapons();
+                            System.out.println("----------------------------------");
+                            Scanner sc6 = new Scanner(System.in);
+                            System.out.println("Select item you would like to sell");
+                            sellItem = sc6.nextLine();
+
+                            try
+                            {
+                                if (character.getWeapon(sellItem).equals(sellItem))
+                                {
+                                    weapon.setItem(sellItem);
+                                    character.setGold(character.getGold() + weapon.getCost());
+                                    character.removeWeapon(sellItem);
+                                }
+                                else if (character.getArmour(sellItem).equals(sellItem))
+                                {
+                                    armour.setItem(sellItem);
+                                    character.setGold(character.getGold() + armour.getCost());
+                                    character.removeArmour(sellItem);
+                                }
+                                else if (character.getPotion(sellItem).equals(sellItem))
+                                {
+                                    potion.setItem(sellItem);
+                                    character.setGold(character.getGold() + potion.getCost());
+                                    character.removePotions(sellItem);
+                                }
+                            }
+                            catch (IllegalArgumentException e)
+                            {
+                                System.out.println("No such inventory");
+                            }
+                            catch (NullPointerException e)
+                            {
+                                System.out.println("No such inventory");
+                            }
+
                         break;
                     }
 

@@ -23,5 +23,8 @@ public interface GameCharacter
     public void getCurrentArmoury();
     public void getCurrentPotions();
     public int getGold();
+    public void removeWeapon(String name);
+    public void removeArmour(String name);
+    public void removePotions(String name);
 
 }
