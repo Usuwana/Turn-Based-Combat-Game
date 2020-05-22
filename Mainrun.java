@@ -153,7 +153,7 @@ public class Mainrun
                     System.out.println(currentArmour + " has been selected.");
                     try
                     {
-                        if (character.getWeapon(currentArmour).equals(currentArmour))
+                        if (character.getArmour(currentArmour).equals(currentArmour))
                         {
                             character.setArmour(currentArmour);
                         }
