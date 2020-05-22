@@ -7,8 +7,8 @@ public class Mainrun
         int choice;
         int finished = 0;
         String name;
-        String currentWeapon = null;
-        String currentArmour = null;
+        String currentWeapon;
+        String currentArmour;
         GameCharacter character = new PlayerCharacter();
         Shop theShop = new Shop();
 
@@ -32,11 +32,11 @@ public class Mainrun
             character.getCurrentWeapons();
             System.out.println("----------------------------------");
             System.out.println("\nCURRENT WEAPON IN HAND: ");
-            character.getcurWeapon();
+            System.out.println(character.getcurWeapon());
             System.out.println("\nCURRENT PROTECTIVE ARMOUR IN HAND: ");
-            character.getcurArmour();
+            System.out.println(character.getcurArmour());
             System.out.println("\nCURRENT PORTION IN HAND: ");
-            character.getcurPotion();
+            System.out.println(character.getcurPotion());
             System.out.println("");
             System.out.println("----------------------------------");
 
@@ -116,21 +116,57 @@ public class Mainrun
                     System.out.println("----------------------------------");
                     Scanner sc3 = new Scanner(System.in);
                     System.out.println("Type the name of a weapon to use from the current available weapons\n");
-                    currentWeapon = sc3.next();
+                    currentWeapon = sc3.nextLine();
                     System.out.println("----------------------------------");
                     //String weapon = character.getWeapon(currentWeapon);
-                    if (character.getWeapon(currentWeapon).equals(currentWeapon))
+                    System.out.println(currentWeapon + " has been selected.");
+                    try
                     {
-                        character.setWeapon(currentWeapon);
+                        if (character.getWeapon(currentWeapon).equals(currentWeapon))
+                        {
+                            character.setWeapon(currentWeapon);
+                        }
                     }
-                    else if(!(character.getWeapon(currentWeapon).equals(currentWeapon)))
+                    catch (IllegalArgumentException e)
                     {
-                        throw new IllegalArgumentException("Invalid weapon choice");
+                        System.out.println("No such weapon in your possession");
                     }
+                    catch (NullPointerException e)
+                    {
+                        System.out.println("No such weapon in your possession");
+                    }
+                    
+                    
 
                 break;
 
                 case 4:
+
+                    System.out.println("CURRENT ARMOUR IN INVENTORY: ");
+                    character.getCurrentArmoury();
+                    System.out.println("----------------------------------");
+                    Scanner sc4 = new Scanner(System.in);
+                    System.out.println("Type the name of a weapon to use from the current available weapons\n");
+                    currentArmour = sc4.nextLine();
+                    System.out.println("----------------------------------");
+                    
+                    System.out.println(currentArmour + " has been selected.");
+                    try
+                    {
+                        if (character.getWeapon(currentArmour).equals(currentArmour))
+                        {
+                            character.setArmour(currentArmour);
+                        }
+                    }
+                    catch (IllegalArgumentException e)
+                    {
+                        System.out.println("No such armour in your possession");
+                    }
+                    catch (NullPointerException e)
+                    {
+                        System.out.println("No such armour in your possession");
+                    }
+
                 break;
 
                 case 5:

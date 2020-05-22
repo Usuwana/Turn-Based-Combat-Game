@@ -111,17 +111,25 @@ public class PlayerCharacter implements GameCharacter
         String item = null;
         for (int i=0; i<armoury.size();i++)
         {
-            if (name.equals(armoury.get(i).getName()))
+            try
             {
-                System.out.println(armoury.get(i).getName() +  "with cost " + armoury.get(i).getCost());
-                System.out.println("The potions minimum effect is " + armoury.get(i).getMinEffect());
-                System.out.println("The potions maximum effect is " + armoury.get(i).getMaxEffect());
+                if (name.equals(armoury.get(i).getName()))
+                {
+                //System.out.println(armoury.get(i).getName() +  "with cost " + armoury.get(i).getCost());
+                //System.out.println("The potions minimum effect is " + armoury.get(i).getMinEffect());
+                //System.out.println("The potions maximum effect is " + armoury.get(i).getMaxEffect());
                 item = armoury.get(i).getName();
+                } 
             }
-            else
+            catch (NullPointerException e)
             {
-                throw new IllegalArgumentException("Player does not own such armour");
+                System.out.println("Armour not in inventory");
             }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Armour not in inventory");
+            }
+            
         }
         return item;
     }
@@ -132,6 +140,31 @@ public class PlayerCharacter implements GameCharacter
         String item = null;
         for (int i=0; i<weapons.size();i++)
         {
+            try
+            {
+                if (name.equals(weapons.get(i).getName()))
+                {
+                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
+                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
+                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
+                    item = weapons.get(i).getName();
+                    //System.out.println(weapons.size());
+                }
+            }
+            catch (NullPointerException e)
+            {
+                System.out.println("Weapon not in inventory");
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Weapon not in inventory");
+            }
+            
+        }
+        /*Iterator<Inventory> it = weapons.iterator();
+        int i=0;
+        while (it.hasNext())
+        {
             if (name.equals(weapons.get(i).getName()))
             {
                 System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
@@ -139,12 +172,9 @@ public class PlayerCharacter implements GameCharacter
                 System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
                 item = weapons.get(i).getName();
             
-            }
-            /*else if (!(name.equals(weapons.get(i).getName())))
-            {
-                throw new IllegalArgumentException("Player does not own such weapon");
-            }*/
-        }
+            } 
+            i++;
+        }*/
         return item;
     }
 
