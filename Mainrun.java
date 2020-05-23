@@ -7,7 +7,7 @@ public class Mainrun
     {
         int choice;
         int warfinished = 0;
-        int battleFinished = 0;
+        //int battleFinished = 0;
         String name;
         int gold = 0;
         String currentWeapon;
@@ -377,10 +377,12 @@ public class Mainrun
                 
                 int charHealth = character.getCurrHealth();
                 int enemyHealth;
+                int battleFinished = 0;
                 double slimeProbability = 0.5;
                 double ogreProbability = 0.2;
                 double dragonProbability = 0;
                 double goblinProbability = 0.3;
+                int dragonUse = 0;
                 double enemyChoice = Math.random() *(0.5);
                 int attackChoice = 0;
                   while(battleFinished ==0)
@@ -429,18 +431,30 @@ public class Mainrun
                                                 System.out.println(character.getName() + " health: " + character.getCurrHealth());
                                                 System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
                                                 System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                System.out.println(ogre.getName() + " defends with " + defence + "defensive strength");
+                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
                                                 enemyHealth = enemyHealth -(Math.max(0,attack - defence));
                                                 ogre.setHealth(enemyHealth);
                                                 System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                                if (enemyHealth ==0)
+                                                if (enemyHealth <=0)
                                                 {
                                                     System.out.println("Battle over!\n" + character.getName() + " has won the battle!");
                                                     System.out.println(character.getName() + " will receive " + ogre.goldAward());
                                                     character.setGold(ogre.goldAward());
                                                     charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                                     character.setHealth(charHealth);
+                                                    slimeProbability = slimeProbability - 0.05;
+                                                    goblinProbability = goblinProbability - 0.05;
+                                                    ogreProbability = ogreProbability - 0.05;
+                                                    if (dragonUse == 0)
+                                                    {
+                                                        dragonProbability = dragonProbability + 0.15; 
+                                                    }
+                                                    else
+                                                    {
+                                                        dragonProbability = dragonProbability + 0.05; 
+                                                    }
                                                     done = 1;
+                                                    battleFinished = 1;
                                                 }
                                             }
                                     break;
@@ -461,10 +475,31 @@ public class Mainrun
                                     {
                                         System.out.println(ogre.getName() + " attacked twice with special ability.");
                                     }
-                                    System.out.println(character.getName() + " defends with " + defence + "defensive strength with " + armour.getName() + " armour");
+                                    System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
                                     charHealth = charHealth -(Math.max(0,attack - defence));
-                                    ogre.setHealth(enemyHealth);
+                                    character.setHealth(charHealth);
                                     System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
+                                    if (charHealth <=0)
+                                    {
+                                        System.out.println("Battle over!\n" + ogre.getName() + " has won the battle!");
+                                        //System.out.println(character.getName() + " will receive " + ogre.goldAward());
+                                        //character.setGold(ogre.goldAward());
+                                        //charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                       //character.setHealth(charHealth);
+                                       slimeProbability = slimeProbability - 0.05;
+                                       goblinProbability = goblinProbability - 0.05;
+                                       ogreProbability = ogreProbability - 0.05;
+                                       if (dragonUse == 0)
+                                       {
+                                           dragonProbability = dragonProbability + 0.15; 
+                                       }
+                                       else
+                                       {
+                                        dragonProbability = dragonProbability + 0.05; 
+                                       }
+                                        done = 1;
+                                        battleFinished = 1;
+                                    }
                                 }
                             }
                         }
@@ -481,6 +516,11 @@ public class Mainrun
                             System.out.println("\nYour enemy for the battle will be: " + slime.getName());
                             //slime=slime+1;
                             //System.out.println(slime);
+                        }
+                        else if (enemyChoice < dragonProbability)
+                        {
+                            Enemies dragon = new Dragon();
+                            System.out.println("\nYour enemy for the battle will be: " + dragon.getName());
                         }
                   }
                 break;
