@@ -11,6 +11,7 @@ public class PlayerCharacter implements GameCharacter
 {
     private String name;
     private int gold = 100;
+    private int health = 30;
     private String currentWeapon;
     private String currentArmour;
     private String currentPotion;
@@ -50,7 +51,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void getName() 
     {
-        System.out.print(this.name);
+        System.out.println(this.name);
     }
 
     @Override
@@ -101,6 +102,19 @@ public class PlayerCharacter implements GameCharacter
     }
 
     @Override
+    public void setHealth(int health)
+    {
+        if(health <= 30)
+        {
+            this.health=health;
+        }
+        else
+        {
+            System.out.println("Health must not be more than " + getMaxHealth());
+        }
+    }
+
+    @Override
     public int getMaxHealth() 
     {
         return 30;
@@ -109,7 +123,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public int getCurrHealth() 
     {
-        return 30;
+        return health;
     }
 
     @Override

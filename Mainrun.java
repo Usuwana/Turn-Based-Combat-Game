@@ -5,7 +5,8 @@ public class Mainrun
     public static void main(String[] args)
     {
         int choice;
-        int finished = 0;
+        int warfinished = 0;
+        int battleFinished = 0;
         String name;
         int gold = 0;
         String currentWeapon;
@@ -14,7 +15,7 @@ public class Mainrun
         Shop theShop = new Shop();
 
 
-        while(finished==0)
+        while(warfinished==0)
         {   
             
             System.out.println("----------------------------------");
@@ -265,24 +266,28 @@ public class Mainrun
 
                             try
                             {
-                                if (character.getWeapon(sellItem).equals(sellItem))
+                                if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
                                 {
                                     weapon.setItem(sellItem);
                                     character.setGold(character.getGold() + weapon.getCost());
                                     character.removeWeapon(sellItem);
                                 }
-                                else if (character.getArmour(sellItem).equals(sellItem))
+                                else if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
                                 {
                                     armour.setItem(sellItem);
                                     character.setGold(character.getGold() + armour.getCost());
                                     character.removeArmour(sellItem);
                                 }
-                                else if (character.getPotion(sellItem).equals(sellItem))
+                                else if (!(character.getPotion(sellItem).equals(null)) && (character.getPotion(sellItem).equals(sellItem)))
                                 {
                                     potion.setItem(sellItem);
                                     character.setGold(character.getGold() + potion.getCost());
                                     character.removePotions(sellItem);
                                 }
+                                /*else 
+                                {
+                                    System.out.println("Okay");
+                                }*/
                             }
                             catch (IllegalArgumentException e)
                             {
@@ -368,30 +373,71 @@ public class Mainrun
                 break;
 
                 case 5:
-                   System.out.print("Character name: "); 
-                   character.getName();
-                   double enemyChoice = Math.random();
-                   if (enemyChoice < 0.5)
-                   {
-                       Enemies enemy = new Slime();
-                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
-                   }
-                   else if(enemyChoice < 0.3)
-                   {
-                       Enemies enemy = new Goblin();
-                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
-                   }
-                   else if(enemyChoice < 0.2)
-                   {
-                       Enemies enemy = new Ogre();
-                       System.out.println("Your enemy for the battle will be: " + enemy.getName());
-                   }
+                
+                int charhealth = character.getCurrHealth();
+                double slimeProbability = 0.5;
+                double ogreProbability = 0.2;
+                double dragonProbability = 0;
+                double goblinProbability = 0.3;
+                double enemyChoice = Math.random() *(0.5);
+                int attackChoice = 0;
+                  while(battleFinished ==0)
+                  {
+                        System.out.print("Character name: "); 
+                        character.getName();
+                        //int health;
+                        //double slimeProbability = 0.5;
+                        //double ogreProbability = 0.2;
+                        //double dragonProbability = 0;
+                        //double goblinProbability = 0.3;
+                        //double enemyChoice = Math.random() *(0.5);
+                        //int slime = 0;
+                        //int ogre = 0;
+                        //int goblin = 0;
+                        //System.out.println(enemyChoice);
+                        
+                        if(enemyChoice < ogreProbability)
+                        {
+                            Enemies enemy = new Ogre();
+                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            //ogre=ogre+1;
+                            //System.out.println(ogre);
+                            System.out.println("Begin the game. Choose method of attack");
+                            Scanner sc7 = new Scanner(System.in);
+                            System.out.println("1. Attack with weapon");
+                            System.out.println("2.Use potion");
+                            attackChoice = sc7.nextInt();
+
+                            switch(attackChoice)
+                            {
+                                case 1:
+                                    character.getcurWeapon();
+                                break;
+                                case 2:
+                                break;
+                            }
+                        }
+                        else if(enemyChoice < goblinProbability)
+                        {
+                            Enemies enemy = new Goblin();
+                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            //goblin=goblin+1;
+                            //System.out.println(goblin);
+                        }
+                        else if (enemyChoice < slimeProbability)
+                        {
+                            Enemies enemy = new Slime();
+                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            //slime=slime+1;
+                            //System.out.println(slime);
+                        }
+                  }
                 break;
 
                 case 6:
                    System.out.println("Goodbye!");
                    System.out.println("----------------------------------");
-                    finished = 1;
+                    warfinished = 1;
                 break;
             }
         }

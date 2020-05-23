@@ -11,6 +11,7 @@ public interface GameCharacter
     public void setArmour(String name);
     public void setPotion(String name);
     public void setGold(int gold);
+    public void setHealth(int health);
     public int getMaxHealth();
     public int getCurrHealth();
     public String getWeapon(String name);
