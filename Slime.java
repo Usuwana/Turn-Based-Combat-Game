@@ -4,6 +4,8 @@ public class Slime implements Enemies
 {
     private String name = "Slime";
     private int health = 10;
+    private int minimum = 3;
+    private int maximum = 5;
 
     @Override
     public String getName() 
@@ -37,10 +39,20 @@ public class Slime implements Enemies
     }
 
     @Override
+    public int getMinDamage()
+    {
+        return minimum;
+    }
+
+    @Override
+    public int getMaxDamage()
+    {
+        return maximum;
+    }
+
+    @Override
     public int getDamage() 
     {
-        int minimum = 3;
-        int maximum = 5;
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;

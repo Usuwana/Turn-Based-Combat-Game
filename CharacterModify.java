@@ -10,9 +10,9 @@ public abstract class CharacterModify implements GameCharacter
     }
 
     @Override
-    public void getName() 
+    public String getName() 
     {
-        next.getName();
+        return next.getName();
     }
 
 

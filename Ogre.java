@@ -5,6 +5,8 @@ public class Ogre implements Enemies
 {
     private String name = "Ogre";
     private int health = 40;
+    private int minimum = 5;
+    private int maximum = 10;
 
     @Override
     public String getName() 
@@ -38,10 +40,20 @@ public class Ogre implements Enemies
     }
 
     @Override
+    public int getMinDamage()
+    {
+        return minimum;
+    }
+
+    @Override
+    public int getMaxDamage()
+    {
+        return maximum;
+    }
+
+    @Override
     public int getDamage() 
     {
-        int minimum = 5;
-        int maximum = 10;
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;

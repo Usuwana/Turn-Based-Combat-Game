@@ -4,6 +4,8 @@ public class Goblin implements Enemies
 {
     private String name = "Goblin";
     private int health = 30;
+    private int minimum = 3;
+    private int maximum = 8;
 
     @Override
     public String getName() 
@@ -37,10 +39,21 @@ public class Goblin implements Enemies
     }
 
     @Override
+    public int getMinDamage()
+    {
+        return minimum;
+    }
+
+    @Override
+    public int getMaxDamage()
+    {
+        return maximum;
+    }
+
+    @Override
     public int getDamage() 
     {
-        int minimum = 3;
-        int maximum = 8;
+        
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;

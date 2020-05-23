@@ -375,7 +375,7 @@ public class Mainrun
 
                 case 5:
                 
-                int charhealth = character.getCurrHealth();
+                int charHealth = character.getCurrHealth();
                 int enemyHealth;
                 double slimeProbability = 0.5;
                 double ogreProbability = 0.2;
@@ -402,6 +402,9 @@ public class Mainrun
                         {
                             Enemies ogre = new Ogre();
                             int done = 0;
+                            int attack;
+                            int defence;
+                            int goldAward;
                             enemyHealth = ogre.getCurrHealth();
                             System.out.println("\nYour enemy for the battle will be: " + ogre.getName());
                             //ogre=ogre+1;
@@ -417,22 +420,51 @@ public class Mainrun
                                 switch(attackChoice)
                                 {
                                     case 1:
-                                        
-                                            Inventory weapon = new Weapons();
-                                            weapon.setItem(character.getcurWeapon());
-                                            int attack = weapon.getOverallEffect();
-                                            int defence = ogre.getDefence();
-                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                            System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
-                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                            System.out.println(ogre.getName() + " defends with " + defence + "defensive strength");
-                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                            ogre.setHealth(enemyHealth);
-                                            System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                        
+                                            if (done == 0)
+                                            {
+                                                Inventory weapon = new Weapons();
+                                                weapon.setItem(character.getcurWeapon());
+                                                attack = weapon.getOverallEffect();
+                                                defence = ogre.getDefence();
+                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                System.out.println(ogre.getName() + " defends with " + defence + "defensive strength");
+                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
+                                                ogre.setHealth(enemyHealth);
+                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                if (enemyHealth ==0)
+                                                {
+                                                    System.out.println("Battle over!\n" + character.getName() + " has won the battle!");
+                                                    System.out.println(character.getName() + " will receive " + ogre.goldAward());
+                                                    character.setGold(ogre.goldAward());
+                                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                                    character.setHealth(charHealth);
+                                                    done = 1;
+                                                }
+                                            }
                                     break;
                                     case 2:
                                     break;
+                                }
+                                if (done ==0)
+                                {
+                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                    System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                    System.out.println(ogre.getName() + " attack turn");
+                                    attack = ogre.getDamage();
+                                    Inventory armour = new Armour();
+                                    armour.setItem(character.getcurArmour());
+                                    defence = armour.getOverallEffect();
+                                    System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
+                                    if (attack > ogre.getMaxDamage())
+                                    {
+                                        System.out.println(ogre.getName() + " attacked twice with special ability.");
+                                    }
+                                    System.out.println(character.getName() + " defends with " + defence + "defensive strength with " + armour.getName() + " armour");
+                                    charHealth = charHealth -(Math.max(0,attack - defence));
+                                    ogre.setHealth(enemyHealth);
+                                    System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
                                 }
                             }
                         }
