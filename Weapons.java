@@ -87,5 +87,11 @@ public class Weapons extends Inventory
         return maxDamage;
     }
 
+    @Override
+    public  int getOverallEffect()
+    {
+        int effect = (int) (Math.random() * ((maxDamage - minDamage)+1) + minDamage);
+        return effect;
+    }
     
 }

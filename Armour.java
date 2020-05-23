@@ -76,5 +76,11 @@ public class Armour extends Inventory
         return maxDefence;
     }
 
+    @Override
+    public  int getOverallEffect()
+    {
+        int effect = (int) (Math.random() * ((maxDefence - minDefence)+1) + minDefence);
+        return effect;
+    }
 
 }

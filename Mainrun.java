@@ -1,4 +1,5 @@
 import java.util.*;
+import java.math.*;
 
 public class Mainrun 
 {
@@ -19,19 +20,19 @@ public class Mainrun
         {   
             
             System.out.println("----------------------------------");
-            System.out.print("Character name: ");
-            character.getName();
+            System.out.println("\nCharacter name: " + character.getName());
+            //character.getName();
             character.getCurrHealth();
             System.out.println("\nCurrent gold: " + character.getGold());
             gold = character.getGold();
-            System.out.println("");
-            System.out.println("CURRENT ARMOURY IN INVENTORY: ");
+            //System.out.println("");
+            System.out.println("\nCURRENT ARMOURY IN INVENTORY: ");
             character.getCurrentArmoury();
-            System.out.println("");
-            System.out.println("CURRENT POTIONS IN INVENTORY: ");
+            //System.out.println("");
+            System.out.println("\nCURRENT POTIONS IN INVENTORY: ");
             character.getCurrentPotions();
-            System.out.println("");
-            System.out.println("CURRENT WEAPONS IN INVENTORY: ");
+            //System.out.println("");
+            System.out.println("\nCURRENT WEAPONS IN INVENTORY: ");
             character.getCurrentWeapons();
             System.out.println("----------------------------------");
             System.out.println("\nCURRENT WEAPON IN HAND: ");
@@ -40,8 +41,8 @@ public class Mainrun
             System.out.println(character.getcurArmour());
             System.out.println("\nCURRENT PORTION IN HAND: ");
             System.out.println(character.getcurPotion());
-            System.out.println("");
-            System.out.println("----------------------------------");
+            //System.out.println("");
+            System.out.println("\n----------------------------------");
 
             System.out.println("\n1. Go to Shop\n");
             System.out.println("2. Choose Character Name\n");
@@ -375,6 +376,7 @@ public class Mainrun
                 case 5:
                 
                 int charhealth = character.getCurrHealth();
+                int enemyHealth;
                 double slimeProbability = 0.5;
                 double ogreProbability = 0.2;
                 double dragonProbability = 0;
@@ -383,8 +385,8 @@ public class Mainrun
                 int attackChoice = 0;
                   while(battleFinished ==0)
                   {
-                        System.out.print("Character name: "); 
-                        character.getName();
+                        System.out.print("Character name: " + character.getName()); 
+                        //character.getName();
                         //int health;
                         //double slimeProbability = 0.5;
                         //double ogreProbability = 0.2;
@@ -398,36 +400,53 @@ public class Mainrun
                         
                         if(enemyChoice < ogreProbability)
                         {
-                            Enemies enemy = new Ogre();
-                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            Enemies ogre = new Ogre();
+                            int done = 0;
+                            enemyHealth = ogre.getCurrHealth();
+                            System.out.println("\nYour enemy for the battle will be: " + ogre.getName());
                             //ogre=ogre+1;
                             //System.out.println(ogre);
-                            System.out.println("Begin the game. Choose method of attack");
-                            Scanner sc7 = new Scanner(System.in);
-                            System.out.println("1. Attack with weapon");
-                            System.out.println("2.Use potion");
-                            attackChoice = sc7.nextInt();
+                            while (done ==0)
+                                {
+                                System.out.println("Choose method of attack");
+                                Scanner sc7 = new Scanner(System.in);
+                                System.out.println("1. Attack with weapon");
+                                System.out.println("2.Use potion");
+                                attackChoice = sc7.nextInt();
 
-                            switch(attackChoice)
-                            {
-                                case 1:
-                                    character.getcurWeapon();
-                                break;
-                                case 2:
-                                break;
+                                switch(attackChoice)
+                                {
+                                    case 1:
+                                        
+                                            Inventory weapon = new Weapons();
+                                            weapon.setItem(character.getcurWeapon());
+                                            int attack = weapon.getOverallEffect();
+                                            int defence = ogre.getDefence();
+                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                            System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                            System.out.println(ogre.getName() + " defends with " + defence + "defensive strength");
+                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
+                                            ogre.setHealth(enemyHealth);
+                                            System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                        
+                                    break;
+                                    case 2:
+                                    break;
+                                }
                             }
                         }
                         else if(enemyChoice < goblinProbability)
                         {
-                            Enemies enemy = new Goblin();
-                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            Enemies goblin = new Goblin();
+                            System.out.println("\nYour enemy for the battle will be: " + goblin.getName());
                             //goblin=goblin+1;
                             //System.out.println(goblin);
                         }
                         else if (enemyChoice < slimeProbability)
                         {
-                            Enemies enemy = new Slime();
-                            System.out.println("\nYour enemy for the battle will be: " + enemy.getName());
+                            Enemies slime = new Slime();
+                            System.out.println("\nYour enemy for the battle will be: " + slime.getName());
                             //slime=slime+1;
                             //System.out.println(slime);
                         }

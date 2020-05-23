@@ -3,7 +3,7 @@ import java.util.*;
 public interface GameCharacter
 {
     public void setName(String name);
-    public void getName();
+    public String getName();
     public void addWeapon(String name);
     public void addArmour(String name);
     public void addPotion(String name);

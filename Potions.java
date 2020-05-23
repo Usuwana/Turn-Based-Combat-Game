@@ -80,5 +80,12 @@ public class Potions extends Inventory
     {
         return healing;
     }
+
+    @Override
+    public  int getOverallEffect()
+    {
+        int effect = (int) (Math.random() * ((maxEffect - minEffect)+1) + minEffect);
+        return effect;
+    }
     
 }

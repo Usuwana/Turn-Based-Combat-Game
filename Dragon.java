@@ -3,11 +3,25 @@ import java.util.*;
 public class Dragon implements Enemies 
 {
     private String name = "Dragon";
+    private int health = 100;
 
     @Override
     public String getName() 
     {
         return name;
+    }
+
+    @Override
+    public void setHealth(int health)
+    {
+        if (health <= getMaxHealth())
+        {
+            this.health = health;
+        }
+        else
+        {
+            System.out.println("Health cannot surpass " + getMaxHealth());
+        }
     }
 
     @Override
@@ -19,7 +33,7 @@ public class Dragon implements Enemies
     @Override
     public int getCurrHealth() 
     {
-        return 100;
+        return health;
     }
 
     @Override

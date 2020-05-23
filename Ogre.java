@@ -4,11 +4,25 @@ import java.math.*;
 public class Ogre implements Enemies 
 {
     private String name = "Ogre";
+    private int health = 40;
 
     @Override
     public String getName() 
     {
         return name;
+    }
+
+    @Override
+    public void setHealth(int health)
+    {
+        if (health <= getMaxHealth())
+        {
+            this.health = health;
+        }
+        else
+        {
+            System.out.println("Health cannot surpass " + getMaxHealth());
+        }
     }
 
     @Override
@@ -20,7 +34,7 @@ public class Ogre implements Enemies
     @Override
     public int getCurrHealth() 
     {
-        return 40;
+        return health;
     }
 
     @Override

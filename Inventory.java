@@ -9,6 +9,7 @@ public abstract class Inventory
     public abstract int getCost();
     public abstract int getMinEffect();
     public abstract int getMaxEffect();
+    public abstract int getOverallEffect();
 
     
 }
