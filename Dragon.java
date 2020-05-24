@@ -105,7 +105,7 @@ public class Dragon implements Enemies
                 effect = 2;
             }
         }
-        return effect
+        return effect;
 
     }
     
