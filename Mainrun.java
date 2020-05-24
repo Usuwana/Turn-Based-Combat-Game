@@ -879,7 +879,6 @@ public class Mainrun
                                         potionItem = potionSelect.nextLine();
 
                                         potion.setItem(potionItem);
-                                        character.removePotions(potionItem);
                                         if (potion.getSymbol() =='H')
                                         {
                                             System.out.println("----------------------------------");
@@ -902,6 +901,7 @@ public class Mainrun
                                             System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
                                             System.out.println("----------------------------------");
                                         }
+                                        character.removePotions(potionItem);
                                     break;
                                    
                                 }
