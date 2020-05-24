@@ -51,7 +51,6 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public String getName() 
     {
-        //System.out.println(this.name);
         return name;
     }
 
@@ -105,14 +104,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void setHealth(int health)
     {
-        if(health <= 30)
-        {
             this.health=health;
-        }
-        else
-        {
-            System.out.println("Health must not be more than " + getMaxHealth());
-        }
     }
 
     @Override
