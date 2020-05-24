@@ -409,8 +409,8 @@ public class Mainrun
                 enemyChoice = Math.random() *(maximumProbability);
                 int attackChoice = 0;
                 System.out.println("Slime P: " + slimeProbability);
-                System.out.println("Ogre P: " + ogreProbability);
                 System.out.println("Goblin P: " + goblinProbability);
+                System.out.println("Ogre P: " + ogreProbability);
                 System.out.println("Dragon P: " + dragonProbability);
                   while(battleFinished ==0)
                   {
@@ -586,9 +586,18 @@ public class Mainrun
                                                     character.setGold(character.getGold() + goblin.goldAward());
                                                     charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                                     character.setHealth(charHealth);
-                                                    slimeProbability = slimeProbability - 0.05;
-                                                    goblinProbability = goblinProbability - 0.05;
-                                                    ogreProbability = ogreProbability - 0.05;
+                                                    if (slimeProbability - 0.05 > 0.05)
+                                                    {
+                                                        slimeProbability = slimeProbability - 0.05;
+                                                    }
+                                                    if (goblinProbability - 0.05 > 0.05)
+                                                    {
+                                                        goblinProbability = goblinProbability - 0.05;
+                                                    }
+                                                    if (ogreProbability - 0.05 > 0.05)
+                                                    {
+                                                        ogreProbability = ogreProbability - 0.05;
+                                                    }
                                                     if (dragonUse == 0)
                                                     {
                                                         dragonProbability = dragonProbability + 0.15; 
@@ -632,13 +641,22 @@ public class Mainrun
                                         //character.setGold(ogre.goldAward());
                                         //charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                        //character.setHealth(charHealth);
-                                       slimeProbability = slimeProbability - 0.05;
-                                       goblinProbability = goblinProbability - 0.05;
-                                       ogreProbability = ogreProbability - 0.05;
-                                       if (dragonUse == 0)
-                                       {
+                                       if (slimeProbability - 0.05 > 0.05)
+                                        {
+                                            slimeProbability = slimeProbability - 0.05;
+                                        }
+                                        if (goblinProbability - 0.05 > 0.05)
+                                        {
+                                            goblinProbability = goblinProbability - 0.05;
+                                        }
+                                        if (ogreProbability - 0.05 > 0.05)
+                                        {
+                                            ogreProbability = ogreProbability - 0.05;
+                                        }
+                                        if (dragonUse == 0)
+                                        {
                                            dragonProbability = dragonProbability + 0.15; 
-                                       }
+                                        }
                                        else
                                        {
                                         dragonProbability = dragonProbability + 0.05; 
@@ -694,9 +712,18 @@ public class Mainrun
                                                     character.setGold(character.getGold() + slime.goldAward());
                                                     charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                                     character.setHealth(charHealth);
-                                                    slimeProbability = slimeProbability - 0.05;
-                                                    goblinProbability = goblinProbability - 0.05;
-                                                    ogreProbability = ogreProbability - 0.05;
+                                                    if (slimeProbability - 0.05 > 0.05)
+                                                    {
+                                                        slimeProbability = slimeProbability - 0.05;
+                                                    }
+                                                    if (goblinProbability - 0.05 > 0.05)
+                                                    {
+                                                        goblinProbability = goblinProbability - 0.05;
+                                                    }
+                                                    if (ogreProbability - 0.05 > 0.05)
+                                                    {
+                                                        ogreProbability = ogreProbability - 0.05;
+                                                    }
                                                     if (dragonUse == 0)
                                                     {
                                                         dragonProbability = dragonProbability + 0.15; 
@@ -740,9 +767,18 @@ public class Mainrun
                                         //character.setGold(ogre.goldAward());
                                         //charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                        //character.setHealth(charHealth);
-                                       slimeProbability = slimeProbability - 0.05;
-                                       goblinProbability = goblinProbability - 0.05;
-                                       ogreProbability = ogreProbability - 0.05;
+                                       if (slimeProbability - 0.05 > 0.05)
+                                        {
+                                                        slimeProbability = slimeProbability - 0.05;
+                                        }
+                                        if (goblinProbability - 0.05 > 0.05)
+                                        {
+                                            goblinProbability = goblinProbability - 0.05;
+                                        }
+                                        if (ogreProbability - 0.05 > 0.05)
+                                        {
+                                            ogreProbability = ogreProbability - 0.05;
+                                        }
                                        if (dragonUse == 0)
                                        {
                                            dragonProbability = dragonProbability + 0.15; 
@@ -801,9 +837,18 @@ public class Mainrun
                                                     character.setGold(character.getGold()+dragon.goldAward());
                                                     charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                                     character.setHealth(charHealth);
-                                                    slimeProbability = slimeProbability - 0.05;
-                                                    goblinProbability = goblinProbability - 0.05;
-                                                    ogreProbability = ogreProbability - 0.05;
+                                                    if (slimeProbability - 0.05 > 0.05)
+                                                    {
+                                                        slimeProbability = slimeProbability - 0.05;
+                                                    }
+                                                    if (goblinProbability - 0.05 > 0.05)
+                                                    {
+                                                        goblinProbability = goblinProbability - 0.05;
+                                                    }
+                                                    if (ogreProbability - 0.05 > 0.05)
+                                                    {
+                                                        ogreProbability = ogreProbability - 0.05;
+                                                    }
                                                     if (dragonUse == 0)
                                                     {
                                                         dragonProbability = dragonProbability + 0.15; 
@@ -847,9 +892,18 @@ public class Mainrun
                                         //character.setGold(ogre.goldAward());
                                         //charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
                                        //character.setHealth(charHealth);
-                                       slimeProbability = slimeProbability - 0.05;
-                                       goblinProbability = goblinProbability - 0.05;
-                                       ogreProbability = ogreProbability - 0.05;
+                                       if (slimeProbability - 0.05 > 0.05)
+                                       {
+                                           slimeProbability = slimeProbability - 0.05;
+                                       }
+                                       if (goblinProbability - 0.05 > 0.05)
+                                       {
+                                           goblinProbability = goblinProbability - 0.05;
+                                       }
+                                       if (ogreProbability - 0.05 > 0.05)
+                                       {
+                                           ogreProbability = ogreProbability - 0.05;
+                                       }
                                        if (dragonUse == 0)
                                        {
                                            dragonProbability = dragonProbability + 0.15; 
