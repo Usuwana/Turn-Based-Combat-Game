@@ -356,32 +356,33 @@ public class Mainrun
                 int enemyHealth;
                 int battleFinished = 0;
                 double maximumProbability = 0;
-                double minimumProbability = 0.5;
+                //double minimumProbability = 0.5;
                 slimeProbability = slimeProbability;
                 ogreProbability = ogreProbability;
                 dragonProbability = dragonProbability;
                 goblinProbability = goblinProbability;
-                if (maximumProbability < slimeProbability)
+                
+                if ((slimeProbability > ogreProbability) && (slimeProbability > dragonProbability) && (slimeProbability > goblinProbability))
                 {
                     maximumProbability = slimeProbability;
-                    if (slimeProbability < ogreProbability)
-                    {
-                        maximumProbability = ogreProbability;
-                        if (ogreProbability < goblinProbability)
-                        {
-                            maximumProbability = goblinProbability;
-                            if (goblinProbability < dragonProbability)
-                            {
-                                maximumProbability = dragonProbability;
-                            }
-                        }
-                    }
                 }
-                enemyChoice = Math.random(); //*(maximumProbability);
-                if (enemyChoice > maximumProbability)
+                else if ((ogreProbability > slimeProbability) && (ogreProbability > dragonProbability) && (ogreProbability > goblinProbability))
+                {
+                    maximumProbability = ogreProbability;
+                }
+                else if ((dragonProbability > ogreProbability) && (dragonProbability > slimeProbability) && (dragonProbability > goblinProbability))
+                {
+                    maximumProbability = dragonProbability;
+                }
+                else if ((goblinProbability > ogreProbability) && (goblinProbability > dragonProbability) && (goblinProbability > slimeProbability))
+                {
+                    maximumProbability = goblinProbability;
+                }
+                enemyChoice = Math.random() *(maximumProbability);
+                /*if (enemyChoice > maximumProbability)
                 {
                     enemyChoice = enemyChoice/2;
-                }
+                }*/
                 int attackChoice = 0;
                 System.out.println("Slime P: " + slimeProbability);
                 System.out.println("Goblin P: " + goblinProbability);
