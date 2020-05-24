@@ -57,11 +57,11 @@ public class Ogre implements Enemies
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;
-        double probability = Math.random();
+        /*double probability = Math.random();
         if (probability < 0.2)
         {
             damage = effect + effect;
-        }
+        }*/
         return damage;
     }
 
@@ -79,6 +79,19 @@ public class Ogre implements Enemies
     public int goldAward() 
     {
         return 40;
+    }
+
+    @Override
+    public int getSpecialAbilities()
+    {
+        int damage = 0;
+        double probability = Math.random();
+        if (probability < 0.2)
+        {
+            damage = getDamage() + getDamage();
+        }
+
+        return damage;
     }
     
 }

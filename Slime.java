@@ -56,11 +56,11 @@ public class Slime implements Enemies
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;
-        double probability = Math.random();
+        /*double probability = Math.random();
         if (probability < 0.2)
         {
             damage = 0;
-        }
+        }*/
         return damage;
     }
 
@@ -80,4 +80,15 @@ public class Slime implements Enemies
         return 10;
     }
     
+    @Override
+    public int getSpecialAbilities() 
+    {
+        int damage = getDamage();
+        double probability = Math.random();
+        if (probability < 0.2)
+        {
+            damage = 0;
+        }
+        return damage;
+    }
 }

@@ -56,7 +56,7 @@ public class Dragon implements Enemies
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;
-        double probability = Math.random();
+        /*double probability = Math.random();
         if (probability < 0.35)
         {
             if (probability < 0.25)
@@ -65,9 +65,9 @@ public class Dragon implements Enemies
             }
             else if(probability < 0.1)
             {
-                int health = getCurrHealth() + 10;
+                health = getCurrHealth() + 10;
             }
-        }
+        }*/
         return damage;
     }
 
@@ -85,6 +85,28 @@ public class Dragon implements Enemies
     public int goldAward() 
     {
         return 100;
+    }
+
+    @Override
+    public int getSpecialAbilities()
+    {
+        int effect = 0;
+        double probability = Math.random();
+        if (probability < 0.35)
+        {
+            if (probability < 0.25)
+            {
+                //damage = getDamage()*2;
+                effect = 1;
+            }
+            else if(probability < 0.1)
+            {
+                //health = getCurrHealth() + 10;
+                effect = 2;
+            }
+        }
+        return effect
+
     }
     
 }

@@ -57,11 +57,11 @@ public class Goblin implements Enemies
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;
-        double probability = Math.random();
+        /*double probability = Math.random();
         if (probability < 0.5)
         {
             damage = effect*3;
-        }
+        }*/
         return damage;
     }
 
@@ -79,6 +79,19 @@ public class Goblin implements Enemies
     public int goldAward() 
     {
         return 20;
+    }
+
+    @Override
+    public int getSpecialAbilities()
+    {
+        int damage = 0;
+        double probability = Math.random();
+        if (probability < 0.5)
+        {
+            damage = getDamage()+3;
+        }
+
+        return damage;
     }
     
 }

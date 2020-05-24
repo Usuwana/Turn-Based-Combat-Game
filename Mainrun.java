@@ -482,11 +482,14 @@ public class Mainrun
                                     Inventory armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
-                                    System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
-                                    if (attack > ogre.getMaxDamage())
+                                    int special = ogre.getSpecialAbilities();
+                                    //System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
+                                    if (special != 0)
                                     {
-                                        System.out.println(ogre.getName() + " attacked twice with special ability.");
+                                        System.out.println(ogre.getName() + " attacks twice in a row with special ability.");
+                                        attack = special;
                                     }
+                                    System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
                                     System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
                                     charHealth = charHealth -(Math.max(0,attack - defence));
                                     character.setHealth(charHealth);
@@ -500,26 +503,6 @@ public class Mainrun
                                         System.out.println("GAME OVER!!!");
                                         System.out.println("==================================");
                     
-                                        /*if (slimeProbability - 0.05 > 0.05)
-                                        {
-                                            slimeProbability = slimeProbability - 0.05;
-                                        }
-                                        if (goblinProbability - 0.05 > 0.05)
-                                        {
-                                            goblinProbability = goblinProbability - 0.05;
-                                        }
-                                        if (ogreProbability - 0.05 > 0.05)
-                                        {
-                                            ogreProbability = ogreProbability - 0.05;
-                                        }
-                                       if (dragonUse == 0)
-                                       {
-                                           dragonProbability = dragonProbability + 0.15; 
-                                       }
-                                       else
-                                       {
-                                        dragonProbability = dragonProbability + 0.05; 
-                                       }*/
                                         done = 1;
                                         battleFinished = 1;
                                         warfinished = 1;
@@ -615,11 +598,14 @@ public class Mainrun
                                     Inventory armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
-                                    System.out.println(goblin.getName() + " attacks with " + attack + " attacking power");
-                                    if (attack > goblin.getMaxDamage())
+                                    //System.out.println(goblin.getName() + " attacks with " + attack + " attacking power");
+                                    int special = goblin.getSpecialAbilities();
+                                    if (special != 0 )
                                     {
-                                        System.out.println(goblin.getName() + " attacked twice with special ability.");
+                                        attack = special;
+                                        System.out.println("Special ability of 3 extra damage used");
                                     }
+                                    System.out.println(goblin.getName() + " attacks with " + attack + " attacking power");
                                     System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
                                     charHealth = charHealth -(Math.max(0,attack - defence));
                                     character.setHealth(charHealth);
@@ -632,26 +618,6 @@ public class Mainrun
                                         System.out.println("GAME OVER!!!");
                                         System.out.println("==================================");
                                     
-                                       /*if (slimeProbability - 0.05 > 0.05)
-                                        {
-                                            slimeProbability = slimeProbability - 0.05;
-                                        }
-                                        if (goblinProbability - 0.05 > 0.05)
-                                        {
-                                            goblinProbability = goblinProbability - 0.05;
-                                        }
-                                        if (ogreProbability - 0.05 > 0.05)
-                                        {
-                                            ogreProbability = ogreProbability - 0.05;
-                                        }
-                                        if (dragonUse == 0)
-                                        {
-                                           dragonProbability = dragonProbability + 0.15; 
-                                        }
-                                       else
-                                       {
-                                        dragonProbability = dragonProbability + 0.05; 
-                                       }*/
                                         done = 1;
                                         battleFinished = 1;
                                         warfinished = 1;
@@ -747,11 +713,13 @@ public class Mainrun
                                     Inventory armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
-                                    System.out.println(slime.getName() + " attacks with " + attack + " attacking power");
-                                    if (attack > slime.getMaxDamage())
+                                    //System.out.println(slime.getName() + " attacks with " + attack + " attacking power");
+                                    if (slime.getSpecialAbilities() == 0)
                                     {
-                                        System.out.println(slime.getName() + " attacked twice with special ability.");
+                                        System.out.println(slime.getName() + " attack causes no damage special ability.");
+                                        attack = 0;
                                     }
+                                    System.out.println(slime.getName() + " attacks with " + attack + " attacking power");
                                     System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
                                     charHealth = charHealth -(Math.max(0,attack - defence));
                                     character.setHealth(charHealth);
@@ -763,26 +731,6 @@ public class Mainrun
                                         System.out.println("Battle over!" + slime.getName() + " has won the battle!");
                                         System.out.println("GAME OVER!!!");
                                         System.out.println("==================================");
-                                       /*if (slimeProbability - 0.05 > 0.05)
-                                        {
-                                                        slimeProbability = slimeProbability - 0.05;
-                                        }
-                                        if (goblinProbability - 0.05 > 0.05)
-                                        {
-                                            goblinProbability = goblinProbability - 0.05;
-                                        }
-                                        if (ogreProbability - 0.05 > 0.05)
-                                        {
-                                            ogreProbability = ogreProbability - 0.05;
-                                        }
-                                       if (dragonUse == 0)
-                                       {
-                                           dragonProbability = dragonProbability + 0.15; 
-                                       }
-                                       else
-                                       {
-                                        dragonProbability = dragonProbability + 0.05; 
-                                       }*/
                                         done = 1;
                                         battleFinished = 1;
                                         warfinished = 1;
@@ -834,31 +782,7 @@ public class Mainrun
                                                     System.out.println("===================================");
                                                     System.out.println("Congratulations! You have finished the game!");
                                                     System.out.println("===================================");
-                                                    System.out.println(character.getName() + " will receive " + dragon.goldAward());
                                                     System.out.println("----------------------------------");
-                                                    /*character.setGold(character.getGold()+dragon.goldAward());
-                                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                                    character.setHealth(character.getCurrHealth() + charHealth);
-                                                    if (slimeProbability - 0.05 > 0.05)
-                                                    {
-                                                        slimeProbability = slimeProbability - 0.05;
-                                                    }
-                                                    if (goblinProbability - 0.05 > 0.05)
-                                                    {
-                                                        goblinProbability = goblinProbability - 0.05;
-                                                    }
-                                                    if (ogreProbability - 0.05 > 0.05)
-                                                    {
-                                                        ogreProbability = ogreProbability - 0.05;
-                                                    }
-                                                    if (dragonUse == 0)
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.15; 
-                                                    }
-                                                    else
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.05; 
-                                                    }*/
                                                     done = 1;
                                                     battleFinished = 1;
                                                     warfinished =1;
@@ -881,11 +805,20 @@ public class Mainrun
                                     Inventory armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
-                                    System.out.println(dragon.getName() + " attacks with " + attack + " attacking power");
-                                    if (attack > dragon.getMaxDamage())
+                                    int special = dragon.getSpecialAbilities();
+                                    //System.out.println(dragon.getName() + " attacks with " + attack + " attacking power");
+                                    if (special == 1)
                                     {
-                                        System.out.println(dragon.getName() + " attacked twice with special ability.");
+                                        System.out.println(dragon.getName() + " inflicts twice the damage with special ability.");
+                                        attack = dragon.getDamage()*2;    
                                     }
+                                    else if (special == 2)
+                                    {
+                                        System.out.println("Increase health by 10 with special ability");
+                                        dragon.setHealth(dragon.getCurrHealth()+10);
+                                        System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                    }
+                                    System.out.println(dragon.getName() + " attacks with " + attack + " attacking power");
                                     System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
                                     charHealth = charHealth -(Math.max(0,attack - defence));
                                     character.setHealth(charHealth);
@@ -898,26 +831,6 @@ public class Mainrun
                                         System.out.println("GAME OVER!!!");
                                         System.out.println("==================================");
                                         
-                                       /*if (slimeProbability - 0.05 > 0.05)
-                                       {
-                                           slimeProbability = slimeProbability - 0.05;
-                                       }
-                                       if (goblinProbability - 0.05 > 0.05)
-                                       {
-                                           goblinProbability = goblinProbability - 0.05;
-                                       }
-                                       if (ogreProbability - 0.05 > 0.05)
-                                       {
-                                           ogreProbability = ogreProbability - 0.05;
-                                       }
-                                       if (dragonUse == 0)
-                                       {
-                                           dragonProbability = dragonProbability + 0.15; 
-                                       }
-                                       else
-                                       {
-                                        dragonProbability = dragonProbability + 0.05; 
-                                       }*/
                                         done = 1;
                                         battleFinished = 1;
                                         warfinished = 1;

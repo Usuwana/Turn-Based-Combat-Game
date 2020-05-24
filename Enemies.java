@@ -11,5 +11,5 @@ public interface Enemies
     public int getDamage();
     public int getDefence();
     public int goldAward();
-    //public void getSpecialAbilities();    
+    public int getSpecialAbilities();    
 }
