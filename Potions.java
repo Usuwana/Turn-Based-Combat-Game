@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Potions extends Inventory 
 {
-    private final char symbol = 'P';
+    private char symbol;
     private String name;
     private int minEffect;
     private int maxEffect;
@@ -17,6 +17,7 @@ public class Potions extends Inventory
             if ((name.equals("Potion of Healing")))
             {
                 this.name = name;
+                symbol = 'H';
                 minEffect = 5;
                 maxEffect = 10;
                 cost = 12;
@@ -25,6 +26,7 @@ public class Potions extends Inventory
             else if ((name.equals("Potion of Greater Healing")))
             {
                 this.name = name;
+                symbol = 'H';
                 minEffect = 15;
                 maxEffect = 20;
                 cost = 20;
@@ -34,6 +36,7 @@ public class Potions extends Inventory
             else if ((name.equals("Explosive Potion")))
             {
                 this.name = name;
+                symbol = 'D';
                 minEffect = 20;
                 maxEffect = 20;
                 cost = 20;
@@ -76,10 +79,10 @@ public class Potions extends Inventory
         return maxEffect;
     }
 
-    public boolean getHealing() 
+    /*public boolean getHealing() 
     {
         return healing;
-    }
+    }*/
 
     @Override
     public  int getOverallEffect()
