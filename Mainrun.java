@@ -40,8 +40,6 @@ public class Mainrun
             System.out.println(character.getcurWeapon());
             System.out.println("\nCURRENT PROTECTIVE ARMOUR IN HAND: ");
             System.out.println(character.getcurArmour());
-            System.out.println("\nCURRENT PORTION IN HAND: ");
-            System.out.println(character.getcurPotion());
             System.out.println("\n----------------------------------");
 
             System.out.println("\n1. Go to Shop\n");
