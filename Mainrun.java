@@ -84,7 +84,7 @@ public class Mainrun
                             switch(item)
                             {
                                 case 1:
-                                    Inventory sword = new Weapons();
+                                    Inventory sword = new CurrentWeapon();
                                     sword.setItem("Short Sword");
                                     if (gold >= sword.getCost())
                                     {
@@ -100,7 +100,7 @@ public class Mainrun
 
                                 break;
                                 case 2:
-                                    Inventory axe = new Weapons();
+                                    Inventory axe = new CurrentWeapon();
                                     axe.setItem("Great Axe");
                                     if (gold >= axe.getCost())
                                     {
@@ -115,7 +115,7 @@ public class Mainrun
 
                                 break;
                                 case 3:
-                                    Inventory staff = new Weapons();
+                                    Inventory staff = new CurrentWeapon();
                                     staff.setItem("Magic Staff");
                                     if (gold >= staff.getCost())
                                     {
@@ -234,7 +234,7 @@ public class Mainrun
                             break;
                         case 2:
                             String sellItem;
-                            Inventory weapon = new Weapons();
+                            Inventory weapon = new CurrentWeapon();
                             Inventory armour = new Armour();
                             Inventory potion = new Potions();
                             character.getCurrentArmoury();
@@ -413,7 +413,7 @@ public class Mainrun
                                     case 1:
                                             if (done == 0)
                                             {
-                                                Inventory weapon = new Weapons();
+                                                Inventory weapon = new CurrentWeapon();
                                                 weapon.setItem(character.getcurWeapon());
                                                 attack = weapon.getOverallEffect();
                                                 defence = ogre.getDefence();
@@ -562,7 +562,7 @@ public class Mainrun
                                     case 1:
                                             if (done == 0)
                                             {
-                                                Inventory weapon = new Weapons();
+                                                Inventory weapon = new CurrentWeapon();
                                                 weapon.setItem(character.getcurWeapon());
                                                 attack = weapon.getOverallEffect();
                                                 defence = goblin.getDefence();
@@ -709,7 +709,7 @@ public class Mainrun
                                     case 1:
                                             if (done == 0)
                                             {
-                                                Inventory weapon = new Weapons();
+                                                Inventory weapon = new CurrentWeapon();
                                                 weapon.setItem(character.getcurWeapon());
                                                 attack = weapon.getOverallEffect();
                                                 defence = slime.getDefence();
@@ -852,7 +852,7 @@ public class Mainrun
                                     case 1:
                                             if (done == 0)
                                             {
-                                                Inventory weapon = new Weapons();
+                                                Inventory weapon = new CurrentWeapon();
                                                 weapon.setItem(character.getcurWeapon());
                                                 attack = weapon.getOverallEffect();
                                                 defence = dragon.getDefence();

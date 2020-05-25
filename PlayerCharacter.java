@@ -57,7 +57,7 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void addWeapon(String name) 
     {
-        weapon = new Weapons();
+        weapon = new CurrentWeapon();
         weapon.setItem(name);
         weapons.add((Weapons)weapon);        
     }
