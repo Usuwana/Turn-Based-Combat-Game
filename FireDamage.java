@@ -1,3 +1,11 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Carries information about the fire damage enchantment and what it adds to a weapon
+*
+********************************************************************************************************************************************************/
+
+
 import java.util.*;
 import java.math.*;
 

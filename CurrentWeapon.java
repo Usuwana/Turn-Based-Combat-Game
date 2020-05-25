@@ -1,3 +1,11 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to set, modify and carry characteristics of a weapon item without enchantment modifications
+*
+********************************************************************************************************************************************************/
+
+
 import java.util.*;
 
 public class CurrentWeapon extends Weapons

@@ -1,3 +1,11 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Common interface used to define methods to be used by all enemies faced by the character
+*
+********************************************************************************************************************************************************/
+
+
 import java.util.*;
 
 public interface Enemies 

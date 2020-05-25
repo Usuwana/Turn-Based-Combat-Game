@@ -1,3 +1,10 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to set, modify and carry characteristics of an armour item
+*
+********************************************************************************************************************************************************/
+
 import java.util.*;
 
 public class Armour extends Inventory 

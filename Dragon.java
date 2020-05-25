@@ -1,3 +1,11 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to set, modify and carry the characteristics of a dragon enemy
+*
+********************************************************************************************************************************************************/
+
+
 import java.util.*;
 
 public class Dragon implements Enemies 
