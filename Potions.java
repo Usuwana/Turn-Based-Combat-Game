@@ -47,6 +47,7 @@ public class Potions extends Inventory
         {
             System.out.println("Invalid Potion name. Potion not available in game");
         }
+        //return name;
     }
 
     @Override

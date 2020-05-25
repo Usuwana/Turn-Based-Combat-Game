@@ -12,7 +12,7 @@ public class TwoDamage extends AddEnchantments
     @Override
     public String getEnchantment()
     {
-        return "Add 2 to weapon damage";
+        return "Damage+2";
     }
 
     @Override

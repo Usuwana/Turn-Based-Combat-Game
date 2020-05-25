@@ -19,6 +19,7 @@ public class Mainrun
         double enemyChoice = Math.random() *(0.5);
         GameCharacter character = new PlayerCharacter();
         Shop theShop = new Shop();
+        
 
 
         while(warfinished==0)
@@ -46,8 +47,9 @@ public class Mainrun
             System.out.println("2. Choose Character Name\n");
             System.out.println("3. Choose Weapon\n");
             System.out.println("4. Choose Armour\n");
-            System.out.println("5. Start Battle\n");
-            System.out.println("6. Exit\n");
+            System.out.println("5 Add enchantments to weapon");
+            System.out.println("6. Start Battle\n");
+            System.out.println("7. Exit\n");
             System.out.println("----------------------------------");
             Scanner sc = new Scanner(System.in);
             System.out.println("Pick an option from the menu\n");
@@ -70,12 +72,12 @@ public class Mainrun
                     switch(shopChoice)
                     {
                         case 1:
-                            int item;
+                            String item;
                             System.out.println("These are the available items: \n");
                             System.out.println("----------------------------------");
                             theShop.showShopContents();
                             System.out.println("----------------------------------");
-                            System.out.println("Enchantments: ");
+                            /*System.out.println("Enchantments: ");
                             AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
                             AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
                             AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
@@ -83,165 +85,90 @@ public class Mainrun
                             System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
                             System.out.println(fiveDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
                             System.out.println(fireDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                            System.out.println(powerUp.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                            System.out.println(powerUp.getEnchantment() + " costing " + twoDamage.enchantmentCost());*/
                             System.out.println("----------------------------------");
                             Scanner sc3 = new Scanner(System.in);
-                            System.out.println("Pick an item you would like to buy\n");
-                            System.out.println("Type 10 to go back to main menu\n");
-                            item = sc3.nextInt();
+                            System.out.println("Type name of item you would like to buy\n");
+                            
+                            item = sc3.nextLine();
                             System.out.println("----------------------------------");
 
-                            switch(item)
+                            Inventory weaponChoose = new CurrentWeapon();
+                            Inventory armourChoose = new Armour();
+                            Inventory potionChoose = new Potions();
+
+                            weaponChoose.setItem(item);
+                            armourChoose.setItem(item);
+                            potionChoose.setItem(item);
+
+                            try
                             {
-                                case 1:
-                                    Inventory sword = new CurrentWeapon();
-                                    sword.setItem("Short Sword");
-                                    if (gold >= sword.getCost())
-                                    {
-                                        character.addWeapon("Short Sword");
-                                        character.setGold(character.getGold() - sword.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        sword = null;
-                                    }
+                                if (!(weaponChoose.getName().equals(null)))
+                                {
                                     
-
-                                break;
-                                case 2:
-                                    Inventory axe = new CurrentWeapon();
-                                    axe.setItem("Great Axe");
-                                    if (gold >= axe.getCost())
+                                    potionChoose = null;
+                                    armourChoose = null;
+                                    if (gold >= weaponChoose.getCost())
                                     {
-                                        character.addWeapon("Great Axe");
-                                        character.setGold(character.getGold()-axe.getCost());
+                                        character.addWeapon(item);
+                                        character.setGold(character.getGold() - weaponChoose.getCost());
                                     }
                                     else
                                     {
                                         System.out.println("Not enough funds to buy, pick another option.");
-                                        axe = null;
+                                        weaponChoose = null;
                                     }
-
-                                break;
-                                case 3:
-                                    Inventory staff = new CurrentWeapon();
-                                    staff.setItem("Magic Staff");
-                                    if (gold >= staff.getCost())
-                                    {
-                                        character.addWeapon("Magic Staff");
-                                        character.setGold(character.getGold()-staff.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        staff = null;
-                                    }
-                                    
-                                break;
-
-                                case 4:
-                                    Inventory leather = new Armour();
-                                    leather.setItem("Leather Armour");
-                                    if (gold >= leather.getCost())
-                                    {
-                                        character.addArmour("Leather Armour");
-                                        character.setGold(character.getGold()-leather.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        leather = null;
-                                    }
-
-                                break;
-
-                                case 5:
-                                    Inventory mail = new Armour();
-                                    mail.setItem("Chain Mail");
-                                    if (gold >= mail.getCost())
-                                    {
-                                        character.addArmour("Chain Mail");
-                                        character.setGold(character.getGold()-mail.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        mail = null;
-                                    }
-
-                                break;
-
-                                case 6:
-                                    Inventory skin = new Armour();
-                                    skin.setItem("Dragon Skin");
-                                    if (gold >= skin.getCost())
-                                    {
-                                        character.addArmour("Dragon Skin");
-                                        character.setGold(character.getGold()-skin.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        skin = null;
-                                    }
-
-
-                                break;
-
-                                case 7:
-                                    Inventory healing = new Potions();
-                                    healing.setItem("Potion of Healing");
-                                    if (gold >= healing.getCost())
-                                    {
-                                        character.addPotion("Potion of Healing");
-                                        character.setGold(character.getGold()-healing.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        healing = null;
-                                    }
-
-
-                                break;
-
-                                case 8:
-                                    Inventory greaterHealing = new Potions();
-                                    greaterHealing.setItem("Potion of Greater Healing");
-                                    if (gold >= greaterHealing.getCost())
-                                    {
-                                        character.addPotion("Potion of Greater Healing");
-                                        character.setGold(character.getGold()-greaterHealing.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        greaterHealing = null;
-                                    }
-
-
-                                break;
-
-                                case 9:
-                                    Inventory explosive = new Potions();
-                                    explosive.setItem("Explosive Potion");
-                                    if (gold >= explosive.getCost())
-                                    {
-                                        character.addPotion("Explosive Potion");
-                                        character.setGold(character.getGold()-explosive.getCost());
-                                    }
-                                    else
-                                    {
-                                        System.out.println("Not enough funds to buy, pick another option.");
-                                        explosive = null;
-                                    }
-                                break;
-
-                                case 10:
-                                break;
+                                }
                             }
-                            break;
+                            catch (NullPointerException e)
+                            {
+                                System.out.println("No such weapon");
+                            }
+                            try
+                            {
+                                if (!(armourChoose.getName().equals(null)))
+                                {
+                                    
+                                    weaponChoose = null;
+                                    potionChoose = null;
+                                    if (gold >= armourChoose.getCost())
+                                    {
+                                        character.addArmour(item);
+                                        character.setGold(character.getGold() - armourChoose.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        armourChoose = null;
+                                    }
+                                }
+                            }catch (NullPointerException e)
+                            {
+                                System.out.println("No such armour");
+                            }
+                            try
+                            {
+                                if (!(potionChoose.getName().equals(null)))
+                                {
+                                    
+                                    weaponChoose = null;
+                                    armourChoose = null;
+                                    if (gold >= potionChoose.getCost())
+                                    {
+                                        character.addPotion(item);
+                                        character.setGold(character.getGold() - potionChoose.getCost());
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Not enough funds to buy, pick another option.");
+                                        potionChoose = null;
+                                    }
+                                }
+                            }catch (NullPointerException e)
+                            {
+                                System.out.println("No such potion");
+                            }
+                        break;
                         case 2:
                             String sellItem;
                             Inventory weapon = new CurrentWeapon();
@@ -257,23 +184,45 @@ public class Mainrun
 
                             try
                             {
-                                if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
+                                try
                                 {
-                                    weapon.setItem(sellItem);
-                                    character.setGold(character.getGold() + weapon.getCost());
-                                    character.removeWeapon(sellItem);
+                                    if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
+                                    {
+                                        weapon.setItem(sellItem);
+                                        character.setGold(character.getGold() + weapon.getCost());
+                                        System.out.println(weapon.getName() + " has been sold");
+                                        character.removeWeapon(sellItem);
+                                    }
                                 }
-                                else if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
+                                catch (NullPointerException e)
                                 {
-                                    armour.setItem(sellItem);
-                                    character.setGold(character.getGold() + armour.getCost());
-                                    character.removeArmour(sellItem);
+                                    System.out.println("No such weapon");
                                 }
-                                else if (!(character.getPotion(sellItem).equals(null)) && (character.getPotion(sellItem).equals(sellItem)))
+                                try
                                 {
-                                    potion.setItem(sellItem);
-                                    character.setGold(character.getGold() + potion.getCost());
-                                    character.removePotions(sellItem);
+                                    if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
+                                    {
+                                        armour.setItem(sellItem);
+                                        character.setGold(character.getGold() + armour.getCost());
+                                        character.removeArmour(sellItem);
+                                    }
+                                }
+                                catch (NullPointerException e)
+                                {
+                                    System.out.println("No such armour");
+                                }
+                                try
+                                {
+                                    if (!(character.getPotion(sellItem).equals(null)) && (character.getPotion(sellItem).equals(sellItem)))
+                                    {
+                                        potion.setItem(sellItem);
+                                        character.setGold(character.getGold() + potion.getCost());
+                                        character.removePotions(sellItem);
+                                    }
+                                }
+                                catch (NullPointerException e)
+                                {
+                                    System.out.println("No such potion");
                                 }
                                 
                             }
@@ -357,8 +306,38 @@ public class Mainrun
                     }
 
                 break;
-
                 case 5:
+                    String enchantmentChoice;
+                    System.out.println("--------------------------------");
+                    System.out.println("Enchantments: ");
+                    Inventory enchantedWeapon = new CurrentWeapon();
+                    AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
+                    AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
+                    AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
+                    AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+                    System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                    System.out.println(fiveDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                    System.out.println(fireDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                    System.out.println(powerUp.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                    System.out.println("--------------------------------");
+                    Scanner enchantmentSelect = new Scanner(System.in);
+                    System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                    enchantmentChoice = enchantmentSelect.nextLine();
+
+                    if (enchantmentChoice.equals(twoDamage.getEnchantment()))
+                    {
+                        enchantedWeapon = new TwoDamage(new CurrentWeapon());
+                        //character.setWeapon(enchantedWeapon);
+                        //enchantedWeapon.setItem(character.getcurWeapon());
+                        //character.setWeapon(enchantedWeapon.getName());
+                        
+                    }
+
+
+
+                break;
+
+                case 6:
                 
                 int charHealth = character.getCurrHealth();
                 int enemyHealth;
@@ -625,37 +604,37 @@ public class Mainrun
                                     
                                 }
                                 if (enemyHealth <=0)
-                                                {
-                                                    System.out.println("----------------------------------");
-                                                    System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                                    System.out.println(character.getName() + " will receive " + goblin.goldAward());
-                                                    System.out.println("----------------------------------");
-                                                    character.setGold(character.getGold() + goblin.goldAward());
-                                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                                    character.setHealth(character.getCurrHealth() + charHealth);
-                                                    if (slimeProbability - 0.05 > 0.05)
-                                                    {
-                                                        slimeProbability = slimeProbability - 0.05;
-                                                    }
-                                                    if (goblinProbability - 0.05 > 0.05)
-                                                    {
-                                                        goblinProbability = goblinProbability - 0.05;
-                                                    }
-                                                    if (ogreProbability - 0.05 > 0.05)
-                                                    {
-                                                        ogreProbability = ogreProbability - 0.05;
-                                                    }
-                                                    if (dragonUse == 0)
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.15; 
-                                                    }
-                                                    else
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.05; 
-                                                    }
-                                                    done = 1;
-                                                    battleFinished = 1;
-                                                }
+                                {
+                                    System.out.println("----------------------------------");
+                                    System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                    System.out.println(character.getName() + " will receive " + goblin.goldAward());
+                                    System.out.println("----------------------------------");
+                                    character.setGold(character.getGold() + goblin.goldAward());
+                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                    character.setHealth(character.getCurrHealth() + charHealth);
+                                    if (slimeProbability - 0.05 > 0.05)
+                                    {
+                                        slimeProbability = slimeProbability - 0.05;
+                                    }
+                                    if (goblinProbability - 0.05 > 0.05)
+                                    {
+                                        goblinProbability = goblinProbability - 0.05;
+                                    }
+                                    if (ogreProbability - 0.05 > 0.05)
+                                    {
+                                        ogreProbability = ogreProbability - 0.05;
+                                    }
+                                    if (dragonUse == 0)
+                                    {
+                                        dragonProbability = dragonProbability + 0.15; 
+                                    }
+                                    else
+                                    {
+                                        dragonProbability = dragonProbability + 0.05; 
+                                    }
+                                    done = 1;
+                                    battleFinished = 1;
+                                }
                                 if (done ==0)
                                 {
                                     System.out.println("----------------------------------");
@@ -772,37 +751,37 @@ public class Mainrun
                                     
                                 }
                                 if (enemyHealth <=0)
-                                                {
-                                                    System.out.println("----------------------------------");
-                                                    System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                                    System.out.println(character.getName() + " will receive " + slime.goldAward());
-                                                    System.out.println("----------------------------------");
-                                                    character.setGold(character.getGold() + slime.goldAward());
-                                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                                    character.setHealth(character.getCurrHealth() + charHealth);
-                                                    if (slimeProbability - 0.05 > 0.05)
-                                                    {
-                                                        slimeProbability = slimeProbability - 0.05;
-                                                    }
-                                                    if (goblinProbability - 0.05 > 0.05)
-                                                    {
-                                                        goblinProbability = goblinProbability - 0.05;
-                                                    }
-                                                    if (ogreProbability - 0.05 > 0.05)
-                                                    {
-                                                        ogreProbability = ogreProbability - 0.05;
-                                                    }
-                                                    if (dragonUse == 0)
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.15; 
-                                                    }
-                                                    else
-                                                    {
-                                                        dragonProbability = dragonProbability + 0.05; 
-                                                    }
-                                                    done = 1;
-                                                    battleFinished = 1;
-                                                }
+                                {
+                                    System.out.println("----------------------------------");
+                                    System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                    System.out.println(character.getName() + " will receive " + slime.goldAward());
+                                    System.out.println("----------------------------------");
+                                    character.setGold(character.getGold() + slime.goldAward());
+                                    charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                    character.setHealth(character.getCurrHealth() + charHealth);
+                                    if (slimeProbability - 0.05 > 0.05)
+                                    {
+                                        slimeProbability = slimeProbability - 0.05;
+                                    }
+                                    if (goblinProbability - 0.05 > 0.05)
+                                    {
+                                        goblinProbability = goblinProbability - 0.05;
+                                    }
+                                    if (ogreProbability - 0.05 > 0.05)
+                                    {
+                                        ogreProbability = ogreProbability - 0.05;
+                                    }
+                                    if (dragonUse == 0)
+                                    {
+                                        dragonProbability = dragonProbability + 0.15; 
+                                    }
+                                    else
+                                    {
+                                        dragonProbability = dragonProbability + 0.05; 
+                                    }
+                                    done = 1;
+                                    battleFinished = 1;
+                                }
                                 if (done ==0)
                                 {
                                     System.out.println("----------------------------------");
@@ -974,7 +953,7 @@ public class Mainrun
                   }
                 break;
 
-                case 6:
+                case 7:
                    System.out.println("Goodbye!");
                    System.out.println("----------------------------------");
                     warfinished = 1;

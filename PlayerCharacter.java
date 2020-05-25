@@ -22,9 +22,11 @@ public class PlayerCharacter implements GameCharacter
     private List<Inventory> weapons;
     private List<Inventory> armoury;
     private List<Inventory> potions;
+    //private List<Inventory> enchantments;
     private Inventory weapon;
     private Inventory armour;
     private Inventory potion;
+    //private Inventory enchantment;
 
 
     public PlayerCharacter()
@@ -36,6 +38,7 @@ public class PlayerCharacter implements GameCharacter
         weapons = new ArrayList<>();
         armoury = new ArrayList<>();
         potions = new ArrayList<>();
+        //enchantments = new ArrayList<>();
         //weapon = new Weapons();
         //armour = new Armour();
         //potion = new Potions();
@@ -78,6 +81,7 @@ public class PlayerCharacter implements GameCharacter
         potions.add((Potions)potion);
     }
 
+    @Override
     public void setWeapon(String current) 
     {
         currentWeapon = current;

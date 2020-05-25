@@ -11,7 +11,7 @@ public class PowerUp extends AddEnchantments
     @Override
     public String getEnchantment()
     {
-        return "Multiply weapon damage by 1.1";
+        return "Power-Up";
     }
 
     @Override

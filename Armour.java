@@ -43,7 +43,7 @@ public class Armour extends Inventory
         {
             System.out.println("Invalid Armour name. Armour not available in game");
         }
-        
+        //return name;
     }
 
     @Override

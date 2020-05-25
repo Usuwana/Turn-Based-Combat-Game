@@ -48,6 +48,7 @@ public class CurrentWeapon extends Weapons
         {
             System.out.println("Invalid weapon name. Weapon not available in game");
         }
+        //return name;
     }
 
     @Override

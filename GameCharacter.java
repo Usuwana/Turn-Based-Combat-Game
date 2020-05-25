@@ -7,6 +7,7 @@ public interface GameCharacter
     public void addWeapon(String name);
     public void addArmour(String name);
     public void addPotion(String name);
+    //public void addEnchantment(String name);
     public void setWeapon(String name);
     public void setArmour(String name);
     public void setPotion(String name);
