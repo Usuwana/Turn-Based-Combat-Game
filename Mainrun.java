@@ -188,7 +188,7 @@ public class Mainrun
                                     if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
                                     {
                                         weapon.setItem(sellItem);
-                                        character.setGold(character.getGold() + weapon.getCost());
+                                        character.setGold(character.getGold() + (int)(weapon.getCost()*0.5));
                                         System.out.println(weapon.getName() + " has been sold");
                                         character.removeWeapon(sellItem);
                                     }
@@ -202,7 +202,7 @@ public class Mainrun
                                     if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
                                     {
                                         armour.setItem(sellItem);
-                                        character.setGold(character.getGold() + armour.getCost());
+                                        character.setGold(character.getGold() + (int)(armour.getCost()*0.5));
                                         character.removeArmour(sellItem);
                                     }
                                 }
@@ -215,7 +215,7 @@ public class Mainrun
                                     if (!(character.getPotion(sellItem).equals(null)) && (character.getPotion(sellItem).equals(sellItem)))
                                     {
                                         potion.setItem(sellItem);
-                                        character.setGold(character.getGold() + potion.getCost());
+                                        character.setGold(character.getGold() + (int)(potion.getCost()*0.5));
                                         character.removePotions(sellItem);
                                     }
                                 }
