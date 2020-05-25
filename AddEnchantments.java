@@ -9,6 +9,9 @@ public abstract class AddEnchantments extends Weapons
         next = newWeapon;
     }
 
+    public abstract String getEnchantment();
+    public abstract int enchantmentCost();
+
     @Override
     public void setItem(String name) 
     {
@@ -46,7 +49,7 @@ public abstract class AddEnchantments extends Weapons
     }
 
     @Override
-    public  int getOverallEffect()
+    public int getOverallEffect()
     {
         return next.getOverallEffect();
     }
