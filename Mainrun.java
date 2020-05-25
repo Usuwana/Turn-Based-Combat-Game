@@ -35,23 +35,23 @@ public class Mainrun
             int option3 = weapon.getCost();
             int minimum = 100;
 
-            if (option1<minimum)
+            if (option3<minimum)
             {
-                minimum = option1;
-                character.addWeapon("Short Sword");
-                character.setWeapon("Short Sword");
+                minimum = option3;
+                character.addWeapon("Magic Staff");
+                character.setWeapon("Magic Staff");
                 if (option2 < minimum)
                 {
                     minimum = option2;
-                    character.removeWeapon("Short Sword");
+                    character.removeWeapon("Magic Staff");
                     character.addWeapon("Great Axe");
                     character.setWeapon("Great Axe");
-                    if (option3 < minimum)
+                    if (option1 < minimum)
                     {
-                        minimum = option3;
+                        minimum = option1;
                         character.removeWeapon("Great Axe");
-                        character.addWeapon("Magic Staff");
-                        character.setWeapon("Magic Staff");
+                        character.addWeapon("Short Sword");
+                        character.setWeapon("Short Sword");
                     }
                 }
             }
@@ -65,23 +65,23 @@ public class Mainrun
             option3 = armour.getCost();
             minimum = 100;
 
-            if (option1<minimum)
+            if (option3<minimum)
             {
-                minimum = option1;
-                character.addArmour("Leather Armour");
-                character.setArmour("Leather Armour");
+                minimum = option3;
+                character.addArmour("Dragon Skin");
+                character.setArmour("Dragon Skin");
                 if (option2 < minimum)
                 {
                     minimum = option2;
-                    character.removeArmour("Leather Armour");
+                    character.removeArmour("Dragon Skin");
                     character.addArmour("Chain Mail");
                     character.setArmour("Chain Mail");
-                    if (option3 < minimum)
+                    if (option1 < minimum)
                     {
-                        minimum = option3;
+                        minimum = option1;
                         character.removeArmour("Chain Mail");
-                        character.addArmour("Dragon Skin");
-                        character.setArmour("Dragon Skin");
+                        character.addArmour("Leather Armour");
+                        character.setArmour("Leather Armour");
                     }
                 }
             }
