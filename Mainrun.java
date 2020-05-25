@@ -75,6 +75,16 @@ public class Mainrun
                             System.out.println("----------------------------------");
                             theShop.showShopContents();
                             System.out.println("----------------------------------");
+                            System.out.println("Enchantments: ");
+                            AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
+                            AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
+                            AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
+                            AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+                            System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                            System.out.println(fiveDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                            System.out.println(fireDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                            System.out.println(powerUp.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                            System.out.println("----------------------------------");
                             Scanner sc3 = new Scanner(System.in);
                             System.out.println("Pick an item you would like to buy\n");
                             System.out.println("Type 10 to go back to main menu\n");
