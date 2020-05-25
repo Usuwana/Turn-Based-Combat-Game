@@ -20,10 +20,71 @@ public class Mainrun
         GameCharacter character = new PlayerCharacter();
         Shop theShop = new Shop();
         Inventory weapon;
+        Inventory armour;
+        Inventory potion;
 
 
         while(warfinished==0)
         {   
+            weapon = new CurrentWeapon();
+            weapon.setItem("Short Sword");
+            int option1 = weapon.getCost();
+            weapon.setItem("Great Axe");
+            int option2 = weapon.getCost();
+            weapon.setItem("Magic Staff");
+            int option3 = weapon.getCost();
+            int minimum = 100;
+
+            if (option1<minimum)
+            {
+                minimum = option1;
+                character.addWeapon("Short Sword");
+                character.setWeapon("Short Sword");
+                if (option2 < minimum)
+                {
+                    minimum = option2;
+                    character.removeWeapon("Short Sword");
+                    character.addWeapon("Great Axe");
+                    character.setWeapon("Great Axe");
+                    if (option3 < minimum)
+                    {
+                        minimum = option3;
+                        character.removeWeapon("Great Axe");
+                        character.addWeapon("Magic Staff");
+                        character.setWeapon("Magic Staff");
+                    }
+                }
+            }
+
+            armour = new Armour();
+            armour.setItem("Leather Armour");
+            option1 = armour.getCost();
+            armour.setItem("Chain Mail");
+            option2 = armour.getCost();
+            armour.setItem("Dragon Skin");
+            option3 = armour.getCost();
+            minimum = 100;
+
+            if (option1<minimum)
+            {
+                minimum = option1;
+                character.addArmour("Leather Armour");
+                character.setArmour("Leather Armour");
+                if (option2 < minimum)
+                {
+                    minimum = option2;
+                    character.removeArmour("Leather Armour");
+                    character.addArmour("Chain Mail");
+                    character.setArmour("Chain Mail");
+                    if (option3 < minimum)
+                    {
+                        minimum = option3;
+                        character.removeArmour("Chain Mail");
+                        character.addArmour("Dragon Skin");
+                        character.setArmour("Dragon Skin");
+                    }
+                }
+            }
             
             System.out.println("----------------------------------");
             System.out.println("\nCharacter name: " + character.getName());
@@ -171,8 +232,8 @@ public class Mainrun
                         case 2:
                             String sellItem;
                             weapon = new CurrentWeapon();
-                            Inventory armour = new Armour();
-                            Inventory potion = new Potions();
+                            armour = new Armour();
+                            potion = new Potions();
                             character.getCurrentArmoury();
                             character.getCurrentPotions();
                             character.getCurrentWeapons();
@@ -393,7 +454,7 @@ public class Mainrun
                                     case 2:
                                     //try
                                             String potionItem;
-                                            Inventory potion = new Potions();
+                                            potion = new Potions();
                                             character.getCurrentPotions();
                                             Scanner potionSelect = new Scanner(System.in);
                                             System.out.println("Type potion name from list");
@@ -602,7 +663,7 @@ public class Mainrun
                                     System.out.println("----------------------------------");
                                     System.out.println(ogre.getName() + " attack turn");
                                     attack = ogre.getDamage();
-                                    Inventory armour = new Armour();
+                                    armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
                                     int special = ogre.getSpecialAbilities();
@@ -677,7 +738,7 @@ public class Mainrun
                                     break;
                                     case 2:
                                         String potionItem;
-                                        Inventory potion = new Potions();
+                                        potion = new Potions();
                                         character.getCurrentPotions();
                                         Scanner potionSelect = new Scanner(System.in);
                                         System.out.println("Type potion name from list");
@@ -887,7 +948,7 @@ public class Mainrun
                                     System.out.println("----------------------------------");
                                     System.out.println(goblin.getName() + " attack turn");
                                     attack = goblin.getDamage();
-                                    Inventory armour = new Armour();
+                                    armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
                                 
@@ -962,7 +1023,7 @@ public class Mainrun
                                     break;
                                     case 2:
                                         String potionItem;
-                                        Inventory potion = new Potions();
+                                        potion = new Potions();
                                         character.getCurrentPotions();
                                         Scanner potionSelect = new Scanner(System.in);
                                         System.out.println("Type potion name from list");
@@ -1173,7 +1234,7 @@ public class Mainrun
                                     System.out.println("----------------------------------");
                                     System.out.println(slime.getName() + " attack turn");
                                     attack = slime.getDamage();
-                                    Inventory armour = new Armour();
+                                    armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
                                     if (slime.getSpecialAbilities() == 0)
@@ -1243,7 +1304,7 @@ public class Mainrun
                                     break;
                                     case 2:
                                         String potionItem;
-                                        Inventory potion = new Potions();
+                                        potion = new Potions();
                                         character.getCurrentPotions();
                                         Scanner potionSelect = new Scanner(System.in);
                                         System.out.println("Type potion name from list");
@@ -1432,7 +1493,7 @@ public class Mainrun
                                     System.out.println("----------------------------------");
                                     System.out.println(dragon.getName() + " attack turn");
                                     attack = dragon.getDamage();
-                                    Inventory armour = new Armour();
+                                    armour = new Armour();
                                     armour.setItem(character.getcurArmour());
                                     defence = armour.getOverallEffect();
                                     int special = dragon.getSpecialAbilities();
