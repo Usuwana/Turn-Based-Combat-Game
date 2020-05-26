@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Carries information about the fire damage enchantment and what it adds to a weapon
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Carries information about the fire damage enchantment and what it adds to a weapon
-*
 ********************************************************************************************************************************************************/
 
 

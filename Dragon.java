@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Used to set, modify and carry the characteristics of a dragon enemy
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Used to set, modify and carry the characteristics of a dragon enemy
-*
 ********************************************************************************************************************************************************/
 
 

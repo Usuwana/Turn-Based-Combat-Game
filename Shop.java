@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Open the file conatining the shop contents
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Open the file conatining the shop contents
-*
 ********************************************************************************************************************************************************/
 
 

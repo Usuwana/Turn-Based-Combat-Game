@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Carries information about the Power-Up enchantment and what it adds to a weapon. Meant to multiply the damage of a weapon by 1.1
+* Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
-* Responsibility: Carries information about the Power-Up enchantment and what it adds to a weapon. Meant to multiply the damage of a weapon by 1.1
-*
 ********************************************************************************************************************************************************/
 
 

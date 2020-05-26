@@ -1,9 +1,9 @@
 /****************************************************************************
- * Author: Tatenda Usuwana Mapuranga
+ *  Author: Tatenda Usuwana Mapuranga
  *  Purpose: Used to set characteristics of a player, modify their characteristics during the game and carry character's attributes and inventory
  *  Project: Turn Based Combat Game
  *  Date Last modified: 26/05/2020
-******************************************************************************/
+ ******************************************************************************/
 
 import java.util.*;
 
@@ -15,33 +15,19 @@ public class PlayerCharacter implements GameCharacter
     private String currentWeapon;
     private String currentArmour;
     private String currentPotion;
-    //private List<Inventory> items;
-    //private List<Weapons> weapons;
-    //private List<Armour> armoury;
-    //private List<Potions> potions;
     private List<Inventory> weapons;
     private List<Inventory> armoury;
     private List<Inventory> potions;
-    //private List<Inventory> enchantments;
     private Inventory weapon;
     private Inventory armour;
     private Inventory potion;
-    //private Inventory enchantment;
 
 
     public PlayerCharacter()
     {
-        //items = new ArrayList<>();
-        /*weapons = new ArrayList<Weapons>();
-        armoury = new ArrayList<Armour>();
-        potions = new ArrayList<Potions>();*/
         weapons = new ArrayList<>();
         armoury = new ArrayList<>();
         potions = new ArrayList<>();
-        //enchantments = new ArrayList<>();
-        //weapon = new Weapons();
-        //armour = new Armour();
-        //potion = new Potions();
     }
 
     @Override
@@ -127,18 +113,13 @@ public class PlayerCharacter implements GameCharacter
     public String getArmour(String name) 
     {
         String item = null;
-        //int cost = 0;
         for (int i=0; i<armoury.size();i++)
         {
             try
             {
                 if (name.equals(armoury.get(i).getName()))
                 {
-                //System.out.println(armoury.get(i).getName() +  "with cost " + armoury.get(i).getCost());
-                //System.out.println("The potions minimum effect is " + armoury.get(i).getMinEffect());
-                //System.out.println("The potions maximum effect is " + armoury.get(i).getMaxEffect());
-                item = armoury.get(i).getName();
-                //cost = armoury.get(i).getCost();
+                    item = armoury.get(i).getName();
                 } 
             }
             catch (NullPointerException e)
@@ -165,12 +146,7 @@ public class PlayerCharacter implements GameCharacter
             {
                 if (name.equals(weapons.get(i).getName()))
                 {
-                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
-                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
-                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
                     item = weapons.get(i).getName();
-                    //cost = weapons.get(i).getCost();
-                    //System.out.println(weapons.size());
                 }
             }
             catch (NullPointerException e)
@@ -198,11 +174,7 @@ public class PlayerCharacter implements GameCharacter
             {
                 if (name.equals(potions.get(i).getName()))
                 {
-                    //System.out.println(potions.get(i).getName() + "with cost " + potions.get(i).getCost());
-                    //System.out.println("The potions minimum effect is " + potions.get(i).getMinEffect());
-                    //System.out.println("The potions maximum effect is " + potions.get(i).getMaxEffect());
                     item = potions.get(i).getName();
-                    //cost = potions.get(i).getCost();
                 }
             }
             catch (NullPointerException e)
@@ -230,9 +202,7 @@ public class PlayerCharacter implements GameCharacter
     {
         for (int i = 0; i < weapons.size(); i++)
         {
-            //System.out.println("Weapons currently in character's inventory: \n");
             System.out.println(weapons.get(i).getName() + " costing " + weapons.get(i).getCost() + " with minimum damage of " + weapons.get(i).getMinEffect() + " and maximum damage of " + weapons.get(i).getMaxEffect() + ". ");
-            
         }
     }
 
@@ -241,9 +211,7 @@ public class PlayerCharacter implements GameCharacter
     {
         for (int i = 0; i < armoury.size(); i++)
         {
-            //System.out.println("Armour currently in character's inventory: \n");
-            System.out.println(armoury.get(i).getName() + " costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");
-            
+            System.out.println(armoury.get(i).getName() + " costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");            
         }
     }
 
@@ -252,9 +220,7 @@ public class PlayerCharacter implements GameCharacter
     {
         for (int i = 0; i < potions.size(); i++)
         {
-            ///System.out.println("Potions currently in character's inventory: \n");
-            System.out.println(potions.get(i).getName() + " costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");
-            
+            System.out.println(potions.get(i).getName() + " costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");           
         }
     }
 
@@ -279,21 +245,13 @@ public class PlayerCharacter implements GameCharacter
     @Override
     public void removeWeapon(String name)
     {
-        //String item = null;
-        //int cost;
         for (int i=0; i<weapons.size();i++)
         {
             try
             {
                 if (name.equals(weapons.get(i).getName()))
                 {
-                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
-                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
-                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
-                    //item = weapons.get(i).getName();
                     weapons.remove(i);
-                    //cost = weapons.get(i).getCost();
-                    //System.out.println(weapons.size());
                 }
             }
             catch (NullPointerException e)
@@ -317,13 +275,7 @@ public class PlayerCharacter implements GameCharacter
             {
                 if (name.equals(armoury.get(i).getName()))
                 {
-                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
-                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
-                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
-                    //item = weapons.get(i).getName();
                     armoury.remove(i);
-                    //cost = weapons.get(i).getCost();
-                    //System.out.println(weapons.size());
                 }
             }
             catch (NullPointerException e)
@@ -346,13 +298,7 @@ public class PlayerCharacter implements GameCharacter
             {
                 if (name.equals(potions.get(i).getName()))
                 {
-                    //System.out.println(weapons.get(i).getName() + " with cost " + weapons.get(i).getCost());
-                    //System.out.println("The weapons minimum effect is " + weapons.get(i).getMinEffect());
-                    //System.out.println("The weapons maximum effect is " + weapons.get(i).getMaxEffect());
-                    //item = weapons.get(i).getName();
                     potions.remove(i);
-                    //cost = weapons.get(i).getCost();
-                    //System.out.println(weapons.size());
                 }
             }
             catch (NullPointerException e)

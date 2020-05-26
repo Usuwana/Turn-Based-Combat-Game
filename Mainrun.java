@@ -1,3 +1,11 @@
+/****************************************************************************
+ *  Author: Tatenda Usuwana Mapuranga
+ *  Purpose: Brings together all the classes to run the game
+ *  Project: Turn Based Combat Game
+ *  Date Last modified: 26/05/2020
+ ******************************************************************************/
+
+
 import java.util.*;
 //import java.math.*;
 

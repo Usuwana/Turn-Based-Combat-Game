@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Meant to set, modify and contain information about the enemy Ogre
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Meant to set, modify and contain information about the enemy Ogre
-*
 ********************************************************************************************************************************************************/
 
 

@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Used to define characteristics of a weapon item. Acts as a super class for a normal weapon and it's modifications
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Used to define characteristics of a weapon item. Acts as a super class for a normal weapon and it's modifications
-*
 ********************************************************************************************************************************************************/
 
 

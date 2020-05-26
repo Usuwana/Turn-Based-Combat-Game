@@ -1,8 +1,8 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
+* Purpose: Carries information about the damage + 5 enchantment and what it adds to a weapon. Meant to add 5 to the damage of a weapon
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
-* Responsibility: Carries information about the damage + 5 enchantment and what it adds to a weapon. Meant to add 5 to the damage of a weapon
-*
 ********************************************************************************************************************************************************/
 
 
