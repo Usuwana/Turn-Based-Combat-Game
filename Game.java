@@ -9,7 +9,7 @@
 //import model.*;
 import java.util.*;
 
-public class Mainrun 
+public class Game 
 {
     public static void main(String[] args)
     {
