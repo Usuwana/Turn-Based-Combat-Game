@@ -1,5 +1,13 @@
-import java.util.*;
-import java.math.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Meant to set, modify and contain information about the enemy Ogre
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
+//import java.math.*;
 
 public class Ogre implements Enemies 
 {

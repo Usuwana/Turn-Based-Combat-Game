@@ -1,3 +1,9 @@
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to modify characteristics of a weapon item
+*
+********************************************************************************************************************************************************/
 
 
 public abstract class AddEnchantments extends Weapons

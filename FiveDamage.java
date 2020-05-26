@@ -1,12 +1,12 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
 * Date Last Modified: 26/05/2020
-* Responsibility: Carries information about the five damage enchantment and what it adds to a weapon. Meant to add 5 to the damage of a weapon
+* Responsibility: Carries information about the damage + 5 enchantment and what it adds to a weapon. Meant to add 5 to the damage of a weapon
 *
 ********************************************************************************************************************************************************/
 
 
-import java.util.*;
+//import java.util.*;
 
 public class FiveDamage extends AddEnchantments
 {

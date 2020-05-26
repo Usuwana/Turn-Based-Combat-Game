@@ -1,4 +1,12 @@
-import java.util.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Meant to set, modify and contain information about the enemy Slime
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
 
 public class Slime implements Enemies 
 {

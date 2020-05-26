@@ -1,5 +1,13 @@
-import java.util.*;
-import java.io.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to define characteristics of a weapon item. Acts as a super class for a normal weapon and it's modifications
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
+//import java.io.*;
 
 public abstract class Weapons extends Inventory 
 {

@@ -1,4 +1,12 @@
-import java.util.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Carries information about the damage + 2 enchantment and what it adds to a weapon. Meant to add 2 to the damage of a weapon
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
 
 public class TwoDamage extends AddEnchantments
 {

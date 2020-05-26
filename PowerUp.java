@@ -1,4 +1,12 @@
-import java.util.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Carries information about the Power-Up enchantment and what it adds to a weapon. Meant to multiply the damage of a weapon by 1.1
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
 
 public class PowerUp extends AddEnchantments
 {

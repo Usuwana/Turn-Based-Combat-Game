@@ -1,4 +1,12 @@
-import java.util.*;
+/***************************************************************************************************************************************************
+* Author: Tatenda Usuwana Mapuranga
+* Date Last Modified: 26/05/2020
+* Responsibility: Used to set, modify and carry characteristics of a potion item
+*
+********************************************************************************************************************************************************/
+
+
+//import java.util.*;
 
 public class Potions extends Inventory 
 {
