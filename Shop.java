@@ -4,7 +4,7 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package View;
+//package View;
 import java.util.*;
 import java.io.*;
 

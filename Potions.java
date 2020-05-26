@@ -4,7 +4,7 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package Model;
+//package Model;
 //Inherits from super class Inventory
 public class Potions extends Inventory 
 {

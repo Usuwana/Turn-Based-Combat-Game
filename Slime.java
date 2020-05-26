@@ -1,27 +1,26 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
-* Purpose: Used to set, modify and carry the characteristics of a dragon enemy
-* Project: Turn Based Combat Game
+* Purpose: Meant to set, modify and contain information about the enemy Slime
+* Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-
-package Model;
+//package Model;
 //Implements Enemies interface
-public class Dragon implements Enemies 
+public class Slime implements Enemies 
 {
-    private final String name = "Dragon";
-    private int health = 100;
-    private int minimum = 15;
-    private int maximum = 30;
+    private final String name = "Slime";
+    private int health = 10;
+    private int minimum = 3;
+    private int maximum = 5;
 
-    //Retrieves the name of the Dragon
+    //Retrieve name of Slime enemy
     @Override
     public String getName() 
     {
         return name;
     }
 
-    //Sets the health of the dragon to any value not surpassing the maximum health
+    //Set health of Slime to any value that does not surpass the maximum health
     @Override
     public void setHealth(int health)
     {
@@ -35,35 +34,35 @@ public class Dragon implements Enemies
         }
     }
 
-    //Retrieves the maximum health of the dragon
+    //Retrieves the maximum health of Slime
     @Override
     public int getMaxHealth() 
     {
-        return 100;
+        return 10;
     }
 
-    //Retrieves the current health of the dragon
+    //Retrieves curretn health of Slime
     @Override
     public int getCurrHealth() 
     {
         return health;
     }
 
-    //Retrieves the minimum damage the dragon can cause
+    //Retrieves the minimum damage that Slime can cause
     @Override
     public int getMinDamage()
     {
         return minimum;
     }
 
-    //Retrieves the maximum damage the dragon can cause
+    //Retrieves the maximum damage that Slime can cause
     @Override
     public int getMaxDamage()
     {
         return maximum;
     }
 
-    //Retrieves random number between minimum and maximum damage 
+    //Returns a damage value between the minimum and maximum damages
     @Override
     public int getDamage() 
     {
@@ -73,43 +72,34 @@ public class Dragon implements Enemies
         return damage;
     }
 
-    //Retrieves a random number between the minimum and maximum initialized numbers to use as defence
+    //Retrieve random defence of Slime based on the initialized minimum and maximum values
     @Override
     public int getDefence() 
     {
-        int minimum = 15;
-        int maximum = 20;
+        int minimum = 0;
+        int maximum = 2;
         int difference = maximum - minimum;
         int damage = (int) (Math.random() * (difference + 1) + minimum);
         return damage;
     }
 
-    //Retrieve gold to be awarded to player if they defeat the dragon
+    //Retrieve the gold to be awarded to a player after they defeat Slime
     @Override
     public int goldAward() 
     {
-        return 100;
-    }
-
-    //Return type of invoked special abilities of dragon based on a generated random number
-    @Override
-    public int getSpecialAbilities()
-    {
-        int effect = 0;
-        double probability = Math.random();
-        if (probability < 0.35)
-        {
-            if (probability < 0.25)
-            {
-                effect = 1; //multiply damage by 2
-            }
-            else if(probability < 0.1)
-            {
-                effect = 2; //heal dragon by 10
-            }
-        }
-        return effect;
-
+        return 10;
     }
     
+    ////Retrieves special abilities to be added to the goblin based on a 20% probability
+    @Override
+    public int getSpecialAbilities() 
+    {
+        int damage = getDamage();
+        double probability = Math.random();
+        if (probability < 0.2)
+        {
+            damage = 0;
+        }
+        return damage;
+    }
 }

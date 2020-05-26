@@ -5,7 +5,7 @@
 * Date Last Modified: 26/05/2020
 * 
 ********************************************************************************************************************************************************/
-package Model;
+//package Model;
 
 //Inherits from super class Inventory
 public class Armour extends Inventory 

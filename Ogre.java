@@ -1,26 +1,26 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
-* Purpose: Meant to set, modify and contain information about the enemy Slime
-* Project: Turn Based Combat Game 
+* Purpose: Meant to set, modify and contain information about the enemy Ogre
+* Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package Model;
-//Implements Enemies interface
-public class Slime implements Enemies 
+//package Model;
+//Implements enemies interface
+public class Ogre implements Enemies 
 {
-    private final String name = "Slime";
-    private int health = 10;
-    private int minimum = 3;
-    private int maximum = 5;
+    private String name = "Ogre";
+    private int health = 40;
+    private int minimum = 5;
+    private int maximum = 10;
 
-    //Retrieve name of Slime enemy
+    //Retrieve name of Ogre
     @Override
     public String getName() 
     {
         return name;
     }
 
-    //Set health of Slime to any value that does not surpass the maximum health
+    //Set the health of Ogre to any number that does not surpass the maximum allowed
     @Override
     public void setHealth(int health)
     {
@@ -34,35 +34,35 @@ public class Slime implements Enemies
         }
     }
 
-    //Retrieves the maximum health of Slime
+    //Retrieves the maximum health number allowed
     @Override
     public int getMaxHealth() 
     {
-        return 10;
+        return 40;
     }
 
-    //Retrieves curretn health of Slime
+    //Retrieves the current health of the ogre
     @Override
     public int getCurrHealth() 
     {
         return health;
     }
 
-    //Retrieves the minimum damage that Slime can cause
+    //Retrieves the minimum damage the ogre can cause
     @Override
     public int getMinDamage()
     {
         return minimum;
     }
 
-    //Retrieves the maximum damage that Slime can cause
+    //Retrieves the maximum damage the ogre can cause
     @Override
     public int getMaxDamage()
     {
         return maximum;
     }
 
-    //Returns a damage value between the minimum and maximum damages
+    //Retrieves the overall damage the ogre can cause. The value is a number between the minimum and maximum damages
     @Override
     public int getDamage() 
     {
@@ -72,34 +72,36 @@ public class Slime implements Enemies
         return damage;
     }
 
-    //Retrieve random defence of Slime based on the initialized minimum and maximum values
+    //Retrieves the defence the ogre can give. The value is a number between the initialized minimum and maximum values
     @Override
     public int getDefence() 
     {
-        int minimum = 0;
-        int maximum = 2;
+        int minimum = 6;
+        int maximum = 12;
         int difference = maximum - minimum;
         int damage = (int) (Math.random() * (difference + 1) + minimum);
         return damage;
     }
 
-    //Retrieve the gold to be awarded to a player after they defeat Slime
+    //Retrieves gold to be given to player after defeating ogre
     @Override
     public int goldAward() 
     {
-        return 10;
+        return 40;
     }
-    
-    ////Retrieves special abilities to be added to the goblin based on a 20% probability
+
+    //Retrieves special abilities to be added to the ogre based on a 20% probability
     @Override
-    public int getSpecialAbilities() 
+    public int getSpecialAbilities()
     {
-        int damage = getDamage();
+        int damage = 0;
         double probability = Math.random();
         if (probability < 0.2)
         {
-            damage = 0;
+            damage = getDamage() + getDamage();
         }
+
         return damage;
     }
+    
 }

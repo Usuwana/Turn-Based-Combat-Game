@@ -1,45 +1,45 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
-* Purpose: Carries information about the damage + 5 enchantment and what it adds to a weapon. Meant to add 5 to the damage of a weapon
-* Project: Turn Based Combat Game
+* Purpose: Carries information about the Power-Up enchantment and what it adds to a weapon. Meant to multiply the damage of a weapon by 1.1
+* Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package Model;
+//package Model;
 //Inherits from super class AddEnchantments
-public class FiveDamage extends AddEnchantments
+public class PowerUp extends AddEnchantments
 {
 
-    public FiveDamage(Weapons newWeapon) 
+    public PowerUp(Weapons newWeapon) 
     {
         super(newWeapon);
     }
 
-    //Retrieve name of enchantment
+    //Retrieve name of Power-Up enchantment
     @Override
     public String getEnchantment()
     {
-        return "Damage+5";
+        return "Power-Up";
     }
 
-    //Retrieve cost of enchantment
+    //Retrieve cost of Power-Up enchantment
     @Override
     public int enchantmentCost()
     {
         return 10;
     }
 
-    //Retrieve updated cost of weapon when enchantment is added
+    //Retrieve updated cost of weapon after adding Power-Up enchantment
     @Override
     public int getCost() 
     {
         return next.getCost() + enchantmentCost();
     }
 
-    //Retrieve updated effect of weapon when enchantment is added
+    //Retrieve updated effect of weapon after adding Power-Up enchantment
     @Override
     public  int getOverallEffect()
     {
-        return next.getOverallEffect() + 5;
+        return (int)(next.getOverallEffect()*1.1);
     }
     
 }

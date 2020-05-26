@@ -5,10 +5,9 @@
  *  Date Last modified: 26/05/2020
  ******************************************************************************/
 
-package View;
-import Model.*;
+//package View;
+//import model.*;
 import java.util.*;
-//import java.math.*;
 
 public class Mainrun 
 {

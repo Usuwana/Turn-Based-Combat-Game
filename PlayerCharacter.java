@@ -4,7 +4,7 @@
  *  Project: Turn Based Combat Game
  *  Date Last modified: 26/05/2020
  ******************************************************************************/
-package Model;
+//package Model;
 import java.util.*;
 
 public class PlayerCharacter

@@ -4,7 +4,7 @@
 * Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package Model;
+//package Model;
 public abstract class Inventory 
 {
     public abstract void setItem(String name); //Set the name and attributes of a particular type of inventory

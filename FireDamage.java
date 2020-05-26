@@ -1,46 +1,47 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
-* Purpose: Carries information about the damage + 2 enchantment and what it adds to a weapon. Meant to add 2 to the damage of a weapon
+* Purpose: Carries information about the fire damage enchantment and what it adds to a weapon
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-package Model;
+//package Model;
 //Inherits from super class AddEnchantments
-public class TwoDamage extends AddEnchantments
+public class FireDamage extends AddEnchantments
 {
 
-    public TwoDamage(Weapons newWeapon) 
+    public FireDamage(Weapons newWeapon) 
     {
         super(newWeapon);
-        
+
     }
 
-    //Retrieve name of enchantment
+    //Retrieve name of enchantment Fire Damage
     @Override
     public String getEnchantment()
     {
-        return "Damage+2";
+        return "Fire Damage";
     }
 
-    //Retrieve cost of enchantment
+    //Retrieve cost of Fire Damage
     @Override
     public int enchantmentCost()
     {
-        return 5;
+        return 20;
     }
 
-    //Retrieve updated cost of weapon when enchantment is added
+    //Retrieve updated cost of weapon when fire damage is added to it
     @Override
     public int getCost() 
     {
         return next.getCost() + enchantmentCost();
     }
 
-    //Retrieve updated effect of weapon when enchantment is added
+    //Retrieve updated effect of weapon when fire damage is added to it
     @Override
     public  int getOverallEffect()
     {
-        return next.getOverallEffect()+2;
+        int addition =(int) ((Math.random() *(10-5)) + 5);
+        return next.getOverallEffect()+ addition;
     }
     
 }
