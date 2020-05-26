@@ -4,11 +4,8 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-
-
-//import java.util.*;
-//import java.math.*;
-
+package Model;
+//Inherits from super class AddEnchantments
 public class FireDamage extends AddEnchantments
 {
 
@@ -18,24 +15,28 @@ public class FireDamage extends AddEnchantments
 
     }
 
+    //Retrieve name of enchantment Fire Damage
     @Override
     public String getEnchantment()
     {
         return "Fire Damage";
     }
 
+    //Retrieve cost of Fire Damage
     @Override
     public int enchantmentCost()
     {
         return 20;
     }
 
+    //Retrieve updated cost of weapon when fire damage is added to it
     @Override
     public int getCost() 
     {
         return next.getCost() + enchantmentCost();
     }
 
+    //Retrieve updated effect of weapon when fire damage is added to it
     @Override
     public  int getOverallEffect()
     {

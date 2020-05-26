@@ -5,9 +5,8 @@
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
 
-
-//import java.util.*;
-
+package Model;
+//Inherits from super class Weapons
 public class CurrentWeapon extends Weapons
 {
     private final char symbol = 'W';
@@ -18,6 +17,7 @@ public class CurrentWeapon extends Weapons
     private String damageType;
     private String weaponType;
 
+    //Set the values of an weapon's attributes based on it's name depending on whether the name is valid or not 
     @Override
     public void setItem(String name) 
     {
@@ -56,39 +56,44 @@ public class CurrentWeapon extends Weapons
         {
             System.out.println("Invalid weapon name. Weapon not available in game");
         }
-        //return name;
     }
 
+    //Retrieves the symbol of a weapon item
     @Override
     public char getSymbol() 
     {
         return symbol;
     }
     
+    //Retrives the set name of a weapon item
     @Override
     public String getName()
     {
         return name;
     }
 
+    //Retrieves the set cost of a weapon item
     @Override
     public int getCost() 
     {
         return cost;
     }
 
+    //Retrieves the set minimum effect of a weapon item
     @Override
     public int getMinEffect() 
     {
         return minDamage;
     }
 
+    //Retrieves the set maximum effect of a weapon item
     @Override
     public int getMaxEffect() 
     {
         return maxDamage;
     }
 
+    //Retrieves the overall effect of a weapon which will be a random number between the minimum and maximum effects
     @Override
     public  int getOverallEffect()
     {

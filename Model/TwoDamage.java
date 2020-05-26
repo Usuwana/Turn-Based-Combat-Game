@@ -4,10 +4,8 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-
-
-//import java.util.*;
-
+package Model;
+//Inherits from super class AddEnchantments
 public class TwoDamage extends AddEnchantments
 {
 
@@ -17,24 +15,28 @@ public class TwoDamage extends AddEnchantments
         
     }
 
+    //Retrieve name of enchantment
     @Override
     public String getEnchantment()
     {
         return "Damage+2";
     }
 
+    //Retrieve cost of enchantment
     @Override
     public int enchantmentCost()
     {
         return 5;
     }
 
+    //Retrieve updated cost of weapon when enchantment is added
     @Override
     public int getCost() 
     {
         return next.getCost() + enchantmentCost();
     }
 
+    //Retrieve updated effect of weapon when enchantment is added
     @Override
     public  int getOverallEffect()
     {

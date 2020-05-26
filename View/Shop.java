@@ -4,14 +4,14 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-
-
+package View;
 import java.util.*;
 import java.io.*;
 
 public class Shop 
 {
 
+    //Opens file, reads and prints shop items in it, then closes
     public void showShopContents()
     {
         FileInputStream fileStrm = null;
