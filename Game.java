@@ -436,242 +436,586 @@ public class Game
                     double maximumProbability = 0;
                     try
                     {
+                        //Start battle only if haracter has been given a name
                         if (!(character.getName().equals(null)))
                         {
-                        //Calculates the maximum possible probability
-                        if ((slimeProbability > ogreProbability) && (slimeProbability > dragonProbability) && (slimeProbability > goblinProbability))
-                        {
-                            maximumProbability = slimeProbability;
-                        }
-                        else if ((ogreProbability > slimeProbability) && (ogreProbability > dragonProbability) && (ogreProbability > goblinProbability))
-                        {
-                            maximumProbability = ogreProbability;
-                        }
-                        else if ((dragonProbability > ogreProbability) && (dragonProbability > slimeProbability) && (dragonProbability > goblinProbability))
-                        {
-                            maximumProbability = dragonProbability;
-                        }
-                        else if ((goblinProbability > ogreProbability) && (goblinProbability > dragonProbability) && (goblinProbability > slimeProbability))
-                        {
-                            maximumProbability = goblinProbability;
-                        }
-                        enemyChoice = Math.random() *(maximumProbability);
-                    
-                        int attackChoice = 0;//To choose method of attack
-                        System.out.println("Slime P: " + slimeProbability);
-                        System.out.println("Goblin P: " + goblinProbability);
-                        System.out.println("Ogre P: " + ogreProbability);
-                        System.out.println("Dragon P: " + dragonProbability);
-                        System.out.println("Enemy Choice: " + enemyChoice);
-                        System.out.println("Max probability: " + maximumProbability);
-                        while(battleFinished ==0)
-                        {
-                                
-                                System.out.print("Character name: " + character.getName()); 
-                    
-                                //Enemy is Ogre if the enemyChoice is less than the Ogre probability
-                                if(enemyChoice < ogreProbability)
-                                {
-                                    Enemies ogre = new Ogre();
-                                    int done = 0;
-                                    int attack;
-                                    int defence;
+                            //Calculates the maximum possible probability
+                            if ((slimeProbability > ogreProbability) && (slimeProbability > dragonProbability) && (slimeProbability > goblinProbability))
+                            {
+                                maximumProbability = slimeProbability;
+                            }
+                            else if ((ogreProbability > slimeProbability) && (ogreProbability > dragonProbability) && (ogreProbability > goblinProbability))
+                            {
+                                maximumProbability = ogreProbability;
+                            }
+                            else if ((dragonProbability > ogreProbability) && (dragonProbability > slimeProbability) && (dragonProbability > goblinProbability))
+                            {
+                                maximumProbability = dragonProbability;
+                            }
+                            else if ((goblinProbability > ogreProbability) && (goblinProbability > dragonProbability) && (goblinProbability > slimeProbability))
+                            {
+                                maximumProbability = goblinProbability;
+                            }
+                            enemyChoice = Math.random() *(maximumProbability);
+                        
+                            int attackChoice = 0;//To choose method of attack
+                            System.out.println("Slime P: " + slimeProbability);
+                            System.out.println("Goblin P: " + goblinProbability);
+                            System.out.println("Ogre P: " + ogreProbability);
+                            System.out.println("Dragon P: " + dragonProbability);
+                            System.out.println("Enemy Choice: " + enemyChoice);
+                            System.out.println("Max probability: " + maximumProbability);
+                            while(battleFinished ==0)
+                            {
                                     
-                                    enemyHealth = ogre.getCurrHealth();
-                                    System.out.println("\nYour enemy for the battle will be: " + ogre.getName());
-                                    
-                                    while (done ==0)
-                                        {
-                                        System.out.println("Choose method of attack");
-                                        Scanner sc7 = new Scanner(System.in);
-                                        //Attacking options
-                                        System.out.println("1. Attack with weapon");
-                                        System.out.println("2.Use potion");
-                                        System.out.println("3. Attack using weapon with enchantments");
-                                        attackChoice = sc7.nextInt();
-                                    
-                                        switch(attackChoice)
-                                        {
-                                            //Attack with weapon
-                                            case 1:
+                                    System.out.print("Character name: " + character.getName()); 
+                        
+                                    //Enemy is Ogre if the enemyChoice is less than the Ogre probability
+                                    if(enemyChoice < ogreProbability)
+                                    {
+                                        Enemies ogre = new Ogre();
+                                        int done = 0;
+                                        int attack;
+                                        int defence;
+                                        
+                                        enemyHealth = ogre.getCurrHealth();
+                                        System.out.println("\nYour enemy for the battle will be: " + ogre.getName());
+                                        System.out.println("----------------------------------");
+                                        while (done ==0)
+                                            {
+                                            System.out.println("Choose numerical method of attack");
+                                            System.out.println("----------------------------------");
+                                            Scanner sc7 = new Scanner(System.in);
+                                            //Attacking options
+                                            System.out.println("1. Attack with weapon");
+                                            System.out.println("2.Use potion");
+                                            System.out.println("3. Attack using weapon with enchantments");
+                                            System.out.println("----------------------------------");
+                                            attackChoice = sc7.nextInt();
+                                        
+                                            switch(attackChoice)
+                                            {
+                                                //Attack with weapon
+                                                case 1:
+                                                        if (done == 0)
+                                                        {
+                                                            weapon = new CurrentWeapon();
+                                                            weapon.setItem(character.getcurWeapon());
+                                                            attack = weapon.getOverallEffect();
+                                                            defence = ogre.getDefence();
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                            System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                            System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                            System.out.println("----------------------------------");
+                                                            enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                            ogre.setHealth(enemyHealth);
+                                                            System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                            System.out.println("----------------------------------");
+                                                            
+                                                        }
+                                                break;
+                                                //Use potion
+                                                case 2:
+                                                
+                                                        String potionItem;
+                                                        potion = new Potions();
+                                                        character.getCurrentPotions();
+                                                        Scanner potionSelect = new Scanner(System.in);
+                                                        System.out.println("Type potion name from list");
+                                                        potionItem = potionSelect.nextLine();
+                                                    
+                                                        potion.setItem(potionItem);
+                                                        try
+                                                        {
+                                                            //Use potion if it is available to the character
+                                                            if (character.getPotion(potionItem).equals(potionItem))
+                                                            {
+                                                                character.removePotions(potionItem);
+                                                                if (potion.getSymbol() =='H')
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a healing potion");
+                                                                    character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
+                                                                    System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+                                                                else if (potion.getSymbol() == 'D')
+                                                                {
+                                                                    attack = potion.getOverallEffect();
+                                                                    defence = ogre.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a damaging potion");
+                                                                    System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
+                                                                    System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                                    System.out.println("----------------------------------");
+                                                                    enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    ogre.setHealth(enemyHealth);
+                                                                    System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+                                                            }
+                                                        }
+                                                        catch (NullPointerException e)
+                                                        {
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println("No such potion owned");
+                                                            System.out.println("----------------------------------");
+                                                            done = 1;
+                                                        }
+                                                break;
+
+                                                //Add enchantments to weapon
+                                                case 3:
                                                     if (done == 0)
                                                     {
-                                                        weapon = new CurrentWeapon();
-                                                        weapon.setItem(character.getcurWeapon());
-                                                        attack = weapon.getOverallEffect();
-                                                        defence = ogre.getDefence();
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                        System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                        System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                        System.out.println("----------------------------------");
-                                                        enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                        ogre.setHealth(enemyHealth);
-                                                        System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                                        System.out.println("----------------------------------");
-                                                        
+                                                        String enchantmentChoice;//Selection of enchantment to use
+                                                        System.out.println("--------------------------------");
+                                                        System.out.println("Enchantments: ");
+                                                        //Declaration and initialization of enchantments
+                                                        AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
+                                                        AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
+                                                        AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
+                                                        AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+
+                                                        System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                                                        System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
+                                                        System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
+                                                        System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                        System.out.println("--------------------------------");
+                                                        System.out.println("Current gold: " + character.getGold());
+                                                        Scanner enchantmentSelect = new Scanner(System.in);
+                                                        System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                        enchantmentChoice = enchantmentSelect.nextLine();
+                                    
+                                                        //Proceed to payment if enchantment is available
+                                                            if (enchantmentChoice.equals(twoDamage.getEnchantment()))
+                                                            {
+                                                                //Buy enchantment and use it if character has enough gold
+                                                                if (character.getGold() >= twoDamage.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - twoDamage.enchantmentCost());
+                                                                    weapon = new TwoDamage(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = ogre.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    ogre.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
+                                                                
+                                                            }
+                                                            //Proceed to payment if enchantment is available
+                                                            else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
+                                                            {
+                                                                //Buy enchantment and use it if character has enough gold
+                                                                if (character.getGold() >= fiveDamage.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - fiveDamage.enchantmentCost());
+                                                                    weapon = new FiveDamage(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = ogre.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    ogre.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
+                                                                
+                                                            }
+                                                            //Proceed to payment if enchantment is available
+                                                            else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
+                                                            {
+                                                                //Buy enchantment and use it if character has enough gold
+                                                                if (character.getGold() >= fireDamage.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - fireDamage.enchantmentCost());
+                                                                    weapon = new FireDamage(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = ogre.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    ogre.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
+                                                                
+                                                            }
+                                                            //Proceed to payment if enchantment is available
+                                                            else if (enchantmentChoice.equals(powerUp.getEnchantment()))
+                                                            {
+                                                                //Buy enchantment and use it if character has enough gold
+                                                                if (character.getGold() >= powerUp.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - powerUp.enchantmentCost());
+                                                                    weapon = new PowerUp(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = ogre.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = ogre.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    ogre.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
+                                                                
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Please enter valid enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                done = 1;
+                                                            }
+                                                
                                                     }
-                                            break;
-                                            //Use potion
-                                            case 2:
-                                            
+                                                break;
+                                                default:
+                                                    System.out.println("Please give valid input");
+                                                    done=1;
+                                                break;
+                                                
+                                            }
+
+                                            //End battle and award character their prize if health of enemy is 0 or less
+                                            if (enemyHealth <=0)
+                                            {
+                                                System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                                System.out.println(character.getName() + " will receive " + ogre.goldAward());
+                                                System.out.println("----------------------------------");
+                                                character.setGold(character.getGold() + ogre.goldAward());
+                                                charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                                character.setHealth(character.getCurrHealth()+ charHealth);
+                                                if (slimeProbability - 0.05 > 0.05)
+                                                {
+                                                    slimeProbability = slimeProbability - 0.05;
+                                                }
+                                                if (goblinProbability - 0.05 > 0.05)
+                                                {
+                                                    goblinProbability = goblinProbability - 0.05;
+                                                }
+                                                if (ogreProbability - 0.05 > 0.05)
+                                                {
+                                                    ogreProbability = ogreProbability - 0.05;
+                                                }
+                                                if (totalBattles == 0)
+                                                {
+                                                    dragonProbability = dragonProbability + 0.15; 
+                                                }
+                                                else
+                                                {
+                                                    dragonProbability = dragonProbability + 0.05; 
+                                                }
+                                                done = 1;
+                                                battleFinished = 1;
+                                            }
+                                            if (done ==0)
+                                            {
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                System.out.println(ogre.getName() + " attack turn");
+                                                attack = ogre.getDamage();
+                                                armour = new Armour();
+                                                armour.setItem(character.getcurArmour());
+                                                defence = armour.getOverallEffect();
+                                                int special = ogre.getSpecialAbilities();
+                                                if (special != 0)
+                                                {
+                                                    System.out.println(ogre.getName() + " attacks twice in a row with special ability.");
+                                                    attack = special;
+                                                }
+                                                System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
+                                                System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
+                                                charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
+                                                character.setHealth(charHealth);
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
+                                                System.out.println("----------------------------------");
+
+                                                //End the entire game if health of character is 0 or less
+                                                if (charHealth <=0)
+                                                {
+                                                    System.out.println("----------------------------------");
+                                                    System.out.println("Battle over!" + ogre.getName() + " has won the battle!");
+                                                    System.out.println("==================================");
+                                                    System.out.println("GAME OVER!!!");
+                                                    System.out.println("==================================");
+                                
+                                                    done = 1;
+                                                    battleFinished = 1;
+                                                    warfinished = 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    //Enemy is Goblin if value enemyChoice is within required range
+                                    else if(enemyChoice < goblinProbability)
+                                    {
+                                        Enemies goblin = new Goblin();
+                                        System.out.println("\nYour enemy for the battle will be: " + goblin.getName());
+                                        System.out.println("----------------------------------");
+                                        int done = 0;
+                                        int attack;
+                                        int defence;
+                                        
+                                        enemyHealth = goblin.getCurrHealth();
+                                        
+                                        while (done ==0)
+                                        {
+                                            //Choose method of attack
+                                            System.out.println("Choose numerical method of attack");
+                                            System.out.println("----------------------------------");
+                                            Scanner sc7 = new Scanner(System.in);
+                                            System.out.println("1. Attack with weapon");
+                                            System.out.println("2.Use potion");
+                                            System.out.println("3. Attack using weapon with enchantments");
+                                            System.out.println("----------------------------------");
+                                            attackChoice = sc7.nextInt();
+
+                                            switch(attackChoice)
+                                            {
+                                                //Attack with weapon
+                                                case 1:
+                                                        if (done == 0)
+                                                        {
+                                                            weapon = new CurrentWeapon();
+                                                            weapon.setItem(character.getcurWeapon());
+                                                            attack = weapon.getOverallEffect();
+                                                            defence = goblin.getDefence();
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                            System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                            System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                            enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                            goblin.setHealth(enemyHealth);
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                        
+                                                        }
+                                                break;
+                                                case 2:
+                                                //Use potion for attack or healing
                                                     String potionItem;
                                                     potion = new Potions();
                                                     character.getCurrentPotions();
                                                     Scanner potionSelect = new Scanner(System.in);
                                                     System.out.println("Type potion name from list");
                                                     potionItem = potionSelect.nextLine();
-                                                
+
                                                     potion.setItem(potionItem);
                                                     try
-                                                    {
-                                                        //Use potion if it is available to the character
-                                                        if (character.getPotion(potionItem).equals(potionItem))
                                                         {
-                                                            character.removePotions(potionItem);
-                                                            if (potion.getSymbol() =='H')
+                                                            //If player owns selected potion, use it
+                                                            if (character.getPotion(potionItem).equals(potionItem))
                                                             {
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a healing potion");
-                                                                character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
-                                                                System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                            }
-                                                            else if (potion.getSymbol() == 'D')
-                                                            {
-                                                                attack = potion.getOverallEffect();
-                                                                defence = ogre.getDefence();
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a damaging potion");
-                                                                System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
-                                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                                System.out.println("----------------------------------");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                ogre.setHealth(enemyHealth);
-                                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                            }
-                                                        }
-                                                    }
-                                                    catch (NullPointerException e)
-                                                    {
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println("No such potion owned");
-                                                        System.out.println("----------------------------------");
-                                                        done = 1;
-                                                    }
-                                            break;
+                                                                character.removePotions(potionItem);
 
-                                            //Add enchantments to weapon
-                                            case 3:
-                                                if (done == 0)
-                                                {
-                                                    String enchantmentChoice;//Selection of enchantment to use
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Enchantments: ");
-                                                    //Declaration and initialization of enchantments
-                                                    AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
-                                                    AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
-                                                    AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
-                                                    AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+                                                                //If potion is a healing potion, use it to recover health
+                                                                if (potion.getSymbol() =='H')
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a healing potion");
+                                                                    character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
+                                                                    System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
 
-                                                    System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                    System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                    System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                    System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Current gold: " + character.getGold());
-                                                    Scanner enchantmentSelect = new Scanner(System.in);
-                                                    System.out.println("Choose enchantments to add to " + character.getcurWeapon());
-                                                    enchantmentChoice = enchantmentSelect.nextLine();
-                                
-                                                       //Proceed to payment if enchantment is available
-                                                        if (enchantmentChoice.equals(twoDamage.getEnchantment()))
+                                                                //If potion is damaging potion, use it to attack enemy
+                                                                else if (potion.getSymbol() == 'D')
+                                                                {
+                                                                    attack = potion.getOverallEffect();
+                                                                    defence = goblin.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a damaging potion");
+                                                                    System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
+                                                                    System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                                    System.out.println("----------------------------------");
+                                                                    enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    goblin.setHealth(enemyHealth);
+                                                                    System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+                                                            }
+                                                        } 
+                                                        catch (NullPointerException e)
                                                         {
-                                                            //Buy enchantment and use it if character has enough gold
-                                                            if (character.getGold() >= twoDamage.enchantmentCost())
-                                                            {
-                                                                character.setGold(character.getGold() - twoDamage.enchantmentCost());
-                                                                weapon = new TwoDamage(new CurrentWeapon());
-                                                                weapon.setItem(character.getcurWeapon());
-                                                                attack = weapon.getOverallEffect();
-                                                                defence = ogre.getDefence();
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                ogre.setHealth(enemyHealth);
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                                            
-                                                            }
-                                                            else
-                                                            {
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println("Not enough funds to add enchantment");
-                                                                System.out.println("----------------------------------");
-                                                                done =1;
-                                                            }
-                                                            
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println("You do not own such potion");
+                                                            System.out.println("----------------------------------");
                                                         }
-                                                        //Proceed to payment if enchantment is available
-                                                        else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
+                                                break;
+
+                                                case 3:
+                                                //Use enchantments
+                                                        if (done == 0)
                                                         {
-                                                            //Buy enchantment and use it if character has enough gold
-                                                            if (character.getGold() >= fiveDamage.enchantmentCost())
+                                                            String enchantmentChoice;
+                                                            System.out.println("--------------------------------");
+                                                            System.out.println("Enchantments: ");
+
+                                                            //Declaration and initialization of enchantments
+                                                            AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
+                                                            AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
+                                                            AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
+                                                            AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+
+                                                            System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                                                            System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
+                                                            System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
+                                                            System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                            System.out.println("--------------------------------");
+                                                            System.out.println("Current gold: " + character.getGold());
+                                                            Scanner enchantmentSelect = new Scanner(System.in);
+                                                            System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                            enchantmentChoice = enchantmentSelect.nextLine();
+                                        
+                                                            //Proceed to payment if enchantment is available
+                                                            if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                             {
-                                                                character.setGold(character.getGold() - fiveDamage.enchantmentCost());
-                                                                weapon = new FiveDamage(new CurrentWeapon());
-                                                                weapon.setItem(character.getcurWeapon());
-                                                                attack = weapon.getOverallEffect();
-                                                                defence = ogre.getDefence();
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                ogre.setHealth(enemyHealth);
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
-                                                            
+                                                                //If player has enough gold, use enchantment
+                                                                if (character.getGold() >= twoDamage.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - twoDamage.enchantmentCost());
+                                                                    weapon = new TwoDamage(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = goblin.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    goblin.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
+                                                                
                                                             }
-                                                            else
+                                                            //Proceed to payment if enchantment is available
+                                                            else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                             {
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println("Not enough funds to add enchantment");
-                                                                System.out.println("----------------------------------");
-                                                                done =1;
-                                                            }
+                                                                //If player has enough gold, use enchantment
+                                                                if (character.getGold() >= fiveDamage.enchantmentCost())
+                                                                {
+                                                                    character.setGold(character.getGold() - fiveDamage.enchantmentCost());
+                                                                    weapon = new FiveDamage(new CurrentWeapon());
+                                                                    weapon.setItem(character.getcurWeapon());
+                                                                    attack = weapon.getOverallEffect();
+                                                                    defence = goblin.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                    System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                    System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                                    enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    goblin.setHealth(enemyHealth);
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                                
+                                                                }
+                                                                else
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println("Not enough funds to add enchantment");
+                                                                    System.out.println("----------------------------------");
+                                                                    done =1;
+                                                                }
                                                             
                                                         }
                                                         //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                         {
-                                                            //Buy enchantment and use it if character has enough gold
+                                                            //If player has enough gold, use enchantment
                                                             if (character.getGold() >= fireDamage.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - fireDamage.enchantmentCost());
                                                                 weapon = new FireDamage(new CurrentWeapon());
                                                                 weapon.setItem(character.getcurWeapon());
                                                                 attack = weapon.getOverallEffect();
-                                                                defence = ogre.getDefence();
+                                                                defence = goblin.getDefence();
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                ogre.setHealth(enemyHealth);
+                                                                System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                goblin.setHealth(enemyHealth);
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
                                                             
                                                             }
                                                             else
@@ -686,24 +1030,24 @@ public class Game
                                                         //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(powerUp.getEnchantment()))
                                                         {
-                                                            //Buy enchantment and use it if character has enough gold
+                                                            //If player has enough gold, use enchantment
                                                             if (character.getGold() >= powerUp.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - powerUp.enchantmentCost());
                                                                 weapon = new PowerUp(new CurrentWeapon());
                                                                 weapon.setItem(character.getcurWeapon());
                                                                 attack = weapon.getOverallEffect();
-                                                                defence = ogre.getDefence();
+                                                                defence = goblin.getDefence();
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
+                                                                System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(ogre.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                ogre.setHealth(enemyHealth);
+                                                                System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = goblin.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                goblin.setHealth(enemyHealth);
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(ogre.getName() + " now has a health of " + ogre.getCurrHealth());
+                                                                System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
                                                             
                                                             }
                                                             else
@@ -715,203 +1059,207 @@ public class Game
                                                             }
                                                             
                                                         }
+                                                        
                                                         else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Please enter valid enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done = 1;
-                                                        }
-                                            
-                                                }
-                                            break;
-                                            
-                                        }
-
-                                        //End battle and award character their prize if health of enemy is 0 or less
-                                        if (enemyHealth <=0)
-                                        {
-                                            System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                            System.out.println(character.getName() + " will receive " + ogre.goldAward());
-                                            System.out.println("----------------------------------");
-                                            character.setGold(character.getGold() + ogre.goldAward());
-                                            charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                            character.setHealth(character.getCurrHealth()+ charHealth);
-                                            if (slimeProbability - 0.05 > 0.05)
-                                            {
-                                                slimeProbability = slimeProbability - 0.05;
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Please enter valid enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                done = 1;
+                                                            }
+                                                        
+                                                    }
+                                                break;
+                                                default:
+                                                    System.out.println("----------------------------------");
+                                                    System.out.println("Please give valid input");
+                                                    System.out.println("----------------------------------");
+                                                    done=1;
+                                                break;
+                                                
                                             }
-                                            if (goblinProbability - 0.05 > 0.05)
-                                            {
-                                                goblinProbability = goblinProbability - 0.05;
-                                            }
-                                            if (ogreProbability - 0.05 > 0.05)
-                                            {
-                                                ogreProbability = ogreProbability - 0.05;
-                                            }
-                                            if (totalBattles == 0)
-                                            {
-                                                dragonProbability = dragonProbability + 0.15; 
-                                            }
-                                            else
-                                            {
-                                                dragonProbability = dragonProbability + 0.05; 
-                                            }
-                                            done = 1;
-                                            battleFinished = 1;
-                                        }
-                                        if (done ==0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                            System.out.println(ogre.getName() + " health: " + ogre.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            System.out.println(ogre.getName() + " attack turn");
-                                            attack = ogre.getDamage();
-                                            armour = new Armour();
-                                            armour.setItem(character.getcurArmour());
-                                            defence = armour.getOverallEffect();
-                                            int special = ogre.getSpecialAbilities();
-                                            if (special != 0)
-                                            {
-                                                System.out.println(ogre.getName() + " attacks twice in a row with special ability.");
-                                                attack = special;
-                                            }
-                                            System.out.println(ogre.getName() + " attacks with " + attack + " attacking power");
-                                            System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
-                                            charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
-                                            character.setHealth(charHealth);
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
-                                            System.out.println("----------------------------------");
-
-                                            //End the entire game if health of character is 0 or less
-                                            if (charHealth <=0)
+                                            //Battle ends and character is awarded if enemy health is less than or equal to 0
+                                            if (enemyHealth <=0)
                                             {
                                                 System.out.println("----------------------------------");
-                                                System.out.println("Battle over!" + ogre.getName() + " has won the battle!");
-                                                System.out.println("==================================");
-                                                System.out.println("GAME OVER!!!");
-                                                System.out.println("==================================");
-                            
+                                                System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                                System.out.println(character.getName() + " will receive " + goblin.goldAward());
+                                                System.out.println("----------------------------------");
+                                                character.setGold(character.getGold() + goblin.goldAward());
+                                                charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                                character.setHealth(character.getCurrHealth() + charHealth);
+                                                if (slimeProbability - 0.05 > 0.05)
+                                                {
+                                                    slimeProbability = slimeProbability - 0.05;
+                                                }
+                                                if (goblinProbability - 0.05 > 0.05)
+                                                {
+                                                    goblinProbability = goblinProbability - 0.05;
+                                                }
+                                                if (ogreProbability - 0.05 > 0.05)
+                                                {
+                                                    ogreProbability = ogreProbability - 0.05;
+                                                }
+                                                if (totalBattles == 0)
+                                                {
+                                                    dragonProbability = dragonProbability + 0.15; 
+                                                }
+                                                else
+                                                {
+                                                    dragonProbability = dragonProbability + 0.05; 
+                                                }
                                                 done = 1;
                                                 battleFinished = 1;
-                                                warfinished = 1;
+                                            }
+                                            if (done ==0)
+                                            {
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                System.out.println(goblin.getName() + " attack turn");
+                                                attack = goblin.getDamage();
+                                                armour = new Armour();
+                                                armour.setItem(character.getcurArmour());
+                                                defence = armour.getOverallEffect();
+                                            
+                                                int special = goblin.getSpecialAbilities();
+                                                if (special != 0 )
+                                                {
+                                                    attack = special;
+                                                    System.out.println("Special ability of 3 extra damage used");
+                                                }
+                                                System.out.println(goblin.getName() + " attacks with " + attack + " attacking power");
+                                                System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
+                                                charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
+                                                character.setHealth(charHealth);
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                if (charHealth <=0)
+                                                {
+                                                    System.out.println("==================================");
+                                                    System.out.println("Battle over!" + goblin.getName() + " has won the battle!");
+                                                    System.out.println("GAME OVER!!!");
+                                                    System.out.println("==================================");
+                                                
+                                                    done = 1;
+                                                    battleFinished = 1;
+                                                    warfinished = 1;
+                                                }
                                             }
                                         }
                                     }
-                                }
-                                //Enemy is Goblin if value enemyChoice is within required range
-                                else if(enemyChoice < goblinProbability)
-                                {
-                                    Enemies goblin = new Goblin();
-                                    System.out.println("\nYour enemy for the battle will be: " + goblin.getName());
-                    
-                                    int done = 0;
-                                    int attack;
-                                    int defence;
-                                    
-                                    enemyHealth = goblin.getCurrHealth();
-                                    
-                                    while (done ==0)
+                                    //Enemy is Slime if enemyChoice meets the required range
+                                    else if (enemyChoice < slimeProbability)
                                     {
-                                        //Choose method of attack
-                                        System.out.println("Choose method of attack");
-                                        Scanner sc7 = new Scanner(System.in);
-                                        System.out.println("1. Attack with weapon");
-                                        System.out.println("2.Use potion");
-                                        System.out.println("3. Attack using weapon with enchantments");
-                                        attackChoice = sc7.nextInt();
+                                        Enemies slime = new Slime();
+                                        System.out.println("\nYour enemy for the battle will be: " + slime.getName());
+                                        System.out.println("----------------------------------");
+                                        int done = 0;
+                                        int attack;
+                                        int defence;
+                                        
+                                        enemyHealth = slime.getCurrHealth();
+                                        
+                                        while (done ==0)
+                                            {
+                                            System.out.println("Choose numerical method of attack");
+                                            System.out.println("----------------------------------");
+                                            Scanner sc7 = new Scanner(System.in);
+                                            System.out.println("1. Attack with weapon");
+                                            System.out.println("2.Use potion");
+                                            System.out.println("3. Attack using weapon with enchantments");
+                                            System.out.println("----------------------------------");
+                                            attackChoice = sc7.nextInt();
 
-                                        switch(attackChoice)
-                                        {
-                                            //Attack with weapon
-                                            case 1:
-                                                    if (done == 0)
-                                                    {
-                                                        weapon = new CurrentWeapon();
-                                                        weapon.setItem(character.getcurWeapon());
-                                                        attack = weapon.getOverallEffect();
-                                                        defence = goblin.getDefence();
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                        System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                        System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                        enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                        goblin.setHealth(enemyHealth);
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
-                                                    
-                                                    }
-                                            break;
-                                            case 2:
-                                            //Use potion for attack or healing
-                                                String potionItem;
-                                                potion = new Potions();
-                                                character.getCurrentPotions();
-                                                Scanner potionSelect = new Scanner(System.in);
-                                                System.out.println("Type potion name from list");
-                                                potionItem = potionSelect.nextLine();
-
-                                                potion.setItem(potionItem);
-                                                try
-                                                    {
-                                                        //If player owns selected potion, use it
-                                                        if (character.getPotion(potionItem).equals(potionItem))
+                                            switch(attackChoice)
+                                            {
+                                                case 1:
+                                                //Attack with weapon
+                                                        if (done == 0)
                                                         {
-                                                            character.removePotions(potionItem);
+                                                            weapon = new CurrentWeapon();
+                                                            weapon.setItem(character.getcurWeapon());
+                                                            attack = weapon.getOverallEffect();
+                                                            defence = slime.getDefence();
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                            System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                            enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                            slime.setHealth(enemyHealth);
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
+                                                            
+                                                        }
+                                                break;
+                                                case 2:
+                                                //Use potion
+                                                    String potionItem;
+                                                    potion = new Potions();
+                                                    character.getCurrentPotions();
+                                                    Scanner potionSelect = new Scanner(System.in);
+                                                    System.out.println("Type potion name from list");
+                                                    potionItem = potionSelect.nextLine();
 
-                                                            //If potion is a healing potion, use it to recover health
-                                                            if (potion.getSymbol() =='H')
+                                                    potion.setItem(potionItem);
+                                                    try
+                                                        {
+                                                            //Use potion if it is available
+                                                            if (character.getPotion(potionItem).equals(potionItem))
                                                             {
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a healing potion");
-                                                                character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
-                                                                System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                            }
+                                                                character.removePotions(potionItem);
 
-                                                            //If potion is damaging potion, use it to attack enemy
-                                                            else if (potion.getSymbol() == 'D')
-                                                            {
-                                                                attack = potion.getOverallEffect();
-                                                                defence = goblin.getDefence();
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a damaging potion");
-                                                                System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
-                                                                System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                                System.out.println("----------------------------------");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                goblin.setHealth(enemyHealth);
-                                                                System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
-                                                                System.out.println("----------------------------------");
+                                                                //If it is healing, use it to restore character's health
+                                                                if (potion.getSymbol() =='H')
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a healing potion");
+                                                                    character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
+                                                                    System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+
+                                                                //If it is damaging, use it to attack enemy
+                                                                else if (potion.getSymbol() == 'D')
+                                                                {
+                                                                    attack = potion.getOverallEffect();
+                                                                    defence = slime.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a damaging potion");
+                                                                    System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
+                                                                    System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                                    System.out.println("----------------------------------");
+                                                                    enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    slime.setHealth(enemyHealth);
+                                                                    System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
                                                             }
                                                         }
-                                                    } 
-                                                    catch (NullPointerException e)
-                                                    {
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println("You do not own such potion");
-                                                        System.out.println("----------------------------------");
-                                                    }
-                                            break;
+                                                        catch (NullPointerException e)
+                                                        {
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println("No such potion in inventory");
+                                                            done=1;
+                                                            System.out.println("----------------------------------");
+                                                        }
+                                                break;
 
-                                            case 3:
-                                            //Use enchantments
+                                                case 3:
+                                                //Add enchantments to weapon attack
                                                     if (done == 0)
                                                     {
                                                         String enchantmentChoice;
                                                         System.out.println("--------------------------------");
                                                         System.out.println("Enchantments: ");
-
-                                                        //Declaration and initialization of enchantments
                                                         AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
                                                         AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
                                                         AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                         AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
-
                                                         System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
                                                         System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
                                                         System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
@@ -932,17 +1280,17 @@ public class Game
                                                                 weapon = new TwoDamage(new CurrentWeapon());
                                                                 weapon.setItem(character.getcurWeapon());
                                                                 attack = weapon.getOverallEffect();
-                                                                defence = goblin.getDefence();
+                                                                defence = slime.getDefence();
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                                System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                goblin.setHealth(enemyHealth);
+                                                                System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                slime.setHealth(enemyHealth);
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                                System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
                                                             
                                                             }
                                                             else
@@ -964,17 +1312,81 @@ public class Game
                                                                 weapon = new FiveDamage(new CurrentWeapon());
                                                                 weapon.setItem(character.getcurWeapon());
                                                                 attack = weapon.getOverallEffect();
-                                                                defence = goblin.getDefence();
+                                                                defence = slime.getDefence();
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                                System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
+                                                                System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                                 System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                                System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                goblin.setHealth(enemyHealth);
+                                                                System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                slime.setHealth(enemyHealth);
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
+                                                                System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                done  =1;
+                                                            }
+                                                            
+                                                        }
+                                                        //Proceed to payment if enchantment is available
+                                                        else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
+                                                        {
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= fireDamage.enchantmentCost())
+                                                            {
+                                                                character.setGold(character.getGold() - fireDamage.enchantmentCost());
+                                                                weapon = new FireDamage(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
+                                                                defence = slime.getDefence();
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                slime.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                done=1;
+                                                            }
+                                                            
+                                                        }
+                                                        //Proceed to payment if enchantment is available
+                                                        else if (enchantmentChoice.equals(powerUp.getEnchantment()))
+                                                        {
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= powerUp.enchantmentCost())
+                                                            {
+                                                                character.setGold(character.getGold() - powerUp.enchantmentCost());
+                                                                weapon = new PowerUp(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
+                                                                defence = slime.getDefence();
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = slime.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                slime.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
                                                             
                                                             }
                                                             else
@@ -984,794 +1396,414 @@ public class Game
                                                                 System.out.println("----------------------------------");
                                                                 done =1;
                                                             }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= fireDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - fireDamage.enchantmentCost());
-                                                            weapon = new FireDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = goblin.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            goblin.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
-                                                        
+                                                            
                                                         }
                                                         else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done =1;
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(powerUp.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= powerUp.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - powerUp.enchantmentCost());
-                                                            weapon = new PowerUp(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = goblin.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(goblin.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            goblin.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(goblin.getName() + " now has a health of " + goblin.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done =1;
-                                                        }
-                                                        
-                                                    }
-                                                    
-                                                    else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Please enter valid enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done = 1;
-                                                        }
-                                                    
-                                                }
-                                            break;
-                                            
-                                        }
-                                        //Battle ends and character is awarded if enemy health is less than or equal to 0
-                                        if (enemyHealth <=0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                            System.out.println(character.getName() + " will receive " + goblin.goldAward());
-                                            System.out.println("----------------------------------");
-                                            character.setGold(character.getGold() + goblin.goldAward());
-                                            charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                            character.setHealth(character.getCurrHealth() + charHealth);
-                                            if (slimeProbability - 0.05 > 0.05)
-                                            {
-                                                slimeProbability = slimeProbability - 0.05;
-                                            }
-                                            if (goblinProbability - 0.05 > 0.05)
-                                            {
-                                                goblinProbability = goblinProbability - 0.05;
-                                            }
-                                            if (ogreProbability - 0.05 > 0.05)
-                                            {
-                                                ogreProbability = ogreProbability - 0.05;
-                                            }
-                                            if (totalBattles == 0)
-                                            {
-                                                dragonProbability = dragonProbability + 0.15; 
-                                            }
-                                            else
-                                            {
-                                                dragonProbability = dragonProbability + 0.05; 
-                                            }
-                                            done = 1;
-                                            battleFinished = 1;
-                                        }
-                                        if (done ==0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                            System.out.println(goblin.getName() + " health: " + goblin.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            System.out.println(goblin.getName() + " attack turn");
-                                            attack = goblin.getDamage();
-                                            armour = new Armour();
-                                            armour.setItem(character.getcurArmour());
-                                            defence = armour.getOverallEffect();
-                                        
-                                            int special = goblin.getSpecialAbilities();
-                                            if (special != 0 )
-                                            {
-                                                attack = special;
-                                                System.out.println("Special ability of 3 extra damage used");
-                                            }
-                                            System.out.println(goblin.getName() + " attacks with " + attack + " attacking power");
-                                            System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
-                                            charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
-                                            character.setHealth(charHealth);
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            if (charHealth <=0)
-                                            {
-                                                System.out.println("==================================");
-                                                System.out.println("Battle over!" + goblin.getName() + " has won the battle!");
-                                                System.out.println("GAME OVER!!!");
-                                                System.out.println("==================================");
-                                            
-                                                done = 1;
-                                                battleFinished = 1;
-                                                warfinished = 1;
-                                            }
-                                        }
-                                    }
-                                }
-                                //Enemy is Slime if enemyChoice meets the required range
-                                else if (enemyChoice < slimeProbability)
-                                {
-                                    Enemies slime = new Slime();
-                                    System.out.println("\nYour enemy for the battle will be: " + slime.getName());
-                                    
-                                    int done = 0;
-                                    int attack;
-                                    int defence;
-                                    
-                                    enemyHealth = slime.getCurrHealth();
-                                    
-                                    while (done ==0)
-                                        {
-                                        System.out.println("Choose method of attack");
-                                        Scanner sc7 = new Scanner(System.in);
-                                        System.out.println("1. Attack with weapon");
-                                        System.out.println("2.Use potion");
-                                        System.out.println("3. Attack using weapon with enchantments");
-                                        attackChoice = sc7.nextInt();
-
-                                        switch(attackChoice)
-                                        {
-                                            case 1:
-                                            //Attack with weapon
-                                                    if (done == 0)
-                                                    {
-                                                        weapon = new CurrentWeapon();
-                                                        weapon.setItem(character.getcurWeapon());
-                                                        attack = weapon.getOverallEffect();
-                                                        defence = slime.getDefence();
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                        System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                        System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                        enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                        slime.setHealth(enemyHealth);
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                        
-                                                    }
-                                            break;
-                                            case 2:
-                                            //Use potion
-                                                String potionItem;
-                                                potion = new Potions();
-                                                character.getCurrentPotions();
-                                                Scanner potionSelect = new Scanner(System.in);
-                                                System.out.println("Type potion name from list");
-                                                potionItem = potionSelect.nextLine();
-
-                                                potion.setItem(potionItem);
-                                                try
-                                                    {
-                                                        //Use potion if it is available
-                                                        if (character.getPotion(potionItem).equals(potionItem))
-                                                        {
-                                                            character.removePotions(potionItem);
-
-                                                            //If it is healing, use it to restore character's health
-                                                            if (potion.getSymbol() =='H')
                                                             {
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a healing potion");
-                                                                character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
-                                                                System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
+                                                                System.out.println("Please enter valid enchantment");
                                                                 System.out.println("----------------------------------");
+                                                                done = 1;
                                                             }
 
-                                                            //If it is damaging, use it to attack enemy
-                                                            else if (potion.getSymbol() == 'D')
-                                                            {
-                                                                attack = potion.getOverallEffect();
-                                                                defence = slime.getDefence();
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a damaging potion");
-                                                                System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
-                                                                System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                                System.out.println("----------------------------------");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                                slime.setHealth(enemyHealth);
-                                                                System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                            }
-                                                        }
+                                                    
                                                     }
-                                                    catch (NullPointerException e)
-                                                    {
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println("No such weapon in inventory");
-                                                        System.out.println("----------------------------------");
-                                                    }
-                                            break;
-
-                                            case 3:
-                                               //Add enchantments to weapon attack
-                                                if (done == 0)
+                                                break;
+                                                default:
+                                                    System.out.println("----------------------------------");
+                                                    System.out.println("Please give valid input");
+                                                    System.out.println("----------------------------------");
+                                                    done=1;
+                                                break;
+                                            }
+                                            //Battle ends if enemy health is less than or equal to 0 and character is awarded
+                                            if (enemyHealth <=0)
+                                            {
+                                                System.out.println("----------------------------------");
+                                                System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                                System.out.println(character.getName() + " will receive " + slime.goldAward());
+                                                System.out.println("----------------------------------");
+                                                character.setGold(character.getGold() + slime.goldAward());
+                                                charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
+                                                character.setHealth(character.getCurrHealth() + charHealth);
+                                                if (slimeProbability - 0.05 > 0.05)
                                                 {
-                                                    String enchantmentChoice;
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Enchantments: ");
-                                                    AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
-                                                    AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
-                                                    AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
-                                                    AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
-                                                    System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                    System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                    System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                    System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Current gold: " + character.getGold());
-                                                    Scanner enchantmentSelect = new Scanner(System.in);
-                                                    System.out.println("Choose enchantments to add to " + character.getcurWeapon());
-                                                    enchantmentChoice = enchantmentSelect.nextLine();
-                                
-                                                    //Proceed to payment if enchantment is available
-                                                    if (enchantmentChoice.equals(twoDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= twoDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - twoDamage.enchantmentCost());
-                                                            weapon = new TwoDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = slime.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            slime.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done =1;
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= fiveDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - fiveDamage.enchantmentCost());
-                                                            weapon = new FiveDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = slime.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            slime.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done  =1;
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= fireDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - fireDamage.enchantmentCost());
-                                                            weapon = new FireDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = slime.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            slime.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done=1;
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(powerUp.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= powerUp.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - powerUp.enchantmentCost());
-                                                            weapon = new PowerUp(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = slime.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(slime.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            slime.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(slime.getName() + " now has a health of " + slime.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done =1;
-                                                        }
-                                                        
-                                                    }
-                                                    else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Please enter valid enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done = 1;
-                                                        }
-
-                                                
+                                                    slimeProbability = slimeProbability - 0.05;
                                                 }
-                                            break;
-                                            
-                                        }
-                                        //Battle ends if enemy health is less than or equal to 0 and character is awarded
-                                        if (enemyHealth <=0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                            System.out.println(character.getName() + " will receive " + slime.goldAward());
-                                            System.out.println("----------------------------------");
-                                            character.setGold(character.getGold() + slime.goldAward());
-                                            charHealth = (int)Math.min(character.getMaxHealth(), character.getCurrHealth()*1.5);
-                                            character.setHealth(character.getCurrHealth() + charHealth);
-                                            if (slimeProbability - 0.05 > 0.05)
-                                            {
-                                                slimeProbability = slimeProbability - 0.05;
-                                            }
-                                            if (goblinProbability - 0.05 > 0.05)
-                                            {
-                                                goblinProbability = goblinProbability - 0.05;
-                                            }
-                                            if (ogreProbability - 0.05 > 0.05)
-                                            {
-                                                ogreProbability = ogreProbability - 0.05;
-                                            }
-                                            if (totalBattles == 0)
-                                            {
-                                                dragonProbability = dragonProbability + 0.15; 
-                                            }
-                                            else
-                                            {
-                                                dragonProbability = dragonProbability + 0.05; 
-                                            }
-                                            done = 1;
-                                            battleFinished = 1;
-                                        }
-                                        if (done ==0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                            System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            System.out.println(slime.getName() + " attack turn");
-                                            attack = slime.getDamage();
-                                            armour = new Armour();
-                                            armour.setItem(character.getcurArmour());
-                                            defence = armour.getOverallEffect();
-                                            if (slime.getSpecialAbilities() == 0)
-                                            {
-                                                System.out.println(slime.getName() + " attack causes no damage special ability.");
-                                                attack = 0;
-                                            }
-                                            System.out.println(slime.getName() + " attacks with " + attack + " attacking power");
-                                            System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
-                                            charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
-                                            character.setHealth(charHealth);
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            if (charHealth <=0)
-                                            {
-                                                System.out.println("==================================");
-                                                System.out.println("Battle over!" + slime.getName() + " has won the battle!");
-                                                System.out.println("GAME OVER!!!");
-                                                System.out.println("==================================");
+                                                if (goblinProbability - 0.05 > 0.05)
+                                                {
+                                                    goblinProbability = goblinProbability - 0.05;
+                                                }
+                                                if (ogreProbability - 0.05 > 0.05)
+                                                {
+                                                    ogreProbability = ogreProbability - 0.05;
+                                                }
+                                                if (totalBattles == 0)
+                                                {
+                                                    dragonProbability = dragonProbability + 0.15; 
+                                                }
+                                                else
+                                                {
+                                                    dragonProbability = dragonProbability + 0.05; 
+                                                }
                                                 done = 1;
                                                 battleFinished = 1;
-                                                warfinished = 1;
+                                            }
+                                            if (done ==0)
+                                            {
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                System.out.println(slime.getName() + " health: " + slime.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                System.out.println(slime.getName() + " attack turn");
+                                                attack = slime.getDamage();
+                                                armour = new Armour();
+                                                armour.setItem(character.getcurArmour());
+                                                defence = armour.getOverallEffect();
+                                                if (slime.getSpecialAbilities() == 0)
+                                                {
+                                                    System.out.println(slime.getName() + " attack causes no damage special ability.");
+                                                    attack = 0;
+                                                }
+                                                System.out.println(slime.getName() + " attacks with " + attack + " attacking power");
+                                                System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
+                                                charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
+                                                character.setHealth(charHealth);
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                if (charHealth <=0)
+                                                {
+                                                    System.out.println("==================================");
+                                                    System.out.println("Battle over!" + slime.getName() + " has won the battle!");
+                                                    System.out.println("GAME OVER!!!");
+                                                    System.out.println("==================================");
+                                                    done = 1;
+                                                    battleFinished = 1;
+                                                    warfinished = 1;
+                                                }
                                             }
                                         }
                                     }
-                                }
-                                //Enemy is dragon if rewuired range is met by enemyChoice
-                                else if (enemyChoice < dragonProbability)
-                                {
-                                    Enemies dragon = new Dragon();
-                                    System.out.println("\nYour enemy for the battle will be: " + dragon.getName());
-                                    int done = 0;
-                                    int attack;
-                                    int defence;
-                                    
-                                    enemyHealth = dragon.getCurrHealth();
-                                    
-                                    while (done ==0)
-                                        {
-                                        System.out.println("Choose method of attack");
-                                        Scanner sc7 = new Scanner(System.in);
-                                        System.out.println("1. Attack with weapon");
-                                        System.out.println("2.Use potion");
-                                        System.out.println("3. Attack using weapon with enchantments");
-                                        attackChoice = sc7.nextInt();
+                                    //Enemy is dragon if rewuired range is met by enemyChoice
+                                    else if (enemyChoice < dragonProbability)
+                                    {
+                                        Enemies dragon = new Dragon();
+                                        System.out.println("\nYour enemy for the battle will be: " + dragon.getName());
+                                        System.out.println("----------------------------------");
+                                        int done = 0;
+                                        int attack;
+                                        int defence;
+                                        
+                                        enemyHealth = dragon.getCurrHealth();
+                                        
+                                        while (done ==0)
+                                            {
+                                            System.out.println("Choose numerical method of attack");
+                                            System.out.println("----------------------------------");
+                                            Scanner sc7 = new Scanner(System.in);
+                                            System.out.println("1. Attack with weapon");
+                                            System.out.println("2.Use potion");
+                                            System.out.println("3. Attack using weapon with enchantments");
+                                            System.out.println("----------------------------------");
+                                            attackChoice = sc7.nextInt();
 
-                                        switch(attackChoice)
-                                        {
-                                            case 1:
-                                            //Attack with weapon
+                                            switch(attackChoice)
+                                            {
+                                                case 1:
+                                                //Attack with weapon
+                                                        if (done == 0)
+                                                        {
+                                                            weapon = new CurrentWeapon();
+                                                            weapon.setItem(character.getcurWeapon());
+                                                            attack = weapon.getOverallEffect();
+                                                            defence = dragon.getDefence();
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                            System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                            enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
+                                                            dragon.setHealth(enemyHealth);
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                        }
+                                                break;
+                                                case 2:
+                                                //Use potion
+                                                    String potionItem;
+                                                    potion = new Potions();
+                                                    character.getCurrentPotions();
+                                                    Scanner potionSelect = new Scanner(System.in);
+                                                    System.out.println("Type potion name from list");
+                                                    potionItem = potionSelect.nextLine();
+
+                                                    potion.setItem(potionItem);
+                                                    try
+                                                        {
+                                                            if (character.getPotion(potionItem).equals(potionItem))
+                                                            {
+                                                                character.removePotions(potionItem);
+                                                                if (potion.getSymbol() =='H')
+                                                                {
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a healing potion");
+                                                                    character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
+                                                                    System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+                                                                else if (potion.getSymbol() == 'D')
+                                                                {
+                                                                    attack = potion.getOverallEffect();
+                                                                    defence = dragon.getDefence();
+                                                                    System.out.println("----------------------------------");
+                                                                    System.out.println(potion.getName() + " is a damaging potion");
+                                                                    System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
+                                                                    System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                    System.out.println("----------------------------------");
+                                                                    enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                    dragon.setHealth(enemyHealth);
+                                                                    System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                                    System.out.println("----------------------------------");
+                                                                }
+                                                                character.removePotions(potionItem);
+                                                            }
+                                                        }
+                                                        catch (NullPointerException e)
+                                                        {
+                                                            System.out.println("----------------------------------");
+                                                            System.out.println("No such potion in inventory");
+                                                            System.out.println("----------------------------------");
+                                                        }
+                                                break;
+                                                
+                                                case 3:
+                                                //Add enchantments to weapon for attack
                                                     if (done == 0)
                                                     {
-                                                        weapon = new CurrentWeapon();
-                                                        weapon.setItem(character.getcurWeapon());
-                                                        attack = weapon.getOverallEffect();
-                                                        defence = dragon.getDefence();
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                        System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                        System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
-                                                        enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                        dragon.setHealth(enemyHealth);
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
-                                                    }
-                                            break;
-                                            case 2:
-                                            //Use potion
-                                                String potionItem;
-                                                potion = new Potions();
-                                                character.getCurrentPotions();
-                                                Scanner potionSelect = new Scanner(System.in);
-                                                System.out.println("Type potion name from list");
-                                                potionItem = potionSelect.nextLine();
-
-                                                potion.setItem(potionItem);
-                                                try
-                                                    {
-                                                        if (character.getPotion(potionItem).equals(potionItem))
+                                                        String enchantmentChoice;
+                                                        System.out.println("--------------------------------");
+                                                        System.out.println("Enchantments: ");
+                                                        AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
+                                                        AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
+                                                        AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
+                                                        AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+                                                        System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
+                                                        System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
+                                                        System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
+                                                        System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                        System.out.println("--------------------------------");
+                                                        System.out.println("Current gold: " + character.getGold());
+                                                        Scanner enchantmentSelect = new Scanner(System.in);
+                                                        System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                        enchantmentChoice = enchantmentSelect.nextLine();
+                                    
+                                                        //Proceed to payment if enchantment is available
+                                                        if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                         {
-                                                            character.removePotions(potionItem);
-                                                            if (potion.getSymbol() =='H')
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= twoDamage.enchantmentCost())
                                                             {
-                                                                System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a healing potion");
-                                                                character.setHealth(character.getCurrHealth() + potion.getOverallEffect());
-                                                                System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
-                                                                System.out.println("----------------------------------");
-                                                            }
-                                                            else if (potion.getSymbol() == 'D')
-                                                            {
-                                                                attack = potion.getOverallEffect();
+                                                                character.setGold(character.getGold() - twoDamage.enchantmentCost());
+                                                                weapon = new TwoDamage(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
                                                                 defence = dragon.getDefence();
                                                                 System.out.println("----------------------------------");
-                                                                System.out.println(potion.getName() + " is a damaging potion");
-                                                                System.out.println(character.getName() + " attacks using " + potion.getName() + " with " + attack);
-                                                                System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
                                                                 System.out.println("----------------------------------");
-                                                                enemyHealth = enemyHealth -(Math.max(0,attack - defence));
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
                                                                 dragon.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
                                                                 System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
                                                                 System.out.println("----------------------------------");
                                                             }
-                                                            character.removePotions(potionItem);
-                                                        }
-                                                    }
-                                                    catch (NullPointerException e)
-                                                    {
-                                                        System.out.println("----------------------------------");
-                                                        System.out.println("No such potion in inventory");
-                                                        System.out.println("----------------------------------");
-                                                    }
-                                            break;
-                                            
-                                            case 3:
-                                            //Add enchantments to weapon for attack
-                                                if (done == 0)
-                                                {
-                                                    String enchantmentChoice;
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Enchantments: ");
-                                                    AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
-                                                    AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
-                                                    AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
-                                                    AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
-                                                    System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                    System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                    System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                    System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
-                                                    System.out.println("--------------------------------");
-                                                    System.out.println("Current gold: " + character.getGold());
-                                                    Scanner enchantmentSelect = new Scanner(System.in);
-                                                    System.out.println("Choose enchantments to add to " + character.getcurWeapon());
-                                                    enchantmentChoice = enchantmentSelect.nextLine();
-                                
-                                                    //Proceed to payment if enchantment is available
-                                                    if (enchantmentChoice.equals(twoDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= twoDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - twoDamage.enchantmentCost());
-                                                            weapon = new TwoDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = dragon.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            dragon.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= fiveDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - fiveDamage.enchantmentCost());
-                                                            weapon = new FiveDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = dragon.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            dragon.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
-                                                        }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= fireDamage.enchantmentCost())
-                                                        {
-                                                            character.setGold(character.getGold() - fireDamage.enchantmentCost());
-                                                            weapon = new FireDamage(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = dragon.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            dragon.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
                                                             
                                                         }
-                                                        
-                                                    }
-                                                    //Proceed to payment if enchantment is available
-                                                    else if (enchantmentChoice.equals(powerUp.getEnchantment()))
-                                                    {
-                                                        //If player has enough gold, use enchantment
-                                                        if (character.getGold() >= powerUp.enchantmentCost())
+                                                        //Proceed to payment if enchantment is available
+                                                        else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                         {
-                                                            character.setGold(character.getGold() - powerUp.enchantmentCost());
-                                                            weapon = new PowerUp(new CurrentWeapon());
-                                                            weapon.setItem(character.getcurWeapon());
-                                                            attack = weapon.getOverallEffect();
-                                                            defence = dragon.getDefence();
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
-                                                            System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
-                                                            enemyHealth = enemyHealth -(Math.max(0,attack - defence));
-                                                            dragon.setHealth(enemyHealth);
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
-                                                        
-                                                        }
-                                                        else
-                                                        {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Not enough funds to add enchantment");
-                                                            System.out.println("----------------------------------");
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= fiveDamage.enchantmentCost())
+                                                            {
+                                                                character.setGold(character.getGold() - fiveDamage.enchantmentCost());
+                                                                weapon = new FiveDamage(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
+                                                                defence = dragon.getDefence();
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                dragon.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
+                                                                System.out.println("----------------------------------");
+                                                            }
                                                             
                                                         }
-                                                        
-                                                    }
-                                                    else
+                                                        //Proceed to payment if enchantment is available
+                                                        else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                         {
-                                                            System.out.println("----------------------------------");
-                                                            System.out.println("Please enter valid enchantment");
-                                                            System.out.println("----------------------------------");
-                                                            done = 1;
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= fireDamage.enchantmentCost())
+                                                            {
+                                                                character.setGold(character.getGold() - fireDamage.enchantmentCost());
+                                                                weapon = new FireDamage(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
+                                                                defence = dragon.getDefence();
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                dragon.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                
+                                                            }
+                                                            
                                                         }
+                                                        //Proceed to payment if enchantment is available
+                                                        else if (enchantmentChoice.equals(powerUp.getEnchantment()))
+                                                        {
+                                                            //If player has enough gold, use enchantment
+                                                            if (character.getGold() >= powerUp.enchantmentCost())
+                                                            {
+                                                                character.setGold(character.getGold() - powerUp.enchantmentCost());
+                                                                weapon = new PowerUp(new CurrentWeapon());
+                                                                weapon.setItem(character.getcurWeapon());
+                                                                attack = weapon.getOverallEffect();
+                                                                defence = dragon.getDefence();
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(character.getName() + " attacks with " + attack + " attacking power " + "using " + character.getcurWeapon());
+                                                                System.out.println(dragon.getName() + " defends with " + defence + " defensive strength");
+                                                                enemyHealth = dragon.getCurrHealth() -(Math.max(0,attack - defence));
+                                                                dragon.setHealth(enemyHealth);
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println(dragon.getName() + " now has a health of " + dragon.getCurrHealth());
+                                                            
+                                                            }
+                                                            else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Not enough funds to add enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                
+                                                            }
+                                                            
+                                                        }
+                                                        else
+                                                            {
+                                                                System.out.println("----------------------------------");
+                                                                System.out.println("Please enter valid enchantment");
+                                                                System.out.println("----------------------------------");
+                                                                done = 1;
+                                                            }
 
-                                                
-                                                }
-                                            break;
-                                        
-                                        }
-                                        //Battle ends if dragon health is less than or equal to 0. The game also ends with the player completing all levels
-                                        if (enemyHealth <=0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println("Battle over!" + character.getName() + " has won the battle!");
-                                            System.out.println("===================================");
-                                            System.out.println("Congratulations! You have finished the game!");
-                                            System.out.println("===================================");
-                                            System.out.println("----------------------------------");
-                                            done = 1;
-                                            battleFinished = 1;
-                                            warfinished =1;
-                                        }
-                                        if (done ==0)
-                                        {
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " health: " + character.getCurrHealth());
-                                            System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            System.out.println(dragon.getName() + " attack turn");
-                                            attack = dragon.getDamage();
-                                            armour = new Armour();
-                                            armour.setItem(character.getcurArmour());
-                                            defence = armour.getOverallEffect();
-                                            int special = dragon.getSpecialAbilities();
+                                                    
+                                                    }
+                                                break;
+                                                default:
+                                                     System.out.println("----------------------------------");
+                                                     System.out.println("Please give valid input");
+                                                     System.out.println("----------------------------------");
+                                                     done = 1;
+                                                break;
                                             
-                                            if (special == 1)
-                                            {
-                                                System.out.println(dragon.getName() + " inflicts twice the damage with special ability.");
-                                                attack = dragon.getDamage()*2;    
                                             }
-                                            else if (special == 2)
+                                            //Battle ends if dragon health is less than or equal to 0. The game also ends with the player completing all levels
+                                            if (enemyHealth <=0)
                                             {
-                                                System.out.println("Increase health by 10 with special ability");
-                                                dragon.setHealth(dragon.getCurrHealth()+10);
-                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
-                                            }
-                                            System.out.println(dragon.getName() + " attacks with " + attack + " attacking power");
-                                            System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
-                                            charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
-                                            character.setHealth(charHealth);
-                                            System.out.println("----------------------------------");
-                                            System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
-                                            System.out.println("----------------------------------");
-                                            if (charHealth <=0)
-                                            {
-                                                System.out.println("==================================");
-                                                System.out.println("Battle over!" + dragon.getName() + " has won the battle!");
-                                                System.out.println("GAME OVER!!!");
-                                                System.out.println("==================================");
-                                                
+                                                System.out.println("----------------------------------");
+                                                System.out.println("Battle over!" + character.getName() + " has won the battle!");
+                                                System.out.println("===================================");
+                                                System.out.println("Congratulations! You have finished the game!");
+                                                System.out.println("===================================");
+                                                System.out.println("----------------------------------");
                                                 done = 1;
                                                 battleFinished = 1;
-                                                warfinished = 1;
+                                                warfinished =1;
+                                            }
+                                            if (done ==0)
+                                            {
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " health: " + character.getCurrHealth());
+                                                System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                System.out.println(dragon.getName() + " attack turn");
+                                                attack = dragon.getDamage();
+                                                armour = new Armour();
+                                                armour.setItem(character.getcurArmour());
+                                                defence = armour.getOverallEffect();
+                                                int special = dragon.getSpecialAbilities();
+                                                
+                                                if (special == 1)
+                                                {
+                                                    System.out.println(dragon.getName() + " inflicts twice the damage with special ability.");
+                                                    attack = dragon.getDamage()*2;    
+                                                }
+                                                else if (special == 2)
+                                                {
+                                                    System.out.println("Increase health by 10 with special ability");
+                                                    dragon.setHealth(dragon.getCurrHealth()+10);
+                                                    System.out.println(dragon.getName() + " health: " + dragon.getCurrHealth());
+                                                }
+                                                System.out.println(dragon.getName() + " attacks with " + attack + " attacking power");
+                                                System.out.println(character.getName() + " defends with " + defence + " defensive strength with " + armour.getName() + " armour");
+                                                charHealth = character.getCurrHealth() -(Math.max(0,attack - defence));
+                                                character.setHealth(charHealth);
+                                                System.out.println("----------------------------------");
+                                                System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
+                                                System.out.println("----------------------------------");
+                                                if (charHealth <=0)
+                                                {
+                                                    System.out.println("==================================");
+                                                    System.out.println("Battle over!" + dragon.getName() + " has won the battle!");
+                                                    System.out.println("GAME OVER!!!");
+                                                    System.out.println("==================================");
+                                                    
+                                                    done = 1;
+                                                    battleFinished = 1;
+                                                    warfinished = 1;
+                                                }
                                             }
                                         }
                                     }
+                                    totalBattles = totalBattles+1;
                                 }
-                                totalBattles = totalBattles+1;
-                            }
                         }
                     }
                     catch( NullPointerException e)
@@ -1781,12 +1813,20 @@ public class Game
                         System.out.println("----------------------------------");
                         battleFinished = 1;
                     }
+                    catch (InputMismatchException e)
+                    {
+                        System.out.println("Make sure option is numeric and is within the given numerical range");
+                        
+                    }
                     break;
 
                     case 6:
                     System.out.println("Goodbye!");
                     System.out.println("----------------------------------");
                     warfinished = 1;
+                    break;
+                    default:
+                        System.out.println("Please give valid input");
                     break;
                 }
                 
