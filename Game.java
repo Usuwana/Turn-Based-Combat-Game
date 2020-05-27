@@ -352,6 +352,7 @@ public class Game
                     break;
 
                     case 2:
+                        //Setting the name to be used by the player during the game
                         System.out.println("Enter name of character: ");
                         Scanner sc1 = new Scanner(System.in);
                         name = sc1.next();
@@ -468,6 +469,7 @@ public class Game
                                 
                                 System.out.print("Character name: " + character.getName()); 
                     
+                                //Enemy is Ogre if the enemyChoice is less than the Ogre probability
                                 if(enemyChoice < ogreProbability)
                                 {
                                     Enemies ogre = new Ogre();
@@ -569,10 +571,12 @@ public class Game
                                                     String enchantmentChoice;//Selection of enchantment to use
                                                     System.out.println("--------------------------------");
                                                     System.out.println("Enchantments: ");
+                                                    //Declaration and initialization of enchantments
                                                     AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
                                                     AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
                                                     AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                     AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+
                                                     System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
                                                     System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
                                                     System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
@@ -583,7 +587,7 @@ public class Game
                                                     System.out.println("Choose enchantments to add to " + character.getcurWeapon());
                                                     enchantmentChoice = enchantmentSelect.nextLine();
                                 
-                                                    //Proceed to payment if enchantment is available
+                                                       //Proceed to payment if enchantment is available
                                                         if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                         {
                                                             //Buy enchantment and use it if character has enough gold
@@ -615,8 +619,10 @@ public class Game
                                                             }
                                                             
                                                         }
+                                                        //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                         {
+                                                            //Buy enchantment and use it if character has enough gold
                                                             if (character.getGold() >= fiveDamage.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - fiveDamage.enchantmentCost());
@@ -645,8 +651,10 @@ public class Game
                                                             }
                                                             
                                                         }
+                                                        //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                         {
+                                                            //Buy enchantment and use it if character has enough gold
                                                             if (character.getGold() >= fireDamage.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - fireDamage.enchantmentCost());
@@ -675,8 +683,10 @@ public class Game
                                                             }
                                                             
                                                         }
+                                                        //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(powerUp.getEnchantment()))
                                                         {
+                                                            //Buy enchantment and use it if character has enough gold
                                                             if (character.getGold() >= powerUp.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - powerUp.enchantmentCost());
@@ -718,6 +728,7 @@ public class Game
                                             
                                         }
 
+                                        //End battle and award character their prize if health of enemy is 0 or less
                                         if (enemyHealth <=0)
                                         {
                                             System.out.println("Battle over!" + character.getName() + " has won the battle!");
@@ -773,6 +784,8 @@ public class Game
                                             System.out.println("----------------------------------");
                                             System.out.println(character.getName() + " now has a health of " + character.getCurrHealth());
                                             System.out.println("----------------------------------");
+
+                                            //End the entire game if health of character is 0 or less
                                             if (charHealth <=0)
                                             {
                                                 System.out.println("----------------------------------");
@@ -788,6 +801,7 @@ public class Game
                                         }
                                     }
                                 }
+                                //Enemy is Goblin if value enemyChoice is within required range
                                 else if(enemyChoice < goblinProbability)
                                 {
                                     Enemies goblin = new Goblin();
@@ -800,7 +814,8 @@ public class Game
                                     enemyHealth = goblin.getCurrHealth();
                                     
                                     while (done ==0)
-                                        {
+                                    {
+                                        //Choose method of attack
                                         System.out.println("Choose method of attack");
                                         Scanner sc7 = new Scanner(System.in);
                                         System.out.println("1. Attack with weapon");
@@ -810,6 +825,7 @@ public class Game
 
                                         switch(attackChoice)
                                         {
+                                            //Attack with weapon
                                             case 1:
                                                     if (done == 0)
                                                     {
@@ -831,6 +847,7 @@ public class Game
                                                     }
                                             break;
                                             case 2:
+                                            //Use potion for attack or healing
                                                 String potionItem;
                                                 potion = new Potions();
                                                 character.getCurrentPotions();
@@ -841,9 +858,12 @@ public class Game
                                                 potion.setItem(potionItem);
                                                 try
                                                     {
+                                                        //If player owns selected potion, use it
                                                         if (character.getPotion(potionItem).equals(potionItem))
                                                         {
                                                             character.removePotions(potionItem);
+
+                                                            //If potion is a healing potion, use it to recover health
                                                             if (potion.getSymbol() =='H')
                                                             {
                                                                 System.out.println("----------------------------------");
@@ -852,6 +872,8 @@ public class Game
                                                                 System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                             }
+
+                                                            //If potion is damaging potion, use it to attack enemy
                                                             else if (potion.getSymbol() == 'D')
                                                             {
                                                                 attack = potion.getOverallEffect();
@@ -877,15 +899,19 @@ public class Game
                                             break;
 
                                             case 3:
+                                            //Use enchantments
                                                     if (done == 0)
                                                     {
                                                         String enchantmentChoice;
                                                         System.out.println("--------------------------------");
                                                         System.out.println("Enchantments: ");
+
+                                                        //Declaration and initialization of enchantments
                                                         AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
                                                         AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
                                                         AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                         AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
+
                                                         System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
                                                         System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
                                                         System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
@@ -896,8 +922,10 @@ public class Game
                                                         System.out.println("Choose enchantments to add to " + character.getcurWeapon());
                                                         enchantmentChoice = enchantmentSelect.nextLine();
                                     
+                                                        //Proceed to payment if enchantment is available
                                                         if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                         {
+                                                            //If player has enough gold, use enchantment
                                                             if (character.getGold() >= twoDamage.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - twoDamage.enchantmentCost());
@@ -926,8 +954,10 @@ public class Game
                                                             }
                                                             
                                                         }
+                                                        //Proceed to payment if enchantment is available
                                                         else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                         {
+                                                            //If player has enough gold, use enchantment
                                                             if (character.getGold() >= fiveDamage.enchantmentCost())
                                                             {
                                                                 character.setGold(character.getGold() - fiveDamage.enchantmentCost());
@@ -956,8 +986,10 @@ public class Game
                                                             }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= fireDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - fireDamage.enchantmentCost());
@@ -986,8 +1018,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(powerUp.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= powerUp.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - powerUp.enchantmentCost());
@@ -1016,6 +1050,7 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    
                                                     else
                                                         {
                                                             System.out.println("----------------------------------");
@@ -1028,6 +1063,7 @@ public class Game
                                             break;
                                             
                                         }
+                                        //Battle ends and character is awarded if enemy health is less than or equal to 0
                                         if (enemyHealth <=0)
                                         {
                                             System.out.println("----------------------------------");
@@ -1099,6 +1135,7 @@ public class Game
                                         }
                                     }
                                 }
+                                //Enemy is Slime if enemyChoice meets the required range
                                 else if (enemyChoice < slimeProbability)
                                 {
                                     Enemies slime = new Slime();
@@ -1122,6 +1159,7 @@ public class Game
                                         switch(attackChoice)
                                         {
                                             case 1:
+                                            //Attack with weapon
                                                     if (done == 0)
                                                     {
                                                         weapon = new CurrentWeapon();
@@ -1142,6 +1180,7 @@ public class Game
                                                     }
                                             break;
                                             case 2:
+                                            //Use potion
                                                 String potionItem;
                                                 potion = new Potions();
                                                 character.getCurrentPotions();
@@ -1152,9 +1191,12 @@ public class Game
                                                 potion.setItem(potionItem);
                                                 try
                                                     {
+                                                        //Use potion if it is available
                                                         if (character.getPotion(potionItem).equals(potionItem))
                                                         {
                                                             character.removePotions(potionItem);
+
+                                                            //If it is healing, use it to restore character's health
                                                             if (potion.getSymbol() =='H')
                                                             {
                                                                 System.out.println("----------------------------------");
@@ -1163,6 +1205,8 @@ public class Game
                                                                 System.out.println(character.getName() + " now has new health of " + character.getCurrHealth());
                                                                 System.out.println("----------------------------------");
                                                             }
+
+                                                            //If it is damaging, use it to attack enemy
                                                             else if (potion.getSymbol() == 'D')
                                                             {
                                                                 attack = potion.getOverallEffect();
@@ -1188,6 +1232,7 @@ public class Game
                                             break;
 
                                             case 3:
+                                               //Add enchantments to weapon attack
                                                 if (done == 0)
                                                 {
                                                     String enchantmentChoice;
@@ -1207,8 +1252,10 @@ public class Game
                                                     System.out.println("Choose enchantments to add to " + character.getcurWeapon());
                                                     enchantmentChoice = enchantmentSelect.nextLine();
                                 
+                                                    //Proceed to payment if enchantment is available
                                                     if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= twoDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - twoDamage.enchantmentCost());
@@ -1237,8 +1284,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= fiveDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - fiveDamage.enchantmentCost());
@@ -1267,8 +1316,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= fireDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - fireDamage.enchantmentCost());
@@ -1297,8 +1348,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(powerUp.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= powerUp.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - powerUp.enchantmentCost());
@@ -1340,6 +1393,7 @@ public class Game
                                             break;
                                             
                                         }
+                                        //Battle ends if enemy health is less than or equal to 0 and character is awarded
                                         if (enemyHealth <=0)
                                         {
                                             System.out.println("----------------------------------");
@@ -1408,6 +1462,7 @@ public class Game
                                         }
                                     }
                                 }
+                                //Enemy is dragon if rewuired range is met by enemyChoice
                                 else if (enemyChoice < dragonProbability)
                                 {
                                     Enemies dragon = new Dragon();
@@ -1430,6 +1485,7 @@ public class Game
                                         switch(attackChoice)
                                         {
                                             case 1:
+                                            //Attack with weapon
                                                     if (done == 0)
                                                     {
                                                         weapon = new CurrentWeapon();
@@ -1449,6 +1505,7 @@ public class Game
                                                     }
                                             break;
                                             case 2:
+                                            //Use potion
                                                 String potionItem;
                                                 potion = new Potions();
                                                 character.getCurrentPotions();
@@ -1496,6 +1553,7 @@ public class Game
                                             break;
                                             
                                             case 3:
+                                            //Add enchantments to weapon for attack
                                                 if (done == 0)
                                                 {
                                                     String enchantmentChoice;
@@ -1515,8 +1573,10 @@ public class Game
                                                     System.out.println("Choose enchantments to add to " + character.getcurWeapon());
                                                     enchantmentChoice = enchantmentSelect.nextLine();
                                 
+                                                    //Proceed to payment if enchantment is available
                                                     if (enchantmentChoice.equals(twoDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= twoDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - twoDamage.enchantmentCost());
@@ -1544,8 +1604,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(fiveDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= fiveDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - fiveDamage.enchantmentCost());
@@ -1573,8 +1635,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(fireDamage.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= fireDamage.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - fireDamage.enchantmentCost());
@@ -1603,8 +1667,10 @@ public class Game
                                                         }
                                                         
                                                     }
+                                                    //Proceed to payment if enchantment is available
                                                     else if (enchantmentChoice.equals(powerUp.getEnchantment()))
                                                     {
+                                                        //If player has enough gold, use enchantment
                                                         if (character.getGold() >= powerUp.enchantmentCost())
                                                         {
                                                             character.setGold(character.getGold() - powerUp.enchantmentCost());
@@ -1646,6 +1712,7 @@ public class Game
                                             break;
                                         
                                         }
+                                        //Battle ends if dragon health is less than or equal to 0. The game also ends with the player completing all levels
                                         if (enemyHealth <=0)
                                         {
                                             System.out.println("----------------------------------");
