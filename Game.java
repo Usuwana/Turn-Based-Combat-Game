@@ -5,19 +5,17 @@
  *  Date Last modified: 26/05/2020
  ******************************************************************************/
 
-//package View;
-//import model.*;
 import java.util.*;
 
 public class Game 
 {
     public static void main(String[] args)
     {
-        int choice;
-        int warfinished = 0;
-        String name;
-        String currentWeapon;
-        String currentArmour;
+        int choice; //Used for choosing an option from the main menu
+        int warfinished = 0; //Controller used to keep the game open until certain conditions are met
+        String name; //Used to hold the name of the player character
+        String currentWeapon; //Variable to be used to choose the current weapon being used by the player
+        String currentArmour; //Variable to be used to choose the current armour being used by the player
         double slimeProbability = 0.5; //Initializes probability of enemy being Slime
         double ogreProbability = 0.2; //Initializes probability of enemy being Ogre
         double dragonProbability = 0; //Initializes probability of enemy being Dragon
@@ -25,13 +23,14 @@ public class Game
         int totalBattles = 0; //Counts the number of battles that have taken place. Useful for deciding whether to add 15% or 5% probability to dragon
         double enemyChoice = Math.random() *(0.5);
         PlayerCharacter character = new PlayerCharacter(); //Initializes new Player character
-        Shop theShop = new Shop();
-        Inventory weapon;
+        Shop theShop = new Shop(); //Initialize shop class which reads from shop iteem file
+        Inventory weapon; //
         Inventory armour;
         Inventory potion;
         int initial = 0;
 
 
+        //Where the game is entered. While this variable is zero, the player is inside the game
         while(warfinished==0)
         {   
             if (initial == 0)
@@ -148,15 +147,6 @@ public class Game
                                 System.out.println("----------------------------------");
                                 theShop.showShopContents();
                                 System.out.println("----------------------------------");
-                                /*System.out.println("Enchantments: ");
-                                AddEnchantments twoDamage = new TwoDamage(new CurrentWeapon());
-                                AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
-                                AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
-                                AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
-                                System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                System.out.println(fiveDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                System.out.println(fireDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                System.out.println(powerUp.getEnchantment() + " costing " + twoDamage.enchantmentCost());*/
                                 System.out.println("----------------------------------");
                                 Scanner sc3 = new Scanner(System.in);
                                 System.out.println("Type name of item you would like to buy\n");
@@ -385,10 +375,6 @@ public class Game
                     int battleFinished = 0;
                     double maximumProbability = 0;
                     
-                    //slimeProbability = slimeProbability;
-                    //ogreProbability = ogreProbability;
-                    //dragonProbability = dragonProbability;
-                    //goblinProbability = goblinProbability;
                     
                     if ((slimeProbability > ogreProbability) && (slimeProbability > dragonProbability) && (slimeProbability > goblinProbability))
                     {
