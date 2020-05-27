@@ -2,7 +2,7 @@
  *  Author: Tatenda Usuwana Mapuranga
  *  Purpose: Used to set characteristics of a player, modify their characteristics during the game and carry character's attributes and inventory
  *  Project: Turn Based Combat Game
- *  Date Last modified: 26/05/2020
+ *  Date Last modified: 27/05/2020
  ******************************************************************************/
 //package Model;
 import java.util.*;
@@ -202,7 +202,12 @@ public class PlayerCharacter
     {
         for (int i = 0; i < weapons.size(); i++)
         {
-            System.out.println(weapons.get(i).getName() + " costing " + weapons.get(i).getCost() + " with minimum damage of " + weapons.get(i).getMinEffect() + " and maximum damage of " + weapons.get(i).getMaxEffect() + ". ");
+            System.out.println("----------------------------------");
+            System.out.println("Name: " + weapons.get(i).getName());
+            System.out.println("Cost: " + weapons.get(i).getCost());
+            System.out.println("Minimum Damage: " +  weapons.get(i).getMinEffect());
+            System.out.println("Maximum Damage: " + weapons.get(i).getMaxEffect());
+            System.out.println("----------------------------------");
         }
     }
 
@@ -211,7 +216,13 @@ public class PlayerCharacter
     {
         for (int i = 0; i < armoury.size(); i++)
         {
-            System.out.println(armoury.get(i).getName() + " costing " + armoury.get(i).getCost() + " with minimum defence of " + armoury.get(i).getMinEffect() + " and maximum defence of " + armoury.get(i).getMaxEffect() + ". ");            
+            
+            System.out.println("----------------------------------");
+            System.out.println("Name: " + armoury.get(i).getName());
+            System.out.println("Cost: " + armoury.get(i).getCost());
+            System.out.println("Minimum Defence: " +  armoury.get(i).getMinEffect());
+            System.out.println("Maximum Defence: " + armoury.get(i).getMaxEffect());
+            System.out.println("----------------------------------");            
         }
     }
 
@@ -220,7 +231,13 @@ public class PlayerCharacter
     {
         for (int i = 0; i < potions.size(); i++)
         {
-            System.out.println(potions.get(i).getName() + " costing " + potions.get(i).getCost() + " with minimum effect of " + potions.get(i).getMinEffect() + " and maximum effect of " + potions.get(i).getMaxEffect() + ". ");           
+             
+            System.out.println("----------------------------------");
+            System.out.println("Name: " + potions.get(i).getName());
+            System.out.println("Cost: " + potions.get(i).getCost());
+            System.out.println("Minimum Effect: " +  potions.get(i).getMinEffect());
+            System.out.println("Maximum Effect: " + potions.get(i).getMaxEffect());
+            System.out.println("----------------------------------");         
         }
     }
 
