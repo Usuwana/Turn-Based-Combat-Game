@@ -10,5 +10,6 @@ Once inside the game, follow instructions from Main Menu by selecting relevant c
 
 Some things to note:
 - Enchantments can be added to a weapon during a battle for one attack.
+- The UML is not clear unless you zoom in to see the methods in each class
 
 
