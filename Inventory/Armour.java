@@ -2,7 +2,7 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Used to set, modify and carry characteristics of an armour item
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 * 
 ********************************************************************************************************************************************************/
 package Inventory;

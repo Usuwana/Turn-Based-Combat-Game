@@ -2,9 +2,10 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Carries information about the Power-Up enchantment and what it adds to a weapon. Meant to multiply the damage of a weapon by 1.1
 * Project: Turn Based Combat Game 
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Inventory;
+
 //Inherits from super class AddEnchantments
 public class PowerUp extends AddEnchantments
 {

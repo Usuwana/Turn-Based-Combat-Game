@@ -2,10 +2,11 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Used to modify characteristics of a weapon item
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 *
 ********************************************************************************************************************************************************/
 package Inventory;
+
 //Inherits from super class Weapons
 public abstract class AddEnchantments extends Weapons
 {

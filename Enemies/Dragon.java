@@ -6,6 +6,7 @@
 ********************************************************************************************************************************************************/
 
 package Enemies;
+
 //Implements Enemies interface
 public class Dragon implements Enemies 
 {

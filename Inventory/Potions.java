@@ -5,6 +5,7 @@
 * Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Inventory;
+
 //Inherits from super class Inventory
 public class Potions extends Inventory 
 {

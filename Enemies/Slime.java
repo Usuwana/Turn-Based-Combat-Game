@@ -5,6 +5,7 @@
 * Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Enemies;
+
 //Implements Enemies interface
 public class Slime implements Enemies 
 {

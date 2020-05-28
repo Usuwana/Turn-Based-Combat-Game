@@ -2,7 +2,7 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Open the file conatining the shop contents
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Inventory;
 import java.util.*;
@@ -22,7 +22,7 @@ public class Shop
 
         try
         {
-            fileStrm = new FileInputStream("ShopItems.txt");
+            fileStrm = new FileInputStream("Shop.txt");
             rdr = new InputStreamReader(fileStrm);
             bufRdr = new BufferedReader(rdr);
 
@@ -53,19 +53,18 @@ public class Shop
         }
     }
 
+    //Print lines in the file
     public void printItem(String item)
     {
         String thisToken = null;
         StringTokenizer strTok;
-        //int i=1;
 
         strTok = new StringTokenizer(item, ",");
-        //System.out.println(i + ". ");
-        //i++;
+
         while (strTok.hasMoreTokens())
         {
             thisToken = strTok.nextToken();
-            System.out.print(thisToken + " ");
+            System.out.print(thisToken + ", ");
         }
         
         System.out.println("\n");

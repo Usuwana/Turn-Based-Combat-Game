@@ -157,6 +157,7 @@ public class Game
                                 System.out.println("These are the available items: \n");
                                 System.out.println("----------------------------------");
                                 //Display the inventory available for purchase
+                                System.out.println("The name of each item is the string displayed after the first character in a line.\n");
                                 theShop.showShopContents();
                                 System.out.println("----------------------------------");
                                 System.out.println("\nCurrent gold: " + character.getGold());
@@ -288,13 +289,21 @@ public class Game
                                 {
                                     try
                                     {
-                                        //Sell item if it is owned by the player
-                                        if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
+                                        //Cannot sell weapon if it is the current weapon of choice
+                                        if (sellItem.equals(character.getcurWeapon()))
                                         {
-                                            weapon.setItem(sellItem);
-                                            character.setGold(character.getGold() + (int)(weapon.getCost()*0.5));
-                                            System.out.println(weapon.getName() + " has been sold");
-                                            character.removeWeapon(sellItem);
+                                            System.out.println("Cannot sell weapon that is currently being used\n");
+                                        }
+                                        else
+                                        {
+                                            //Sell weapon if it is owned by the player
+                                            if (!(character.getWeapon(sellItem).equals(null)) && (character.getWeapon(sellItem).equals(sellItem)))
+                                            {
+                                                weapon.setItem(sellItem);
+                                                character.setGold(character.getGold() + (int)(weapon.getCost()*0.5));
+                                                System.out.println(weapon.getName() + " has been sold");
+                                                character.removeWeapon(sellItem);
+                                            }
                                         }
                                     }
                                     catch (NullPointerException e)
@@ -305,12 +314,20 @@ public class Game
                                     }
                                     try
                                     {
-                                        //Sell item if it is owned by the player
-                                        if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
+                                        //Cannot sell weapon if it is the current weapon of choice
+                                        if (sellItem.equals(character.getcurArmour()))
                                         {
-                                            armour.setItem(sellItem);
-                                            character.setGold(character.getGold() + (int)(armour.getCost()*0.5));
-                                            character.removeArmour(sellItem);
+                                            System.out.println("Cannot sell armour that is currently being used\n");
+                                        }
+                                        else
+                                        {
+                                            //Sell armour if it is owned by the player
+                                            if (!(character.getArmour(sellItem).equals(null)) && (character.getArmour(sellItem).equals(sellItem)))
+                                            {
+                                                armour.setItem(sellItem);
+                                                character.setGold(character.getGold() + (int)(armour.getCost()*0.5));
+                                                character.removeArmour(sellItem);
+                                            }
                                         }
                                     }
                                     catch (NullPointerException e)
@@ -583,14 +600,18 @@ public class Game
                                                         AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                         AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
 
-                                                        System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                        System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                        System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                        System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                        System.out.println("Name " + twoDamage.getEnchantment());
+                                                        System.out.println("Cost: " + twoDamage.enchantmentCost());
+                                                        System.out.println("Name " + fiveDamage.getEnchantment());
+                                                        System.out.println("Cost: " + fiveDamage.enchantmentCost());
+                                                        System.out.println("Name " + fireDamage.getEnchantment());
+                                                        System.out.println("Cost: " + fireDamage.enchantmentCost());
+                                                        System.out.println("Name " + powerUp.getEnchantment());
+                                                        System.out.println("Cost: " + powerUp.enchantmentCost());
                                                         System.out.println("--------------------------------");
                                                         System.out.println("Current gold: " + character.getGold());
                                                         Scanner enchantmentSelect = new Scanner(System.in);
-                                                        System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                        System.out.println("Type name of enchantments to add to " + character.getcurWeapon());
                                                         enchantmentChoice = enchantmentSelect.nextLine();
                                     
                                                         //Proceed to payment if enchantment is available
@@ -924,14 +945,18 @@ public class Game
                                                             AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                             AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
 
-                                                            System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                            System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                            System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                            System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                            System.out.println("Name " + twoDamage.getEnchantment());
+                                                            System.out.println("Cost: " + twoDamage.enchantmentCost());
+                                                            System.out.println("Name " + fiveDamage.getEnchantment());
+                                                            System.out.println("Cost: " + fiveDamage.enchantmentCost());
+                                                            System.out.println("Name " + fireDamage.getEnchantment());
+                                                            System.out.println("Cost: " + fireDamage.enchantmentCost());
+                                                            System.out.println("Name " + powerUp.getEnchantment());
+                                                            System.out.println("Cost: " + powerUp.enchantmentCost());
                                                             System.out.println("--------------------------------");
                                                             System.out.println("Current gold: " + character.getGold());
                                                             Scanner enchantmentSelect = new Scanner(System.in);
-                                                            System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                            System.out.println("Type name of enchantments to add to " + character.getcurWeapon());
                                                             enchantmentChoice = enchantmentSelect.nextLine();
                                         
                                                             //Proceed to payment if enchantment is available
@@ -1263,14 +1288,19 @@ public class Game
                                                         AddEnchantments fiveDamage = new FiveDamage(new CurrentWeapon());
                                                         AddEnchantments fireDamage = new FireDamage(new CurrentWeapon());
                                                         AddEnchantments powerUp = new PowerUp(new CurrentWeapon());
-                                                        System.out.println(twoDamage.getEnchantment() + " costing " + twoDamage.enchantmentCost());
-                                                        System.out.println(fiveDamage.getEnchantment() + " costing " + fiveDamage.enchantmentCost());
-                                                        System.out.println(fireDamage.getEnchantment() + " costing " + fireDamage.enchantmentCost());
-                                                        System.out.println(powerUp.getEnchantment() + " costing " + powerUp.enchantmentCost());
+                                                        System.out.println("Name " + twoDamage.getEnchantment());
+                                                        System.out.println("Cost: " + twoDamage.enchantmentCost());
+                                                        System.out.println("Name " + fiveDamage.getEnchantment());
+                                                        System.out.println("Cost: " + fiveDamage.enchantmentCost());
+                                                        System.out.println("Name " + fireDamage.getEnchantment());
+                                                        System.out.println("Cost: " + fireDamage.enchantmentCost());
+                                                        System.out.println("Name " + powerUp.getEnchantment());
+                                                        System.out.println("Cost: " + powerUp.enchantmentCost());
+                                                        
                                                         System.out.println("--------------------------------");
                                                         System.out.println("Current gold: " + character.getGold());
                                                         Scanner enchantmentSelect = new Scanner(System.in);
-                                                        System.out.println("Choose enchantments to add to " + character.getcurWeapon());
+                                                        System.out.println("Type name of enchantments to add to " + character.getcurWeapon());
                                                         enchantmentChoice = enchantmentSelect.nextLine();
                                     
                                                         //Proceed to payment if enchantment is available

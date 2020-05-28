@@ -5,6 +5,7 @@
 * Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Enemies;
+
 //Implements enemies interface
 public class Ogre implements Enemies 
 {

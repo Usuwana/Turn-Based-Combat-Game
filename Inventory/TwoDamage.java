@@ -2,9 +2,10 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Carries information about the damage + 2 enchantment and what it adds to a weapon. Meant to add 2 to the damage of a weapon
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Inventory;
+
 //Inherits from super class AddEnchantments
 public class TwoDamage extends AddEnchantments
 {

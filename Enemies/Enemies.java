@@ -5,6 +5,7 @@
 * Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Enemies;
+
 public interface Enemies 
 {
     public String getName(); //Retrieve the name of an enemy
