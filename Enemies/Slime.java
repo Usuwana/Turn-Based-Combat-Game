@@ -4,7 +4,7 @@
 * Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-//package Model;
+package Enemies;
 //Implements Enemies interface
 public class Slime implements Enemies 
 {

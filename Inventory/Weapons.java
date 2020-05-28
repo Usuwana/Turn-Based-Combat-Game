@@ -2,9 +2,10 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Used to define characteristics of a weapon item. Acts as a super class for a normal weapon and it's modifications
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
-//package Model;
+package Inventory;
+
 //Inherits from super class Inventory
 public abstract class Weapons extends Inventory 
 {

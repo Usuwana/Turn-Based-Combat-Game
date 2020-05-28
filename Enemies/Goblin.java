@@ -1,27 +1,26 @@
 /***************************************************************************************************************************************************
 * Author: Tatenda Usuwana Mapuranga
-* Purpose: Used to set, modify and carry the characteristics of a dragon enemy
-* Project: Turn Based Combat Game
+* Purpose: Meant to set, modify and contain information about the enemy Goblin
+* Project: Turn Based Combat Game 
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-
-//package Model;
+package Enemies;
 //Implements Enemies interface
-public class Dragon implements Enemies 
+public class Goblin implements Enemies 
 {
-    private final String name = "Dragon";
-    private int health = 100;
-    private int minimum = 15;
-    private int maximum = 30;
+    private final String name = "Goblin";
+    private int health = 30;
+    private int minimum = 3;
+    private int maximum = 8;
 
-    //Retrieves the name of the Dragon
+    //Retrieve name of Gobln
     @Override
     public String getName() 
     {
         return name;
     }
 
-    //Sets the health of the dragon to any value not surpassing the maximum health
+    //Set the health of Goblin to any number that does not surpass the maximum allowed
     @Override
     public void setHealth(int health)
     {
@@ -35,81 +34,75 @@ public class Dragon implements Enemies
         }
     }
 
-    //Retrieves the maximum health of the dragon
+    //Retrieves the maximum health number allowed
     @Override
     public int getMaxHealth() 
     {
-        return 100;
+        return 30;
     }
 
-    //Retrieves the current health of the dragon
+    //Retrieves the current health of the goblin
     @Override
     public int getCurrHealth() 
     {
         return health;
     }
 
-    //Retrieves the minimum damage the dragon can cause
+    //Retrieves the minimum damage the goblin can cause
     @Override
     public int getMinDamage()
     {
         return minimum;
     }
 
-    //Retrieves the maximum damage the dragon can cause
+    //Retrieves the maximum damage the goblin can cause
     @Override
     public int getMaxDamage()
     {
         return maximum;
     }
 
-    //Retrieves random number between minimum and maximum damage 
+    //Retrieves the overall damage the goblin can cause. The value is a number between the minimum and maximum damages
     @Override
     public int getDamage() 
     {
+        
         int difference = maximum - minimum;
         int effect = (int) (Math.random() * (difference + 1) + minimum);
         int damage = effect;
         return damage;
     }
 
-    //Retrieves a random number between the minimum and maximum initialized numbers to use as defence
+    //Retrieves the defence the goblin can give. The value is a number between the initialized minimum and maximum values
     @Override
     public int getDefence() 
     {
-        int minimum = 15;
-        int maximum = 20;
+        int minimum = 4;
+        int maximum = 8;
         int difference = maximum - minimum;
         int damage = (int) (Math.random() * (difference + 1) + minimum);
         return damage;
     }
 
-    //Retrieve gold to be awarded to player if they defeat the dragon
+    //Retrieves gold to be given to player after defeating goblin
     @Override
     public int goldAward() 
     {
-        return 100;
+        return 20;
     }
 
-    //Return type of invoked special abilities of dragon based on a generated random number
+    //Retrieves special abilities to be added to the goblin based on a 50% probability
     @Override
     public int getSpecialAbilities()
     {
-        int effect = 0;
+        int damage = 0;
         double probability = Math.random();
-        if (probability < 0.35)
+        if (probability < 0.5)
         {
-            if (probability < 0.25)
-            {
-                effect = 1; //multiply damage by 2
-            }
-            else if(probability < 0.1)
-            {
-                effect = 2; //heal dragon by 10
-            }
+            damage = getDamage()+3;
         }
-        return effect;
 
+        return damage;
     }
     
 }

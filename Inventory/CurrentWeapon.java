@@ -5,7 +5,7 @@
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
 
-//package Model;
+package Inventory;
 //Inherits from super class Weapons
 public class CurrentWeapon extends Weapons
 {

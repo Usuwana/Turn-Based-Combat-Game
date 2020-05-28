@@ -6,6 +6,8 @@
  ******************************************************************************/
 
 import java.util.*;
+import Inventory.*;
+import Enemies.*;
 
 public class Game 
 {

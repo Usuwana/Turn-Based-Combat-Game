@@ -4,7 +4,7 @@
 * Project: Turn Based Combat Game
 * Date Last Modified: 26/05/2020
 ********************************************************************************************************************************************************/
-//package Model;
+package Enemies;
 public interface Enemies 
 {
     public String getName(); //Retrieve the name of an enemy

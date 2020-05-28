@@ -2,9 +2,9 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Used to set, modify and carry characteristics of a potion item
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
-//package Model;
+package Inventory;
 //Inherits from super class Inventory
 public class Potions extends Inventory 
 {
