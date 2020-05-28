@@ -22,7 +22,7 @@ public class Goblin implements Enemies
 
     //Set the health of Goblin to any number that does not surpass the maximum allowed
     @Override
-    public void setHealth(int health)
+    public void setHealth(int health) 
     {
         if (health <= getMaxHealth())
         {

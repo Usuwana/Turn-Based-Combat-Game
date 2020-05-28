@@ -2,7 +2,7 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Common interface used to define methods to be used by all enemies faced by the character
 * Project: Turn Based Combat Game
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Enemies;
 public interface Enemies 

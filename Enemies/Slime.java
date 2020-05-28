@@ -2,7 +2,7 @@
 * Author: Tatenda Usuwana Mapuranga
 * Purpose: Meant to set, modify and contain information about the enemy Slime
 * Project: Turn Based Combat Game 
-* Date Last Modified: 26/05/2020
+* Date Last Modified: 28/05/2020
 ********************************************************************************************************************************************************/
 package Enemies;
 //Implements Enemies interface

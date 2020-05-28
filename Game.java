@@ -39,6 +39,7 @@ public class Game
             {
                 weapon = new CurrentWeapon();
                 weapon.setItem("Short Sword");
+    
                 int option1 = weapon.getCost();
                 weapon.setItem("Great Axe");
                 int option2 = weapon.getCost();

@@ -24,7 +24,7 @@ public abstract class AddEnchantments extends Weapons
 
     // Overrides the method definition in the super class to set it's own implementation. Sets the updated item/weapon name
     @Override
-    public void setItem(String name) 
+    public void setItem(String name)
     {
        next.setItem(name);
     }
