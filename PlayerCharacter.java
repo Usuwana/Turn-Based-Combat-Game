@@ -2,7 +2,7 @@
  *  Author: Tatenda Usuwana Mapuranga
  *  Purpose: Used to set characteristics of a player, modify their characteristics during the game and carry character's attributes and inventory
  *  Project: Turn Based Combat Game
- *  Date Last modified: 27/05/2020
+ *  Date Last modified: 28/05/2020
  ******************************************************************************/
 //package Model;
 import java.util.*;
